@@ -1,0 +1,121 @@
+@use '../base/variables' as v; 
+
+/* Media Queries */
+
+@mixin mq($valor) {
+    @media (min-width: $valor) {
+        @content;
+    }
+}
+
+@mixin telefono {
+    @media (min-width: v.$telefono) {
+        @content;
+    }
+}
+
+@mixin telefono-2 {
+    @media (min-width: v.$telefono-2) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: v.$tablet) {
+        @content;
+    }
+}
+
+@mixin tablet-2 {
+    @media (min-width: v.$tablet-2) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: v.$desktop) {
+        @content;
+    }
+}
+
+@mixin desktop-2 {
+    @media (min-width: v.$desktop-2) {
+        @content;
+    }
+}
+
+@mixin desktop-3 {
+    @media (min-width: v.$desktop-3) {
+        @content;
+    }
+}
+
+@mixin desktop-4 {
+    @media (min-width: v.$desktop-4) {
+        @content;
+    }
+}
+
+@mixin smartTv {
+    @media (min-width: v.$smartTv) {
+        @content;
+    }
+}
+
+/* Grid */
+
+@mixin grid($columnas, $espaciado ) {
+    display: grid;
+    gap: $espaciado;
+    grid-template-columns: repeat($columnas, 1fr);
+}
+
+@mixin flex($direccion, $espaciado) {
+    display: flex;
+    flex-direction: $direccion;
+    gap: $espaciado;
+}
+
+/* btn */
+@mixin boton($bgColor, $colorTexto) {
+    display: block;
+    background-color: transparent;
+    color: #fff;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 0.5rem 2.8rem;
+    border-radius: 1rem;
+    border: 0.1rem solid #045640;
+    font-family: v.$fuenteSecundaria;
+    font-size: 1.6rem;
+    cursor: pointer;
+
+    @media (min-width: v.$telefono) {
+        padding: 0.5rem 2.3rem;
+    }
+}
+
+
+@mixin espacio-interno {
+    padding-bottom: 1rem 0; //20
+
+    @include m.telefono {
+        padding-bottom: 1.25rem 0; //25
+    }
+
+    @include m.tablet {
+        padding-bottom: 1.5rem 0; //30
+    }
+
+    @include m.desktop {
+        padding-bottom: 1.75rem 0; //35
+    }
+
+    @include m.desktop-2 {
+        padding-bottom: 1.75rem 0; //35
+    }
+
+    @include m.desktop-3 {
+        padding-bottom: 2.25rem 0; //45
+    }
+}
