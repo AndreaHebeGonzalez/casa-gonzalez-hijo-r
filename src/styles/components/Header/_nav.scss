@@ -1,12 +1,10 @@
-@use '../base/variables' as v;
-@use '../utils/mixins' as m;
+@use '../../base/variables' as v;
+@use '../../utils/mixins' as m;
 
 .nav {
 
-    padding: 0 2rem;
-
     @include m.desktop-2 {
-        @include m.flex(row, 3.5rem);
+        @include m.flex(row, 1rem);
         align-items: center;
     }
 
@@ -25,18 +23,12 @@
         font-size: 1.6rem;
         margin: 1rem 0;
         line-height: normal;
+        font-weight: 300;
 
         @include m.desktop-2 {
             margin: 0;
         }
     }
 
-    &__btn-contacto {
-        margin: 1rem 0;
-        padding: 1.2rem 1.5rem;
-        background-color: transparent;
-        border: v.$secundary 0.1rem solid;
-        border-radius: 0.5rem;
-        color: v.$secundary
-    }
+    
 }

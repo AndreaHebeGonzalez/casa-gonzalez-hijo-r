@@ -7,7 +7,7 @@ export const Breadcrumbs = () => {
 
   return (
     <nav aria-label="breadcrumbs">
-      <ol className="breadcrumbs contenedor-2">
+      <ol className="breadcrumbs container-2">
         <li className="breadcrumbs__items">
           <Link to="/home">inicio</Link>
         </li>

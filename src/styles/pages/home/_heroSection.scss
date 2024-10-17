@@ -1,0 +1,82 @@
+@use '../../utils/mixins' as m;
+@use '../../base/variables' as v;
+
+
+.hero {
+  background-image: url(/public/img/imgPortada1.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* animation: zoomBackground 25s infinite linear;  */
+
+  height: 65vh;
+  margin-bottom: 3rem;
+
+  @include m.telefono-2 {
+      height: 70vh;
+  }
+
+  @include m.tablet { 
+      height: 80vh;
+      margin-bottom: 4rem;
+  }
+
+  @include m.tablet-2 { 
+      height: 95vh;
+  }
+  
+  @include m.desktop { 
+      height: 100vh;
+      margin-bottom: 4.5rem;
+  }
+
+  @include m.desktop-2 {
+      margin-bottom: 5rem;
+  }
+
+  @include m.desktop-3 {
+      margin-bottom: 6rem;
+  }
+  
+  &__content {
+    height: 100%;
+    padding-bottom: 5rem; 
+
+    @include m.flex(column, 1.5rem);
+    justify-content: end;
+
+
+    @include m.telefono-2 {
+        gap: 3rem;
+    }
+  }
+
+  &__box-heading {
+    position: relative;
+  }
+
+  &__heading {
+    padding-top: 6rem;
+  }
+
+  /* &__btn-light {
+    @include m.boton(transparent, v.$secundary);
+  } */
+
+  &__box-btn-pulse {
+    position: absolute;
+    top: 34%;
+    left: 34%;
+    cursor: pointer;
+    width: 3rem;
+    height: 3rem;
+  }
+
+  &__icon-btn-pulse {
+    position: absolute;
+    top:-18%;
+    left: -18%;
+    width: 3rem;
+    height: 3rem;
+  }
+}

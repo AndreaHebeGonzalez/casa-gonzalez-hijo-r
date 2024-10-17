@@ -24,7 +24,7 @@ body {
 
 //media query para fontzsize en desktop
 
-[class$="contenedor"] {
+[class$="container"] {
     max-width: 130rem;
     width: 95%;
     margin: 0 auto;
@@ -35,7 +35,7 @@ body {
     }
 }
 
-[class$="contenedor-2"] {
+[class$="container-2"] {
     max-width: 130rem;
     width: 95%;
     margin: 0 auto;
@@ -46,7 +46,7 @@ body {
     }
 }
 
-[class*="seccion"] {
+[class*="section"] {
     padding: 3rem 0; 
 
     @include m.tablet {
@@ -75,6 +75,12 @@ img {
     display: block;
 }
 
+img {
+    width: 100%;
+    height: auto;
+}
+
+
 ul, ol {
     list-style: none;
 }
@@ -82,4 +88,20 @@ ul, ol {
 .active {
     font-weight: 600;
     pointer-events: none;
+}
+
+.disappear {
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+.button-scroll {
+    width: 3rem;
+    height: 3rem;
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+    cursor: pointer;
+    transition: all .2s;
 }

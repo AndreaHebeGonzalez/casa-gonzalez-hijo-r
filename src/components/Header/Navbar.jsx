@@ -19,9 +19,11 @@ export const Navbar = () => {
   ]
 
   return ( 
-    <div className="header__barra contenedor-2">
+    <div className="header__barra container-2">
+      <div className="header__name">Casa Gonzalez e Hijo</div>
+      
       <figure className="header__logo">
-        <img className="header__logo-img" src="/public/img/logo.webp" alt="logo" />
+        <img className="header__logo-img" src="/public/img/logob.png" alt="logo" />
       </figure>
 
       <div className="header__menu"> 
@@ -40,7 +42,8 @@ export const Navbar = () => {
                 <NavItem key={ item.label } {...item} />) 
               }
             </ul>
-            <button className="nav__btn-contacto">CONTACTO</button>
+            <div><img src="/public/icons/ico-divider.svg" alt="divider" /></div>
+            <a className="nav__link" href="#">CONTACTO</a>
           </nav>
         </div>
       </div>

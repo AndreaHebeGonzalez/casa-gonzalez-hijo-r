@@ -1,5 +1,5 @@
-@use '../base/variables' as v;
-@use '../utils/mixins' as m;
+@use '../../base/variables' as v;
+@use '../../utils/mixins' as m;
 
 
 .header {
@@ -8,6 +8,7 @@
     top: 0;
     left: 0;
     width: 100%;
+    transition: all .2s;
 
     &__barra {
         padding: 1rem 0;
@@ -16,9 +17,16 @@
         align-items: center;
     }
 
+    &__name {
+        color: v.$secundary;
+        font-size: 3.5rem;
+        font-family: v.$fuentePrincipal;
+    }
+
     &__logo {
-        min-width: 14rem;
-        width: 13%;
+        padding-top: 2rem;
+        min-width: 8rem;
+        width: 8%;
         max-width: 19rem;
 
         & img {
@@ -89,7 +97,7 @@
             transform: translate(0);
             width: auto;
             height: auto;
-            background-color: v.$bgBody;
+            background-color: transparent;
         }
     }
 

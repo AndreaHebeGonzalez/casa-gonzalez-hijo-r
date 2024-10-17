@@ -1,5 +1,4 @@
-@forward 'breadcrumbs';
-@forward 'footer';
-@forward 'header';
-@forward 'nav';
+@forward './Header';
+@forward './Footer';
+@forward './Buttons';
 
