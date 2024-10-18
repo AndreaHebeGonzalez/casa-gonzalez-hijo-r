@@ -3,9 +3,12 @@
 
 .nav {
 
+    padding: 2rem;
+
     @include m.desktop-2 {
         @include m.flex(row, 1rem);
         align-items: center;
+        padding: 0;
     }
 
     &__lista {
@@ -14,6 +17,14 @@
 
         @include m.desktop-2 {
             @include m.flex(row, 2rem);
+        }
+    }
+
+    &__divider {
+        display: none;
+
+        @include m.desktop-2 {
+            display:  block;
         }
     }
     
@@ -30,5 +41,19 @@
         }
     }
 
-    
+    &__box-social {
+        padding: 2rem;
+        
+        @include m.flex(column, 1.5rem);
+        justify-content: center;
+        align-items: start;
+    }
+
+    &__icons-social {
+        @include m.flex(row, 1.5rem);
+    }
+
+    &__icons-social img {
+        width: 2.5rem;
+    }
 }

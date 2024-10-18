@@ -105,3 +105,9 @@ ul, ol {
     cursor: pointer;
     transition: all .2s;
 }
+
+[class$='name'] {
+    color: v.$secundary;
+    font-size: 2.5rem;
+    font-family: v.$fuentePrincipal;
+}

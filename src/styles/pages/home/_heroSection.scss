@@ -59,17 +59,19 @@
     padding-top: 6rem;
   }
 
-  /* &__btn-light {
-    @include m.boton(transparent, v.$secundary);
-  } */
-
   &__box-btn-pulse {
+
+
     position: absolute;
     top: 34%;
-    left: 34%;
+    left: 22.5rem;
     cursor: pointer;
     width: 3rem;
     height: 3rem;
+
+    @include m.mq(660px) {
+      left: 34%;
+    }
   }
 
   &__icon-btn-pulse {
