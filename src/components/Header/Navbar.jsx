@@ -62,7 +62,12 @@ export const Navbar = () => {
               }
             </ul>
             <div className="nav__divider"><img src="/public/icons/ico-divider.svg" /></div>
-            <a className="nav__link" href="#">CONTACTO</a>
+            <div className="nav__item">
+              <a className="nav__link" href="#">
+                <span>CONTACTO</span>
+                <span>CONTACTO</span>
+              </a>
+            </div>
           </nav>
 
             {

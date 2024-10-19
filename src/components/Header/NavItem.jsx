@@ -3,7 +3,10 @@
 export const NavItem = ({ label, link }) => {
   return (
     <li className="nav__item">
-      <a href={ link } className="nav__link">{ label }</a>
+      <a href={ link } className="nav__link">
+        <span>{ label }</span>
+        <span>{ label }</span>
+      </a>
     </li>
   )
 }
