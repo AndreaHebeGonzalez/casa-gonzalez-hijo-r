@@ -14,7 +14,7 @@ html {
 
 body {
     background-color: v.$bgBody;
-    font-family: v.$fuenteSecundaria; //para parrafos
+    font-family: v.$secundaryFont; //para parrafos
     font-size: 1.6rem;
 
     @include m.tablet { //768px
@@ -109,5 +109,5 @@ ul, ol {
 [class$='name'] {
     color: v.$secundary;
     font-size: 2.5rem;
-    font-family: v.$fuentePrincipal;
+    font-family: v.$primaryFont;
 }

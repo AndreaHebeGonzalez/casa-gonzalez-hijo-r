@@ -9,7 +9,7 @@ h1 { //colocar span para "nuevo modelo" /<h1><span>Nuevo Modelos</span>Fusil FFF
     font-size: clamp(50px, 7.5vw, 100px);
     font-weight: 500;
     color: v.$secundary;
-    font-family: v.$fuentePrincipal;
+    font-family: v.$primaryFont;
     
     
     /* @include m.tablet {

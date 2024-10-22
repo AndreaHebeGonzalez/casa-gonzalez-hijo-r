@@ -20,7 +20,7 @@
     }
 
     &__heading {
-        font-family: v.$fuentePrincipal;
+        font-family: v.$primaryFont;
         font-weight: 700;
         span {
             @include m.desktop-2 { 
@@ -75,7 +75,7 @@
     &__items-title {
         text-transform: uppercase;
         color: v.$primary;
-        font-family: v.$fuentePrincipal;
+        font-family: v.$primaryFont;
         font-size: 2.5rem;
         font-weight: 700;
         @include m.tablet { 

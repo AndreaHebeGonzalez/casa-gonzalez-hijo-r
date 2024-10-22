@@ -25,17 +25,18 @@ const categorysList = [
 export const ProductsSection = () => {
   return (
     <section className="categorys section container">
-
-      <div className="categorys__slide-1">
-        <h2 className="categorys__heading"><span>Nuestros</span> productos</h2>
-      </div>
-      
-      {
-        categorysList.map((item, i) => (
-          <Category key= { `${item.category}-${i}` } { ...item } />
-        ))
-      }
-
+      <div className="categorys__box">
+        
+        <div className="categorys__slide-1">
+          <h2 className="categorys__heading"><span>Nuestros </span> productos</h2>
+        </div>
+        
+        {
+          categorysList.map((item, i) => (
+            <Category key= { `${item.category}-${i}` } { ...item } />
+          ))
+        }
+    </div>
     </section>
   )
 }

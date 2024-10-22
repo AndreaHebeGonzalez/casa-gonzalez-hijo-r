@@ -1,0 +1,47 @@
+@use '../../base/variables' as v;
+@use '../../utils/mixins' as m;
+
+.categorys {
+
+  &__box {
+
+    @media(min-width: 1120px) {
+      height: 80vh;
+      padding: 10vh 0;
+      width: calc(400% + 30rem);
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: center;
+
+    }
+  }
+  
+
+  &__heading {
+      font-size: 3rem;
+      font-family: v.$primaryFont;
+      margin-bottom: 3rem;
+
+      @include m.telefono-2 { 
+          font-size: 4rem;
+      }
+
+      @include m.tablet { 
+          font-size: 5rem;
+          margin-bottom: 6rem;
+      }
+
+      @media(min-width: 1120px) {
+        height: 100%;
+        width: 100vw;
+        @include m.flex(row, 1.5rem);
+        align-items: center;
+        margin-bottom: 0;
+      }
+  }
+
+
+
+  
+}
