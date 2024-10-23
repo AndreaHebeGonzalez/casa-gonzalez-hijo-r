@@ -52,9 +52,9 @@ export const MainLayout = () => {
     
     if (scrollContainer) {
       scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
-      /* if (typeof locoScroll !== 'undefined') {
+      if (typeof locoScroll !== 'undefined') {
         locoScroll.update();
-      } */
+      }
     }
   }, [location.pathname]);
 

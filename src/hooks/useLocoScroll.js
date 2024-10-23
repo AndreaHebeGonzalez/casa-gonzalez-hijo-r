@@ -35,7 +35,7 @@ export const useLocoScroll = (start = true, setHasScrolled, setShowBtnScroll) =>
       if (locoScrollInstance) locoScrollInstance.destroy();
     };
 
-  }, [start, setHasScrolled, setShowBtnScroll]);
+  }, [start]);
 
   return locoScroll;
 };
