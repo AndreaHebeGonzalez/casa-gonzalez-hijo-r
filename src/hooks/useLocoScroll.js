@@ -1,20 +1,41 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import LocomotiveScroll from 'locomotive-scroll';
-/* import 'locomotive-scroll/src/locomotive-scroll.scss'; */
+import 'locomotive-scroll/src/locomotive-scroll.scss';
 
 
 
-export const useLocoScroll = (start = true) => {
+export const useLocoScroll = (start = true, setHasScrolled, setShowBtnScroll) => {
+
+  const [locoScroll, setLocoScroll] = useState(null);
+
   useEffect(() => {
     if(!start) return;
 
-    const scroll = new LocomotiveScroll({
-      el: document.querySelector('#main-container'),
-      smooth: true, 
+    const scrollEl = document.querySelector('#main-container');
+    
+    const locoScrollInstance = new LocomotiveScroll({
+      el: scrollEl,
+      smooth: true,
+      smoothMobile: true,
       multiplier: 1,
-      lerp: 0.06, //suavidad del desplazamiento
-      class: 'is-real'
+      lerp: 0.06, //suavidad 
+      /* class: 'is-real' */
     });
 
-  }, [start]);
+    locoScrollInstance.on('scroll', (obj) => {
+      setHasScrolled(obj.scroll.y > 100);
+      setShowBtnScroll(obj.scroll.y > 250);
+    });
+
+    locoScrollInstance.update();
+
+    setLocoScroll(locoScrollInstance);
+
+    return () => {
+      if (locoScrollInstance) locoScrollInstance.destroy();
+    };
+
+  }, [start, setHasScrolled, setShowBtnScroll]);
+
+  return locoScroll;
 };

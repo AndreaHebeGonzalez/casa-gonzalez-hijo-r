@@ -44,38 +44,36 @@ export const MainLayout = () => {
 
   const location = useLocation();
 
-  useLocoScroll(true);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      console.log(window.scrollY)
-      setHasScrolled(window.scrollY > 400);
-      setShowBtnScroll(window.scrollY > 250);
-    };
-
-
-    window.addEventListener('scroll', handleScroll);
-    
-    
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [])
+  const locoScroll = useLocoScroll(true, setHasScrolled, setShowBtnScroll);
   
+  useEffect(() => {
+
+    const scrollContainer = document.querySelector('#main-container');
+    
+    if (scrollContainer) {
+      scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
+      /* if (typeof locoScroll !== 'undefined') {
+        locoScroll.update();
+      } */
+    }
+  }, [location.pathname]);
 
   return (
     <div id="main-container" data-scroll-container>
-      <header className= { `header ${ hasScrolled ? 'disappear':''}` }  data-scroll-section>
+      <header className= { `header ${ hasScrolled ? 'disappear':''}` } data-scroll-sticky data-scroll-target="#main-container">
         { location.pathname.includes('categorie') || location.pathname.includes('product') ? <Breadcrumbs /> : <Navbar />}
       </header>
       
       <main data-scroll-section>
         <Outlet />
-        
-        <BtnScroll showBtnScroll = { showBtnScroll } />
       </main>
-      
+
       <footer data-scroll-section>
         <Footer />
       </footer>  
+
+      <BtnScroll showBtnScroll = { showBtnScroll } locoScroll = { locoScroll } />
+      
     </div>
   )
 }
