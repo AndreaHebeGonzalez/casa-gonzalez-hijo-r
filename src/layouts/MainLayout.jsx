@@ -2,6 +2,7 @@ import { Home, Contact, About, Categorie, ProductDetail } from '../pages';
 import { Navbar, Footer, Breadcrumbs, BtnScroll } from '../components';
 import { Outlet, Navigate, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useLocoScroll } from '../hooks/useLocoScroll';
 
 export const childMainLayout = [
   {
@@ -39,14 +40,16 @@ export const MainLayout = () => {
 
   const [hasScrolled, setHasScrolled] = useState(false);
   const [showBtnScroll, setShowBtnScroll] = useState(false);
+  /* const [preloader, setPreloader] = useState(false); */
 
   const location = useLocation();
 
+  useLocoScroll(true);
 
   useEffect(() => {
     const handleScroll = () => {
       console.log(window.scrollY)
-      setHasScrolled(window.scrollY > 100);
+      setHasScrolled(window.scrollY > 400);
       setShowBtnScroll(window.scrollY > 250);
     };
 
@@ -59,22 +62,20 @@ export const MainLayout = () => {
   
 
   return (
-    <>
-      <header className= { `header ${ hasScrolled ? 'disappear':''}` } >
+    <div id="main-container" data-scroll-container>
+      <header className= { `header ${ hasScrolled ? 'disappear':''}` }  data-scroll-section>
         { location.pathname.includes('categorie') || location.pathname.includes('product') ? <Breadcrumbs /> : <Navbar />}
       </header>
       
-      <main>
+      <main data-scroll-section>
         <Outlet />
         
         <BtnScroll showBtnScroll = { showBtnScroll } />
-        
-
       </main>
       
-      <Footer />
-  
-
-    </>
+      <footer data-scroll-section>
+        <Footer />
+      </footer>  
+    </div>
   )
 }
