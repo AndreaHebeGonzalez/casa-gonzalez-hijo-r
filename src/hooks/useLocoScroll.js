@@ -9,6 +9,7 @@ export const useLocoScroll = (start = true, setHasScrolled, setShowBtnScroll) =>
   const [locoScroll, setLocoScroll] = useState(null);
 
   useEffect(() => {
+    
     if(!start) return;
 
     const scrollEl = document.querySelector('#main-container');
