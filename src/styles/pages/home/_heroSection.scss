@@ -56,8 +56,25 @@
     z-index: 0;
   }
 
+  &__subtitle {
+    font-weight: 700;
+    font-size: 3rem;
+    color: v.$secundary;
+    
+    @include m.tablet {
+        font-size: 5rem;
+    }
+
+    span {
+        color: v.$primary;
+    }
+
+  }
+
+  
+
   &__heading {
-    padding-top: 6rem;
+    /* padding-top: 6rem; */
   }
 
   &__box-btn-pulse {
@@ -81,5 +98,15 @@
     left: -18%;
     width: 3rem;
     height: 3rem;
+  }
+
+  &__titleParent,
+  &__subtitleParent {
+    overflow: hidden; 
+  }
+
+  &__titleChildren,
+  &__subtitleChildren {
+    transform: translate(0, 400px); 
   }
 }

@@ -54,8 +54,8 @@ export const MainLayout = () => {
       scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
       if (locoScroll) {
         locoScroll.update();
-      }
-    }
+      };
+    };
   }, [location.pathname]);
 
   return (
