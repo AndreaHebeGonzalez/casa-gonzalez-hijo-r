@@ -18,6 +18,7 @@ export const textAnimation = (heroText) => {
   
 
   gsap.to(subtitleHero.words, {
+    delay: 1.6,
     duration: 1,
     y: 0, 
     opacity: 1, 
@@ -27,6 +28,7 @@ export const textAnimation = (heroText) => {
 
 
   gsap.to(h1Hero.words, {
+    delay: 1.6,
     duration: 1,
     y: 0, 
     opacity: 1, 

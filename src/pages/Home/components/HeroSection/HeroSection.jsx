@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { BtnPulse } from "../../../../components/Buttons/BtnPulse"
-import { textAnimation } from "../../../../utils/textAnimation"
+import { textAnimation } from "../../../../helpers/textAnimation"
 import { useRef } from "react"
 
 
