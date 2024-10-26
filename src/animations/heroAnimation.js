@@ -1,8 +1,9 @@
 import SplitType from "split-type";
 import gsap from "gsap";
 
-export const textAnimation = (heroText) => {
-  if(!heroText) return;
+export const heroAnimation = (heroText, HeroBtnPulse) => {
+  
+  if(!heroText || !HeroBtnPulse) return;
 
   const subtitleHero = new SplitType('.hero__subtitle', { 
     types: 'lines, words', 
@@ -16,6 +17,7 @@ export const textAnimation = (heroText) => {
     wordClass: 'hero__titleChildren'
   });
   
+  
 
   gsap.to(subtitleHero.words, {
     delay: 1.6,
@@ -26,7 +28,6 @@ export const textAnimation = (heroText) => {
     ease: "power2", 
   });
 
-
   gsap.to(h1Hero.words, {
     delay: 1.6,
     duration: 1,
@@ -35,6 +36,15 @@ export const textAnimation = (heroText) => {
     stagger: 0.1, 
     ease: "power2", 
   });
+
+  gsap.set('.hero__box-btn-pulse', { scale: 0, opacity: 1 });
+
+  gsap.to('.hero__box-btn-pulse', {
+    delay: 1.8, 
+    duration: 1, 
+    scale: 1, 
+    ease: "back.inOut", 
+});
 };
 
 

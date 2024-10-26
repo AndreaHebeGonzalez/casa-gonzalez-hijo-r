@@ -2,6 +2,7 @@ import gsap from "gsap";
 
 
 export const nameHeaderAnimation = (nameHeader) => {
+  
   if(!nameHeader) return; 
 
   gsap.set('.header__name', { opacity: 0, x: -20 });

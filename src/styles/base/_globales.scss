@@ -104,11 +104,48 @@ ul, ol {
     right: 5%;
     cursor: pointer;
     transition: all .2s;
-    z-index: 100;
+    z-index: 10;
 }
 
 [class$='name'] {
     color: v.$secundary;
     font-size: 2.5rem;
     font-family: v.$primaryFont;
+}
+
+.intro {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+}
+
+.introName {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 25;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0%;
+    z-index: 15;
+    background: v.$bgBody;
+}
+
+.first {
+    top: 0;
+}
+
+.second {
+    top: 33.3%
+}
+
+
+.third {
+    top: 66.6%;
 }

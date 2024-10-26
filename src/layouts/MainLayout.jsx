@@ -1,5 +1,5 @@
 import { Home, Contact, About, Categorie, ProductDetail } from '../pages';
-import { Navbar, Footer, Breadcrumbs, BtnScroll } from '../components';
+import { Navbar, Footer, Breadcrumbs, BtnScroll, IntroOne } from '../components';
 import { Outlet, Navigate, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useLocoScroll } from '../hooks/useLocoScroll';
@@ -58,8 +58,12 @@ export const MainLayout = () => {
     };
   }, [location.pathname]);
 
+
   return (
     <div id="main-container" data-scroll-container>
+      
+      <IntroOne />
+
       <header className= { `header ${ hasScrolled ? 'disappear':''}` } data-scroll-sticky data-scroll-target="#main-container">
         { location.pathname.includes('categorie') || location.pathname.includes('product') ? <Breadcrumbs /> : <Navbar />}
       </header>

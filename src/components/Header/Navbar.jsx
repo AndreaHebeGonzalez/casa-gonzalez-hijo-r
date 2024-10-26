@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { NavItem } from "./NavItem"
 import { useEffect, useRef, useState } from "react";
-import { headerAnimation, nameHeaderAnimation } from "../../helpers/headerAnimation";
+import { headerAnimation, nameHeaderAnimation } from "../../animations";
 
 
 export const Navbar = () => {

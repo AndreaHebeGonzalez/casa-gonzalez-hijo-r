@@ -53,7 +53,6 @@
 
   &__box-heading {
     position: relative;
-    z-index: 0;
   }
 
   &__subtitle {
@@ -79,13 +78,13 @@
 
   &__box-btn-pulse {
 
-
     position: absolute;
-    top: 34%;
+    top: 3%;
     left: 22.5rem;
     cursor: pointer;
     width: 3rem;
     height: 3rem;
+    /* opacity: 1 !important; */
 
     @include m.mq(660px) {
       left: 34%;
