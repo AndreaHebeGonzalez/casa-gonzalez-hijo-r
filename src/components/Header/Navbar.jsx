@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { NavItem } from "./NavItem"
 import { useEffect, useRef, useState } from "react";
-import { headerAnimation, nameHeaderAnimation } from "../../animations";
+import { headerAnimation } from "../../animations";
 
 
 export const Navbar = () => {
@@ -15,7 +15,7 @@ export const Navbar = () => {
   };
 
   const headerRef = useRef(null);
-  const headerNameRef = useRef(null);
+  /* const headerNameRef = useRef(null); */
 
 
   useEffect(() => {
@@ -39,14 +39,14 @@ export const Navbar = () => {
 
   useEffect(() => {
     headerAnimation( headerRef.current, navItems );
-    nameHeaderAnimation(headerNameRef.current);
+    /* nameHeaderAnimation(headerNameRef.current); */
   }, []);
 
   return ( 
     <div className="header__barra container-2" ref={ headerRef }>
-      {
+      {/* {
         showName && <div className="header__name" ref={ headerNameRef }>Casa Gonzalez e Hijo</div>
-      }
+      } */}
       
       <figure className="header__logo">
         <img className="header__logo-img" src="/public/img/logob.png" alt="logo" />

@@ -9,10 +9,10 @@ export const IntroOne = () => {
 
   return (
     <>
-      <div class="overlay first"></div>
-      <div class="overlay second"></div>
-      <div class="overlay third"></div>
-      {/* <span className="introName">Casa Gonzalez e Hijo</span> */}
+      <div className="overlay first"></div>
+      <div className="overlay second"></div>
+      <div className="overlay third"></div>
+      <span className="introName">Casa Gonzalez e Hijo</span>
     </>
   )
 }

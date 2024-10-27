@@ -19,7 +19,7 @@
     }
 
     &__name {
-        color: v.$secundary;
+        color: v.$secondary;
         font-size: 3rem;
         font-family: v.$primaryFont;
         font-weight: 500;
@@ -28,7 +28,7 @@
     &__logo {
         padding-top: 2rem;
         min-width: 8rem;
-        width: 10%;
+        width: 8%;
         max-width: 12.2rem;
 
         & img {

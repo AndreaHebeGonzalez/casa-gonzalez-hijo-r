@@ -9,7 +9,7 @@
 
   &__items {
     font-size: 2.2rem;
-    color: v.$secundary;
+    color: v.$secondary;
     @include m.flex(row, 0.5rem)
   }
 }

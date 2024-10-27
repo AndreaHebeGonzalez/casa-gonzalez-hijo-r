@@ -3,7 +3,7 @@
 
 
 [class*="btn-light"] {
-  @include m.boton(transparent, v.$secundary);
+  @include m.boton(transparent, v.$secondary);
 
   @include m.desktop-2 { 
     padding: .5rem 4rem;

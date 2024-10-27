@@ -1,7 +1,7 @@
 import { Home, Contact, About, Categorie, ProductDetail } from '../pages';
 import { Navbar, Footer, Breadcrumbs, BtnScroll, IntroOne } from '../components';
 import { Outlet, Navigate, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocoScroll } from '../hooks/useLocoScroll';
 
 export const childMainLayout = [
@@ -40,14 +40,13 @@ export const MainLayout = () => {
 
   const [hasScrolled, setHasScrolled] = useState(false);
   const [showBtnScroll, setShowBtnScroll] = useState(false);
-  /* const [preloader, setPreloader] = useState(false); */
 
   const location = useLocation();
 
   const locoScroll = useLocoScroll(true, setHasScrolled, setShowBtnScroll);
+
   
   useEffect(() => {
-
     const scrollContainer = document.querySelector('#main-container');
     
     if (scrollContainer) {
@@ -61,8 +60,8 @@ export const MainLayout = () => {
 
   return (
     <div id="main-container" data-scroll-container>
-      
-      <IntroOne />
+
+      <IntroOne /> 
 
       <header className= { `header ${ hasScrolled ? 'disappear':''}` } data-scroll-sticky data-scroll-target="#main-container">
         { location.pathname.includes('categorie') || location.pathname.includes('product') ? <Breadcrumbs /> : <Navbar />}

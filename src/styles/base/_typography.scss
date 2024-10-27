@@ -8,7 +8,7 @@
 h1 { //colocar span para "nuevo modelo" /<h1><span>Nuevo Modelos</span>Fusil FFF</h1>
     font-size: clamp(50px, 7.5vw, 100px);
     font-weight: 500;
-    color: v.$secundary;
+    color: v.$secondary;
     font-family: v.$primaryFont;
     
     
@@ -35,7 +35,7 @@ h1 { //colocar span para "nuevo modelo" /<h1><span>Nuevo Modelos</span>Fusil FFF
 h2 {
     font-weight: 700;
     font-size: 4rem;
-    color: v.$secundary;
+    color: v.$secondary;
     
     @include m.tablet {
         font-size: 5rem;
@@ -49,14 +49,14 @@ h2 {
 h3  {
     font-weight: 500;
     font-size: 3rem;
-    color: v.$secundary;
+    color: v.$secondary;
     @include m.tablet {
         font-size: 4rem;
     }
 }
 
 p {
-    color: v.$secundary;
+    color: v.$secondary;
     font-size: 1.6rem;
     @include m.tablet {
         font-size: 2rem;
@@ -65,5 +65,5 @@ p {
 
 a {
     text-decoration: none;
-    color: v.$secundary;
+    color: v.$secondary;
 }
