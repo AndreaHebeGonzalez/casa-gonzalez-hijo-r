@@ -19,8 +19,7 @@ export const useLocoScroll = (start = true, setHasScrolled, setShowBtnScroll) =>
       smooth: true,
       smoothMobile: true,
       multiplier: 1,
-      lerp: 0.06, //suavidad 
-      /* class: 'is-real' */
+      lerp: 0.06, 
     });
 
     locoScrollInstance.on('scroll', (obj) => {
@@ -35,7 +34,6 @@ export const useLocoScroll = (start = true, setHasScrolled, setShowBtnScroll) =>
     return () => {
       if (locoScrollInstance) locoScrollInstance.destroy();
     };
-
   }, [start]);
 
   return locoScroll;

@@ -1,1 +1,1 @@
-export * from './IntroOne';
+export * from './Preloader';

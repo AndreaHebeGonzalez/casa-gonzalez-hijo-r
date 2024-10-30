@@ -15,15 +15,14 @@ export const Navbar = () => {
   };
 
   const headerRef = useRef(null);
-  /* const headerNameRef = useRef(null); */
 
 
   useEffect(() => {
+    headerAnimation( headerRef.current, navItems );
 
     const handleShowName = () => {
       setShowName(window.innerWidth > 1279)
     };
-
     window.addEventListener('resize', handleShowName);
 
     return () => {
@@ -37,16 +36,8 @@ export const Navbar = () => {
     { label: 'PRODUCTOS', link: '#' },
   ];
 
-  useEffect(() => {
-    headerAnimation( headerRef.current, navItems );
-    /* nameHeaderAnimation(headerNameRef.current); */
-  }, []);
-
   return ( 
     <div className="header__barra container-2" ref={ headerRef }>
-      {/* {
-        showName && <div className="header__name" ref={ headerNameRef }>Casa Gonzalez e Hijo</div>
-      } */}
       
       <figure className="header__logo">
         <img className="header__logo-img" src="/public/img/logob.png" alt="logo" />
@@ -87,11 +78,10 @@ export const Navbar = () => {
                   </div>
                 </div>
               )
-              
-              
             }
         </div>
       </div>
     </div>
   )
 }
+

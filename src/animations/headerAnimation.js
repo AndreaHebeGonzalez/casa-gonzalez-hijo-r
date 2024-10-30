@@ -1,20 +1,5 @@
 import gsap from "gsap";
 
-
-/* export const nameHeaderAnimation = (nameHeader) => {
-  
-  if(!nameHeader) return; 
-
-  gsap.set('.header__name', { opacity: 0, x: -20 });
-
-  gsap.to('.header__name', {
-    delay: 1,
-    opacity: 1,
-    x: 0,
-    ease: 'power4',
-  });
-}; */
-
 export const headerAnimation = (headerBarr, navItems) => {
 
   setTimeout(() => {
@@ -25,7 +10,7 @@ export const headerAnimation = (headerBarr, navItems) => {
     gsap.set('.header__logo', { opacity: 0, x: -20 });
 
     gsap.to('.header__logo', {
-      delay: 1.2,
+      delay: 1.2 + 1,
       opacity: 1,
       x: 0,
       ease: 'power4',
@@ -33,7 +18,7 @@ export const headerAnimation = (headerBarr, navItems) => {
     });
 
     gsap.to('.nav__item .nav__link', {
-      delay: 1.3,
+      delay: 1.3 + 1,
       opacity: 1,
       x: 0,
       ease: 'power4',
@@ -41,13 +26,13 @@ export const headerAnimation = (headerBarr, navItems) => {
     });
 
     gsap.to('.nav__divider', {
-      delay: 1.4 + 0.08 * navItems.length,
+      delay: 1.4 + 0.08 * navItems.length + 1,
       opacity: 1,
       x: 0,
       ease: 'power4',
     });
-  }, 2700);
-  
+
+  }, 2000);
 };
 
 

@@ -1,1 +1,3 @@
-export * from './BtnScroll'
+export * from './BtnLight';
+export * from './BtnPulse';
+export * from './BtnScroll';

@@ -30,7 +30,6 @@ const splitFeatures = (arr, size) => {
 };
 
 const featurePairs = splitFeatures(features, 2); 
-console.log(featurePairs)
 export const AboutSection = () => {
 
 
