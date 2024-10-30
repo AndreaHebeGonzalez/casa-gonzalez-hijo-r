@@ -4,19 +4,20 @@
 .about-s {
 
     &__flex {
-        @include m.grid(1, 4rem);
+        @include m.grid(1, 6rem);
+
         @include m.tablet { 
-            @include m.grid(1, 5rem);
+            gap: 8rem;
+        }
+
+        @include m.desktop { 
+            gap: 7.5rem;
         }
     }
 
     &__information {
-        @include m.flex(column, 3rem);
-        @include m.desktop-2 { 
-            gap: 0;
-            flex-direction: row;
-            justify-content: center;
-        }
+        @include m.flex(row, 0);
+        justify-content: center;
     }
 
     &__heading {
@@ -33,15 +34,35 @@
     }
 
     &__content {
-        padding-bottom: 5rem;
-        
+
+        @include m.tablet { 
+            max-width: 88%;
+        }
+
+        @include m.desktop { 
+            max-width: 85%;
+        }
 
         @include m.desktop-2 { 
             max-width: 80%;
         }
 
         & p {
-            font-size: 2.5rem;
+
+            font-size: 2rem;
+
+            @include m.telefono-2{ 
+                font-size: 2.1rem;
+            }
+
+            @include m.tablet { 
+                font-size: 2.3rem;
+            }
+
+            @include m.desktop-2 { 
+                font-size: 2.5rem;
+            }
+            
         }
     }
 
@@ -61,13 +82,15 @@
     }
     &__items-content {
         @include m.flex(column, 1.5rem);
+        justify-content: center;
         padding: .5rem 1rem;
         height: 18rem;
         border-radius: 1rem;
         background-color: transparentize(v.$primary, 0.87);
+
         @include m.tablet { 
             padding: 2.5rem;
-            @include m.flex(column, 2rem);
+            @include m.flex(column, 1rem);
             height: 22rem;
         }
     }
@@ -76,17 +99,19 @@
         text-transform: uppercase;
         color: v.$primary;
         font-family: v.$primaryFont;
-        font-size: 2.5rem;
+        font-size: 2.3rem;
         font-weight: 700;
+
         @include m.tablet { 
-            font-size: 3.8rem;
+            font-size: 3.4rem;
         }
     }
 
     &__items-text {
         font-size: 1.6rem;
+
         @include m.tablet { 
-            font-size: 2rem;
+            font-size: 2.05rem;
         }
     }
 

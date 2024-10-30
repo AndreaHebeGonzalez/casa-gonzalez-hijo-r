@@ -40,25 +40,34 @@
   
   &__content {
     height: 100%;
-    padding-bottom: 5rem; 
-
+    
     @include m.flex(column, 1.5rem);
     justify-content: center;
 
 
     @include m.telefono-2 {
-        gap: 3rem;
+        gap: 5em;
     }
   }
 
   &__box-heading {
     position: relative;
     @include m.flex(column, 1rem);
-    padding-top: 22rem;
+    padding-top: 12rem; 
+
+    @include m.tablet-2 {
+      padding-top: 20rem; 
+    }
   }
 
   &__heading {
-    margin-bottom: 3rem;
+
+    margin-bottom: 1.5rem;
+
+    @include m.desktop {
+      margin-bottom: 2.8rem;
+    }
+    
   }
 
   &__subtitle {
@@ -76,6 +85,17 @@
     }
 
   }
+
+
+  &__btn-light {
+    
+    @include m.desktop-2 { 
+      font-size: 1.8rem;
+    }
+  }
+
+
+
 
   &__box-btn-pulse {
     position: absolute;
