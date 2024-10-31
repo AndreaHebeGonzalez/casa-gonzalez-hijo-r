@@ -4,13 +4,11 @@ import 'locomotive-scroll/src/locomotive-scroll.scss';
 
 
 
-export const useLocoScroll = (start = true, setHasScrolled, setShowBtnScroll) => {
+export const useLocoScroll = (setHasScrolled, setShowBtnScroll) => {
 
   const [locoScroll, setLocoScroll] = useState(null);
 
   useEffect(() => {
-    
-    if(!start) return;
 
     const scrollEl = document.querySelector('#main-container');
     
@@ -34,7 +32,7 @@ export const useLocoScroll = (start = true, setHasScrolled, setShowBtnScroll) =>
     return () => {
       if (locoScrollInstance) locoScrollInstance.destroy();
     };
-  }, [start]);
+  }, []);
 
   return locoScroll;
 };

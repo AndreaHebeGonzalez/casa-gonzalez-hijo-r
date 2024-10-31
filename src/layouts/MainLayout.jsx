@@ -1,8 +1,9 @@
 import { Home, Contact, About, Categorie, ProductDetail } from '../pages';
 import { Navbar, Footer, Breadcrumbs, BtnScroll, Preloader } from '../components';
 import { Outlet, Navigate, useLocation } from 'react-router-dom';
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { useLocoScroll } from '../hooks/useLocoScroll';
+import { ScreenContext } from '../context/ScreenContext';
 
 export const childMainLayout = [
   {
@@ -35,17 +36,17 @@ export const childMainLayout = [
   }
 ];
 
-
 export const MainLayout = () => {
 
   const [hasScrolled, setHasScrolled] = useState(false);
   const [showBtnScroll, setShowBtnScroll] = useState(false);
-
   const [completeBar, setCompletBar] = useState(false);
+
+  const { mobileVersion } = useContext(ScreenContext);
 
   const location = useLocation();
 
-  const locoScroll = useLocoScroll(true, setHasScrolled, setShowBtnScroll);
+  const locoScroll = useLocoScroll(setHasScrolled, setShowBtnScroll);
 
   const handleCompleteBar = () => {
     setCompletBar(true);
@@ -63,31 +64,30 @@ export const MainLayout = () => {
   }, [location.pathname]);
 
 
+
   return (
-  <>
-    {
-      !completeBar && <Preloader barComplete={ handleCompleteBar }/> 
-    }
-    
-    <div id="main-container" data-scroll-container>
-
-      <header className= { `header ${ hasScrolled ? 'disappear':''}` } data-scroll-sticky data-scroll-target="#main-container">
-        { location.pathname.includes('categorie') || location.pathname.includes('product') ? <Breadcrumbs /> : <Navbar />}
-      </header>
+    <>
+      {
+        !completeBar && <Preloader barComplete={ handleCompleteBar }/> 
+      }
       
-      <main data-scroll-section>
-        <Outlet />
-      </main>
+      <div id="main-container" data-scroll-container>
 
-      <footer data-scroll-section>
-        <Footer />
-      </footer>  
+        <header className= { `header ${ hasScrolled && !mobileVersion ? 'disappear':''}` } data-scroll-sticky data-scroll-target="#main-container">
+          { location.pathname.includes('categorie') || location.pathname.includes('product') ? <Breadcrumbs /> : <Navbar hasScrolled = { hasScrolled } />}
+        </header>
+        
+        <main data-scroll-section>
+          <Outlet />
+        </main>
 
-      <BtnScroll showBtnScroll = { showBtnScroll } locoScroll = { locoScroll } />
-      
-    </div>
-  </> 
+        <footer data-scroll-section>
+          <Footer />
+        </footer>  
 
-    
-  )
-}
+        <BtnScroll showBtnScroll = { showBtnScroll } locoScroll = { locoScroll } />
+        
+      </div>
+    </> 
+  );
+};

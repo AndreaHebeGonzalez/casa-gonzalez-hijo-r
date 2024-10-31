@@ -1,17 +1,20 @@
 import { Link } from "react-router-dom";
 import { NavItem } from "./NavItem"
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { headerAnimation } from "../../animations";
+import { ScreenContext } from "../../context/ScreenContext";
 
 
-export const Navbar = () => {
+export const Navbar = ({ hasScrolled }) => {
 
   const [openMenu, setOpenMenu] = useState(false);
-  const [showName, setShowName] = useState(window.innerWidth > 1279);
+  const { mobileVersion } = useContext(ScreenContext);
+
+  const logoHeaderRef = useRef(null);
 
   const handleOpenMenu = () => {
-    console.log('click en abrir menu')
-    setOpenMenu(openMenu => !openMenu)
+    console.log('click en abrir menu');
+    setOpenMenu(openMenu => !openMenu);
   };
 
   const headerRef = useRef(null);
@@ -19,16 +22,8 @@ export const Navbar = () => {
 
   useEffect(() => {
     headerAnimation( headerRef.current, navItems );
-
-    const handleShowName = () => {
-      setShowName(window.innerWidth > 1279)
-    };
-    window.addEventListener('resize', handleShowName);
-
-    return () => {
-      window.removeEventListener('resize', handleShowName);
-    }
   }, []);  
+
 
   const navItems = [
     { label: 'INICIO', link: '#' },
@@ -39,12 +34,12 @@ export const Navbar = () => {
   return ( 
     <div className="header__barra container-2" ref={ headerRef }>
       
-      <figure className="header__logo">
+      <figure className= { `header__logo ${hasScrolled && mobileVersion ? 'disappear':''}` } ref={ logoHeaderRef }>
         <img className="header__logo-img" src="/public/img/logob.png" alt="logo" />
       </figure>
 
       <div className="header__menu"> 
-        <div onClick= { handleOpenMenu } className="header__menu-abrir"> 
+        <div onClick= { handleOpenMenu } className={`header__menu-abrir ${hasScrolled && mobileVersion ? 'disappear':''}`}> 
           <img className="header__menu-icono" src="/public/icons/menu-abrir.svg" alt="Icono menu" />
         </div>
         <div className= "header__menu-contenido" style={{ transform: openMenu ? 'translateX(0)':'' }} > 
@@ -56,7 +51,7 @@ export const Navbar = () => {
           <nav className="nav">
             <ul className="nav__lista"> 
               { navItems.map( (item) => 
-                <NavItem key={ item.label } {...item} />) 
+                <NavItem key={ item.label } {...item} /> ) 
               }
             </ul>
             <div className="nav__divider"><img src="/public/icons/ico-divider.svg" /></div>
@@ -69,7 +64,7 @@ export const Navbar = () => {
           </nav>
 
             {
-              !showName && (
+              mobileVersion && (
                 <div className="nav__box-social">
                   <h3 className="nav__name">Casa Gonzalez e Hijo</h3>
                   <div className="nav__icons-social">
@@ -82,6 +77,6 @@ export const Navbar = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
