@@ -1,8 +1,9 @@
 import { AboutInformation } from './AboutInformation'
 import { AboutItem } from './AboutItem'
 
+
 const features = [
-  {
+  { 
     title: '01 Diseño',
     text: 'Cuatro tópicos esenciales hacen al diseño de nuestros fusiles: ingeniería, experiencia, tecnología de fabricación y validación en campo.'
   },
@@ -30,15 +31,17 @@ const splitFeatures = (arr, size) => {
 };
 
 const featurePairs = splitFeatures(features, 2); 
+
+
 export const AboutSection = () => {
 
-
-  return (
-    <section className="about-s section container">
-      <div className="about-s__flex">
-        <AboutInformation />
-        <div className="about-s__items">
-          {featurePairs.map((pair, index) => (
+return (
+  <section className="about-s section container">
+    <div className="about-s__flex">
+      <AboutInformation />
+      <div className="about-s__items">
+        {
+          featurePairs.map((pair, index) => (
             <div className="about-s__items-item" key={index}>
               {pair.map((feature, subIndex) => (
                 <AboutItem 
@@ -48,9 +51,9 @@ export const AboutSection = () => {
                 />
               ))}
             </div>
-          ))}
-        </div>
+          ))
+        }
       </div>
-    </section>
-  )
-}
+    </div>
+  </section>
+)}

@@ -4,6 +4,7 @@ import { Outlet, Navigate, useLocation } from 'react-router-dom';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useLocoScroll } from '../hooks/useLocoScroll';
 import { ScreenContext } from '../context/ScreenContext';
+import { barPreloader, endPreloader, introAnimation } from '../animations';
 
 export const childMainLayout = [
   {
@@ -42,37 +43,65 @@ export const MainLayout = () => {
   const [showBtnScroll, setShowBtnScroll] = useState(false);
   const [completeBar, setCompletBar] = useState(false);
 
+  const [progress, setProgress] = useState(0);
+  const id = useRef(null);
+
   const { mobileVersion } = useContext(ScreenContext);
 
   const location = useLocation();
 
-  const locoScroll = useLocoScroll(setHasScrolled, setShowBtnScroll);
+  const locoScroll = useLocoScroll(setHasScrolled, setShowBtnScroll, completeBar);
 
-  const handleCompleteBar = () => {
+  const onCompleteBar = () => {
     setCompletBar(true);
   };
-  
+
   useEffect(() => {
-    const scrollContainer = document.querySelector('#main-container');
-    
-    if (scrollContainer) {
-      scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
-      if (locoScroll) {
-        locoScroll.update();
-      };
-    };
-  }, [location.pathname]);
+    id.current = setInterval(() => {
 
+      setProgress(prev => {
+        const updatedProgress = prev + Math.floor(Math.random() * 50); 
+        return updatedProgress >= 100  ? 100 : updatedProgress;
+      });
 
+    }, 500);
+
+    return  () => clearInterval(id.current);
+  }, []);
+
+  
+
+  useEffect(() => {
+    barPreloader(progress, completeBar);
+    if(progress === 100) {
+      clearInterval(id.current);
+      endPreloader(onCompleteBar);
+    } 
+  }, [progress]);
+
+  useEffect(() => {
+      introAnimation(completeBar);
+
+      if(!completeBar) {
+        document.body.style.height = '100vh'
+      } else {
+        document.body.style.height = 'auto'
+      }
+
+  }, [completeBar]);
+  
 
   return (
     <>
       {
-        !completeBar && <Preloader barComplete={ handleCompleteBar }/> 
-      }
-      
-      <div id="main-container" data-scroll-container>
+        !completeBar && <Preloader />
+      }  
 
+      <div className="overlay first"></div>
+      <div className="overlay second"></div>
+      <div className="overlay third"></div>
+
+      <div id="main-container" data-scroll-container>
         <header className= { `header ${ hasScrolled && !mobileVersion ? 'disappear':''}` } data-scroll-sticky data-scroll-target="#main-container">
           { location.pathname.includes('categorie') || location.pathname.includes('product') ? <Breadcrumbs /> : <Navbar hasScrolled = { hasScrolled } />}
         </header>
@@ -85,9 +114,26 @@ export const MainLayout = () => {
           <Footer />
         </footer>  
 
-        <BtnScroll showBtnScroll = { showBtnScroll } locoScroll = { locoScroll } />
-        
+        <BtnScroll showBtnScroll = { showBtnScroll } locoScroll = { locoScroll } />      
       </div>
     </> 
   );
 };
+
+/* 
+
+useEffect(() => {
+
+    if(!completeBar) return; 
+
+    const scrollContainer = document.querySelector('#main-container');
+    if (scrollContainer) {
+      locoScroll?.scrollTo(0, { duration: 0, disableLerp: true });
+
+      // Refresca ScrollTrigger y LocomotiveScroll al cambiar la ruta
+      ScrollTrigger.refresh();
+      locoScroll?.update();
+    }
+  }, [location.pathname, completeBar]);
+
+*/

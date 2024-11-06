@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { NavItem } from "./NavItem"
 import { useContext, useEffect, useRef, useState } from "react";
-import { headerAnimation } from "../../animations";
 import { ScreenContext } from "../../context/ScreenContext";
 
 
@@ -17,13 +16,6 @@ export const Navbar = ({ hasScrolled }) => {
     setOpenMenu(openMenu => !openMenu);
   };
 
-  const headerRef = useRef(null);
-
-
-  useEffect(() => {
-    headerAnimation( headerRef.current, navItems );
-  }, []);  
-
 
   const navItems = [
     { label: 'INICIO', link: '#' },
@@ -32,7 +24,7 @@ export const Navbar = ({ hasScrolled }) => {
   ];
 
   return ( 
-    <div className="header__barra container-2" ref={ headerRef }>
+    <div className="header__barra container-2">
       
       <figure className= { `header__logo ${hasScrolled && mobileVersion ? 'disappear':''}` } ref={ logoHeaderRef }>
         <img className="header__logo-img" src="/public/img/logob.png" alt="logo" />

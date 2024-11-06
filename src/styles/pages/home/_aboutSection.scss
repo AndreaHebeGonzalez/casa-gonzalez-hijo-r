@@ -80,7 +80,9 @@
             gap: 3rem;
         }
     }
-    &__items-content {
+    &__items-content { 
+
+
         @include m.flex(column, 1.5rem);
         justify-content: center;
         padding: .5rem 1rem;

@@ -12,7 +12,6 @@
     z-index: 20;
 
     &__barra {
-        padding: 1rem 0;
         @include m.flex(row, 0);
         justify-content: space-between;
         align-items: center;

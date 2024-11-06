@@ -11,6 +11,10 @@ html {
     box-sizing: border-box;
 }
 
+html, body {
+    overflow: hidden;
+}
+
 body {
     background-color: v.$bgBody;
     font-family: v.$secondaryFont; //para parrafos
@@ -21,11 +25,7 @@ body {
     }
 }
 
-//media query para fontzsize en desktop
-
 [class$="container"] {
-
-
     max-width: 130rem;
     width: 92%;
     margin: 0 auto;
