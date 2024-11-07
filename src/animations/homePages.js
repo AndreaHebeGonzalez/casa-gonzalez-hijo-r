@@ -3,30 +3,30 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const scrollAnimations = (element) => {
-
-  
-  /* gsap.fromTo(
-    element,
-    {
-      opacity: 0,      // Oculta el elemento
-      x: -100,         // Mueve el elemento fuera de la pantalla a la izquierda (ajusta el valor según sea necesario)
+/* export const aboutItemAnimation = (element) => {
+  gsap.fromTo(
+    element, 
+    { 
+      opacity: 0, 
+      color: "transparent" 
     },
     {
-      opacity: 1,      // Aumenta la opacidad para hacer que el elemento aparezca
-      x: 0,            // Mueve el elemento a su posición original
-      duration: 1,     // Duración de la animación en segundos
-      ease: "power3.out", // Efecto de suavizado para la animación
+      opacity: 1,
+      color: "#ff0055",
+      duration: 1,
+      ease: "power3.out",
+      delay: 0.2,
       scrollTrigger: {
-        trigger: element,
-        start: "top 80%",        // Ajusta para definir cuándo debería comenzar la animación
+        trigger: element, 
+        start: "top 80%", 
         end: "bottom 20%",
-        toggleActions: "play none none reverse", // Controla cómo se reproduce y se invierte la animación
-        scroller: "#main-container", // Asegúrate de que esta sea la referencia correcta para Locomotive Scroll
+        toggleActions: "play none none reverse", 
+        scroller: "#main-container", 
+        markers: true,
       },
     }
-  ); */
-};
+  );
+}; */
 /* 
 
 !gsap.registerPlugin(ScrollTrigger); -->

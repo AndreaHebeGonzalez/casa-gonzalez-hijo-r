@@ -1,3 +1,4 @@
 export * from './introAnimation';
-export * from './scrollAnimations';
+export * from './homePages';
 export * from './preloaderAnimation';
+export * from './commonAnimations';

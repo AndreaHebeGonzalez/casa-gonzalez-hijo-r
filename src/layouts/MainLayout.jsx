@@ -4,7 +4,13 @@ import { Outlet, Navigate, useLocation } from 'react-router-dom';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useLocoScroll } from '../hooks/useLocoScroll';
 import { ScreenContext } from '../context/ScreenContext';
+import { PreloaderContext } from '../context/PreloaderContext';
 import { barPreloader, endPreloader, introAnimation } from '../animations';
+
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const childMainLayout = [
   {
@@ -41,19 +47,19 @@ export const MainLayout = () => {
 
   const [hasScrolled, setHasScrolled] = useState(false);
   const [showBtnScroll, setShowBtnScroll] = useState(false);
-  const [completeBar, setCompletBar] = useState(false);
-
   const [progress, setProgress] = useState(0);
+  
   const id = useRef(null);
 
   const { mobileVersion } = useContext(ScreenContext);
+  const { completeBar, setCompleteBar } = useContext(PreloaderContext);
 
   const location = useLocation();
 
   const locoScroll = useLocoScroll(setHasScrolled, setShowBtnScroll, completeBar);
 
   const onCompleteBar = () => {
-    setCompletBar(true);
+    setCompleteBar(true);
   };
 
   useEffect(() => {
@@ -69,8 +75,6 @@ export const MainLayout = () => {
     return  () => clearInterval(id.current);
   }, []);
 
-  
-
   useEffect(() => {
     barPreloader(progress, completeBar);
     if(progress === 100) {
@@ -80,42 +84,57 @@ export const MainLayout = () => {
   }, [progress]);
 
   useEffect(() => {
-      introAnimation(completeBar);
-
       if(!completeBar) {
         document.body.style.height = '100vh'
       } else {
         document.body.style.height = 'auto'
+        introAnimation(completeBar);
       }
 
   }, [completeBar]);
+
+  useEffect(() => {
+
+    if(!completeBar) return; 
+
+    const scrollContainer = document.querySelector('#main-container');
+    if (scrollContainer) {
+      locoScroll?.scrollTo(0, { duration: 0, disableLerp: true });
+
+      // Refresca ScrollTrigger y LocomotiveScroll al cambiar la ruta
+      ScrollTrigger.refresh();
+      locoScroll?.update();
+    }
+  }, [location.pathname, completeBar]);
   
 
   return (
     <>
       {
-        !completeBar && <Preloader />
-      }  
-
-      <div className="overlay first"></div>
-      <div className="overlay second"></div>
-      <div className="overlay third"></div>
-
-      <div id="main-container" data-scroll-container>
-        <header className= { `header ${ hasScrolled && !mobileVersion ? 'disappear':''}` } data-scroll-sticky data-scroll-target="#main-container">
-          { location.pathname.includes('categorie') || location.pathname.includes('product') ? <Breadcrumbs /> : <Navbar hasScrolled = { hasScrolled } />}
-        </header>
+        !completeBar ? <Preloader /> : 
+        <> 
+          <div className="overlay first"></div>
         
-        <main data-scroll-section>
-          <Outlet />
-        </main>
+          <div className="overlay second"></div>
+          <div className="overlay third"></div>
 
-        <footer data-scroll-section>
-          <Footer />
-        </footer>  
+          <div id="main-container" data-scroll-container>
+            <header className= { `header ${ hasScrolled && !mobileVersion ? 'disappear':''}` } data-scroll-sticky data-scroll-target="#main-container">
+              { location.pathname.includes('categorie') || location.pathname.includes('product') ? <Breadcrumbs /> : <Navbar hasScrolled = { hasScrolled } />}
+            </header>
+            
+            <main data-scroll-section>
+              <Outlet />
+            </main>
 
-        <BtnScroll showBtnScroll = { showBtnScroll } locoScroll = { locoScroll } />      
-      </div>
+            <footer data-scroll-section>
+              <Footer />
+            </footer>  
+
+            <BtnScroll showBtnScroll = { showBtnScroll } locoScroll = { locoScroll } />      
+          </div>
+        </>
+      }  
     </> 
   );
 };

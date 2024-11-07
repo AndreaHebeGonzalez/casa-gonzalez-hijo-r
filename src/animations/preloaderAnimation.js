@@ -1,7 +1,5 @@
 import gsap from "gsap";
 
-
-
 export const barPreloader = (progress, completeBar) => {
 
   if(!completeBar) {

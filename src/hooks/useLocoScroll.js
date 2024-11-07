@@ -9,20 +9,18 @@ gsap.registerPlugin(ScrollTrigger);
 
 export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start) => {
 
-
   const [locoScroll, setLocoScroll] = useState(null);
 
   useEffect(() => {
 
     if(!start) return;
 
-    const checkContainer = setInterval(() => {
+    let locoScrollInstance;
 
+    const observer = new MutationObserver(() => {
       const scrollEl = document.querySelector('#main-container');
-
       if(scrollEl) {
-        
-        clearInterval(checkContainer);
+        observer.disconnect();
 
         const locoScrollInstance = new LocomotiveScroll({
           el: scrollEl,
@@ -30,11 +28,10 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start) => {
           smoothMobile: true, 
           lerp: 0.06,
         });
-      
+
         locoScrollInstance.on('scroll', (obj) => {
           ScrollTrigger.update();
           setHasScrolled(obj.scroll.y > 100);
-          console.log(locoScrollInstance);
           setShowBtnScroll(obj.scroll.y > 250);
         });
       
@@ -49,27 +46,22 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start) => {
         });
       
         ScrollTrigger.addEventListener("refresh", () => locoScrollInstance.update());
-        
-        ScrollTrigger.refresh();
-    
-        setTimeout(() => {
-          locoScrollInstance.scrollTo(0, { duration: 0, disableLerp: true });
-        }, 0);
-      
-        // Actualiza la instancia de Locomotive Scroll después de que ScrollTrigger se haya refrescado
-        locoScrollInstance.update();
-      
         setLocoScroll(locoScrollInstance);
-      };
-    }, 100);
-
-    return () => {
-      clearInterval(checkContainer);
-      if (locoScrollInstance) locoScrollInstance.destroy();
-      ScrollTrigger.removeEventListener("refresh", locoScrollInstance.update);
-    };
     
-  }, [start]);
+        locoScrollInstance.scrollTo(0, { duration: 0, disableLerp: true }); 
+        ScrollTrigger.refresh(); 
+      };
+    });    
+
+    observer.observe(document.body, { childList: true, subtree: true });
+    return () => {
+      observer.disconnect();
+      if (locoScrollInstance) { 
+        locoScrollInstance.destroy();
+        ScrollTrigger.removeEventListener("refresh", locoScrollInstance.update);
+      };
+    };   
+  }, [start])
 
   return locoScroll;
 };
