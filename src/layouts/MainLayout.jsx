@@ -95,7 +95,7 @@ export const MainLayout = () => {
 
   useEffect(() => {
 
-    if(!completeBar) return; 
+    if (!completeBar) return; 
 
     const scrollContainer = document.querySelector('#main-container');
     if (scrollContainer) {

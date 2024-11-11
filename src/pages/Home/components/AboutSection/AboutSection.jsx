@@ -13,7 +13,7 @@ const features = [
   },
   {
     title: '03 Calidad',
-    text: 'Desde  la selección de los mejores materiales disponibles, hasta el uso de modernos equipos de mecanizado CNC, la ingeniería de fabricación que utilizamos es una garantía de calidad.'
+    text: 'Desde  la selección de los mejores materiales, hasta el uso de modernos equipos de mecanizado CNC, la ingeniería de fabricación que utilizamos es una garantía de calidad.'
   },
   {
     title: '04 Precisión',
@@ -42,10 +42,10 @@ return (
       <div className="about-s__items">
         {
           featurePairs.map((pair, index) => (
-            <div className="about-s__items-item" key={index}>
+            <div className={`about-s__items-col about-s__items-col--${index}`} key={index}>
               {pair.map((feature, subIndex) => (
                 <AboutItem 
-                  key={`${index}-${subIndex}`} 
+                  key={`${subIndex}-${index}`} 
                   title={feature.title} 
                   text={feature.text} 
                   id={feature.title}

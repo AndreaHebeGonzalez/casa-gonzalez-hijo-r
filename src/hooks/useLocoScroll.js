@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import LocomotiveScroll from 'locomotive-scroll';
 import 'locomotive-scroll/src/locomotive-scroll.scss';
-
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,7 +12,6 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start) => {
   const [locoScroll, setLocoScroll] = useState(null);
 
   useEffect(() => {
-
     if(!start) return;
 
     let locoScrollInstance;
@@ -25,8 +24,19 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start) => {
         const locoScrollInstance = new LocomotiveScroll({
           el: scrollEl,
           smooth: true,
-          smoothMobile: true, 
           lerp: 0.06,
+          mobile:{
+            breakpoint:0,
+            smooth: true,
+            multiplier: 15,
+            class: "is-reveal",
+          },
+          tablet:{
+              breakpoint:0,
+              smooth: true,
+              multiplier: 1,
+              class: "is-reveal",
+          },
         });
 
         locoScrollInstance.on('scroll', (obj) => {
@@ -61,7 +71,7 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start) => {
         ScrollTrigger.removeEventListener("refresh", locoScrollInstance.update);
       };
     };   
-  }, [start])
+  }, [start]);
 
   return locoScroll;
 };

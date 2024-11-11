@@ -11,9 +11,10 @@ html {
     box-sizing: border-box;
 }
 
-html, body {
-    overflow: hidden;
-}
+html, body  {
+    width: 100%;
+    overflow-x: hidden;
+} 
 
 body {
     background-color: v.$bgBody;

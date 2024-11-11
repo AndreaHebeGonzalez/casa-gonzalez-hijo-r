@@ -27,8 +27,12 @@
     &__logo {
         padding-top: 2rem;
         min-width: 8rem;
-        width: 8%;
+        width: 7%;
         max-width: 12.2rem;
+
+        @include m.tablet {
+            width: 8%;
+        }
 
         & img {
             width: 100%;
