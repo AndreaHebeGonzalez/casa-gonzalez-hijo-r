@@ -90,7 +90,6 @@ export const MainLayout = () => {
         document.body.style.height = 'auto'
         introAnimation(completeBar);
       }
-
   }, [completeBar]);
 
   useEffect(() => {
@@ -138,21 +137,3 @@ export const MainLayout = () => {
     </> 
   );
 };
-
-/* 
-
-useEffect(() => {
-
-    if(!completeBar) return; 
-
-    const scrollContainer = document.querySelector('#main-container');
-    if (scrollContainer) {
-      locoScroll?.scrollTo(0, { duration: 0, disableLerp: true });
-
-      // Refresca ScrollTrigger y LocomotiveScroll al cambiar la ruta
-      ScrollTrigger.refresh();
-      locoScroll?.update();
-    }
-  }, [location.pathname, completeBar]);
-
-*/

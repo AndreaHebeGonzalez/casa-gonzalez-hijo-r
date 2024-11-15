@@ -7,7 +7,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start) => {
+export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) => {
 
   const [locoScroll, setLocoScroll] = useState(null);
 
@@ -18,6 +18,9 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start) => {
 
     const observer = new MutationObserver(() => {
       const scrollEl = document.querySelector('#main-container');
+
+      if (!scrollEl) return;
+
       if(scrollEl) {
         observer.disconnect();
 
@@ -49,16 +52,17 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start) => {
           scrollTop(value) {
             return arguments.length ? locoScrollInstance.scrollTo(value, 0, 0) : locoScrollInstance.scroll.instance.scroll.y;
           },
+          scrollLeft(value) {
+            return arguments.length ? locoScrollInstance.scrollTo(value, 0, 0) : locoScrollInstance.scroll.instance.scroll.x;
+          },
           getBoundingClientRect() {
             return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
           },
-          pinType: scrollEl.style.transform ? "transform" : "fixed"
+          pinType: "transform", 
         });
       
         ScrollTrigger.addEventListener("refresh", () => locoScrollInstance.update());
         setLocoScroll(locoScrollInstance);
-    
-        locoScrollInstance.scrollTo(0, { duration: 0, disableLerp: true }); 
         ScrollTrigger.refresh(); 
       };
     });    

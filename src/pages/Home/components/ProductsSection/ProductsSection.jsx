@@ -1,5 +1,13 @@
+import { Category } from "./Category";
+import { useContext, useEffect, useRef } from "react";
+import { horizontalScroll } from "../../../../animations";
 
-import { Category } from "./Category"
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import { PreloaderContext } from "../../../../context/PreloaderContext";
+
+gsap.registerPlugin(ScrollTrigger);
+
 
 const categorysList = [
   {
@@ -15,7 +23,7 @@ const categorysList = [
     link: '#',
   },
   {
-    category: "Componentes del Fusil",
+    category: "Componentes",
     description: "Cada componente de nuestros fusiles es fabricado en nuestras instalaciones, utilizando procesos de mecanizado CNC de última generación y software de diseño por computadora",
     image: "/public/img/componentes/componentes-1.webp",
     link: '#',
@@ -23,20 +31,32 @@ const categorysList = [
 ] 
 
 export const ProductsSection = () => {
+  
+  const { startAnimation } = useContext(PreloaderContext);
+
+  const categorysBoxRef = useRef(null);
+  const categorysRef = useRef(null);
+
+  useEffect(() => {
+    if(!startAnimation) return;
+    console.log('inicia animacion')
+    horizontalScroll(categorysRef.current, categorysBoxRef.current);
+  }, [startAnimation]);
+  
   return (
-    <section className="categorys section container">
-      <div className="categorys__box">
+    <section className="categorys section container" ref={ categorysRef }>
+      <div className="categorys__box" ref={ categorysBoxRef }>
         
-        <div className="categorys__slide-1">
+        {/* <div className="categorys__slide-1">
           <h2 className="categorys__heading"><span>Nuestros </span> productos</h2>
-        </div>
+        </div> */}
         
         {
           categorysList.map((item, i) => (
             <Category key= { `${item.category}-${i}` } { ...item } />
           ))
         }
-    </div>
+      </div>
     </section>
   )
 }

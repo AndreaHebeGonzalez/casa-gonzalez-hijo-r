@@ -36,9 +36,9 @@
         align-items: center;
         min-height: 62rem;
 
-        @include m.tablet {
+        /* @include m.tablet {
             margin: 5rem 0;
-        }
+        } */
     }
 
     &__content {
