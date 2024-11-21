@@ -6,6 +6,7 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { PreloaderContext } from "../../../../context/PreloaderContext";
 
+
 gsap.registerPlugin(ScrollTrigger);
 
 
