@@ -5,19 +5,19 @@ import { AboutItem } from './AboutItem'
 const features = [
   { 
     title: '01 Diseño',
-    text: 'Cuatro tópicos esenciales hacen al diseño de nuestros fusiles: ingeniería, experiencia, tecnología de fabricación y validación en campo.'
+    text: 'Nuestro enfoque combina ingeniería, experiencia, tecnología de fabricación y pruebas en campo para crear fusiles que destacan en todos los aspectos.'
   },
   {
     title: '02 Versatilidad',
-    text: 'Ofrecemos versatilidad en la configuración final de nuestros fusiles dentro de los rangos de su función principal.'
+    text: 'Adaptamos nuestros fusiles a tus necesidades, permitiendo configuraciones personalizadas dentro de su propósito principal.'
   },
   {
     title: '03 Calidad',
-    text: 'Desde  la selección de los mejores materiales, hasta el uso de modernos equipos de mecanizado CNC, la ingeniería de fabricación que utilizamos es una garantía de calidad.'
+    text: 'Utilizamos materiales de alto rendimiento y tecnología CNC de última generación para garantizar la máxima calidad en cada pieza.'
   },
   {
     title: '04 Precisión',
-    text: 'Garantizar precisión es parte de nuestro ADN como empresa, sabemos los factores que la gobiernan y los contemplamos desde la etapa de diseño.'
+    text: 'La precisión está en nuestro ADN. Consideramos cada detalle que la influye desde el diseño hasta la fabricación.'
   },
 ];
 

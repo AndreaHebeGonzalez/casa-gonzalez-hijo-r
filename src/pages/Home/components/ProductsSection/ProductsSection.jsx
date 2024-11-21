@@ -13,19 +13,19 @@ const categorysList = [
   {
     category: "Fusiles",
     description: "Cada componente de nuestros fusiles es fabricado en nuestras instalaciones, utilizando procesos de mecanizado CNC de última generación y software de diseño por computadora",
-    image: "/public/img/fusiles/fusil-1.webp",
+    image: "/public/img/fusiles/fusil-portada.jpg",
     link: '#',
   },
   {
     category: "Accesorios",
     description: "Cada componente de nuestros fusiles es fabricado en nuestras instalaciones, utilizando procesos de mecanizado CNC de última generación y software de diseño por computadora",
-    image: "/public/img/accesorios/accesorios-1.webp",
+    image: "/public/img/accesorios/accesorios-portada.jpg",
     link: '#',
   },
   {
     category: "Componentes",
     description: "Cada componente de nuestros fusiles es fabricado en nuestras instalaciones, utilizando procesos de mecanizado CNC de última generación y software de diseño por computadora",
-    image: "/public/img/componentes/componentes-1.webp",
+    image: "/public/img/componentes/componentes-portada.jpg",
     link: '#',
   },
 ] 
@@ -39,7 +39,6 @@ export const ProductsSection = () => {
 
   useEffect(() => {
     if(!startAnimation) return;
-    console.log('inicia animacion')
     horizontalScroll(categorysRef.current, categorysBoxRef.current);
   }, [startAnimation]);
   

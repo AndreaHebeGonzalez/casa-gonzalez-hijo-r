@@ -5,13 +5,12 @@ export const Category = ({ category, description, image, link }) => {
 
   return (
     <div  className="category">    
-    <div /> 
+      <div /> 
+      
       <div className="category__content">
-        <div className="category__img">
-          <picture>
-            <img  src= { image } alt="Imagen de fusil" />
-          </picture>
-        </div>
+        <picture className="category__img">
+          <img  src= { image } alt="Imagen de fusil" />
+        </picture>
         
         <div className="category__information">
           <h3 className="category__title">{ category }</h3>
@@ -23,6 +22,7 @@ export const Category = ({ category, description, image, link }) => {
           </div>         
         </div>     
       </div>
+
       <div />
     </div>
   )

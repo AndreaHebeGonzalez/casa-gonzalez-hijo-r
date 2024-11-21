@@ -3,36 +3,37 @@
 
 .categorys {
   position: relative;
-  margin-left: -5vw;
-  margin-right: -5vw;
-  height: 100vh;
+  width: 92%;
+  margin-left: auto;
+  margin-right: auto;
+  
+
+  @media (min-width: 768px) {
+    height: 100vh;
+  }
+  
 
   &__box {
-    height: 80vh;
-    padding: 10vh 0;
-    width: 300%;
-    display: flex;
-    flex-wrap: nowrap;
+    @include m.flex(column, 5rem);
+    
+    @media (min-width: 768px) {
+      margin: 20vh 0;
+      padding-bottom: 1px;
+      height: fit-content;
+      width: 300%;
+      @include m.flex(row, 0);
+      flex-wrap: nowrap;
+    }
   }
 
-  &__slide-1 {
-    /* transform: rotate(-90deg);
-    position: absolute;
-    top: 0;
-    left: 0; */
-  
-  }
   
   &__heading {     
       font-size: 3rem;
       font-family: v.$primaryFont;
+      line-height: 1;
 
       @include m.telefono-2 { 
           font-size: 4rem;
-      }
-
-      @include m.tablet { 
-          font-size: 5rem;         
       }
   }
 }

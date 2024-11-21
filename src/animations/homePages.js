@@ -15,7 +15,6 @@ export const aboutItemAnimation = (element) => {
       start: "top 100%", 
       toggleActions: "play none none none", 
       scroller: "#main-container", 
-      markers: true,
     },
   });
 };
@@ -41,22 +40,30 @@ export const aboutImageAnimation = (element) => {
 
 export const horizontalScroll = (categorys, categorysBox) => {
 
-  const categoryList = gsap.utils.toArray('.category');
+  gsap.matchMedia().add(
+    "(min-width: 768px)",
 
+    () => {
 
-  gsap.to(categoryList, {
-    xPercent: -100 * (categoryList.length-1),
-    ease: 'none',
-    scrollTrigger: {
-      start: 'top top',
-      trigger: categorys,
-      scroller: '#main-container', 
-      pin: true,
-      scrub: 0.5,
-      span: 1 / (categoryList.length-1), 
-      end: () => `+=${categorysBox.offsetWidth}`
+      const categoryList = gsap.utils.toArray('.category');
+
+      gsap.to(categoryList, {
+        xPercent: -100 * (categoryList.length-1),
+        ease: 'none',
+        scrollTrigger: {
+          start: 'top top',
+          trigger: categorys,
+          scroller: '#main-container', 
+          pin: true,
+          scrub: 0.5,
+          span: 1 / (categoryList.length-1), 
+          end: () => `+=${categorysBox.offsetWidth}`
+        }
+      });
+
+      ScrollTrigger.refresh();
     }
-  });
+  );
 
-  ScrollTrigger.refresh();
+  
 };

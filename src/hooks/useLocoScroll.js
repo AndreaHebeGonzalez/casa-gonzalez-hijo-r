@@ -58,7 +58,6 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) =
           getBoundingClientRect() {
             return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
           },
-          pinType: "transform", 
         });
       
         ScrollTrigger.addEventListener("refresh", () => locoScrollInstance.update());
