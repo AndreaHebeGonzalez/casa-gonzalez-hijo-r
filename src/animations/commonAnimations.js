@@ -35,7 +35,7 @@ export const marqueeAnimation = (text, textClone, marqueeWrapp) => {
       scroller: '#main-container', 
       onUpdate: e => direction = e.direction * -1 
     },
-    x: "-=700px",
+    x: "-=300px",
   });
   //ScrollTrigger.refresh();
 };

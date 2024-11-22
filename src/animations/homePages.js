@@ -38,7 +38,7 @@ export const aboutImageAnimation = (element) => {
 };
 
 
-export const horizontalScroll = (categorys, categorysBox) => {
+export const horizontalScroll = (categorys, categorysBox, titleWrapp) => {
 
   gsap.matchMedia().add(
     "(min-width: 768px)",
@@ -60,6 +60,18 @@ export const horizontalScroll = (categorys, categorysBox) => {
           end: () => `+=${categorysBox.offsetWidth}`
         }
       });
+
+      gsap.to(titleWrapp, {
+        opacity: 0,
+        ease: "power3.out",
+        duration: 0.2,
+        scrollTrigger: {
+          trigger: titleWrapp,
+          scroller: '#main-container', 
+          pin: true,
+          scrub: 0.25,
+        }
+      })
 
       ScrollTrigger.refresh();
     }

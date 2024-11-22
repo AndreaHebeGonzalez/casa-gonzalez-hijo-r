@@ -2,6 +2,7 @@
 @use '../../utils/mixins' as m;
 
 .categorys {
+  
   position: relative;
   width: 92%;
   margin-left: auto;
@@ -14,6 +15,7 @@
   
 
   &__box {
+    position: relative;
     @include m.flex(column, 5rem);
     
     @media (min-width: 768px) {
@@ -26,14 +28,48 @@
     }
   }
 
+  &__title-wrapp {
+    position: absolute;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Espacio entre el título y la línea */
+    align-items: center;
+  }
+
+
+
   
   &__heading {     
       font-size: 3rem;
       font-family: v.$primaryFont;
       line-height: 1;
+      
+      
 
       @include m.telefono-2 { 
           font-size: 4rem;
       }
+
+      @include m.tablet {
+        text-transform: uppercase;
+        font-size: 3rem;
+        font-family: v.$primaryFont;
+        line-height: 1;
+        writing-mode: vertical-rl; /* Gira el texto verticalmente */
+        transform: rotate(180deg); /* Ajusta la orientación */
+        text-align: center;
+        margin-right: 50%;
+      }
+  }
+
+  &__line {
+
+    @include m.tablet {
+      width: 1px;
+      background-color: v.$secondary;
+      flex-grow: 0.98; 
+    }
   }
 }
+

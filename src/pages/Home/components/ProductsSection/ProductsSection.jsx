@@ -37,19 +37,21 @@ export const ProductsSection = () => {
 
   const categorysBoxRef = useRef(null);
   const categorysRef = useRef(null);
+  const titleWrappRef = useRef(null);
 
   useEffect(() => {
     if(!startAnimation) return;
-    horizontalScroll(categorysRef.current, categorysBoxRef.current);
+    horizontalScroll(categorysRef.current, categorysBoxRef.current, titleWrappRef.current);
   }, [startAnimation]);
   
   return (
     <section className="categorys section container" ref={ categorysRef }>
       <div className="categorys__box" ref={ categorysBoxRef }>
         
-        {/* <div className="categorys__slide-1">
-          <h2 className="categorys__heading"><span>Nuestros </span> productos</h2>
-        </div> */}
+        <div className="categorys__title-wrapp" ref={ titleWrappRef }>
+          <div className="categorys__line"></div>
+          <h2 className="categorys__heading">Productos</h2>
+        </div>
         
         {
           categorysList.map((item, i) => (
