@@ -33,7 +33,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Espacio entre el título y la línea */
+    justify-content: space-between; 
     align-items: center;
   }
 
@@ -56,8 +56,8 @@
         font-size: 3rem;
         font-family: v.$primaryFont;
         line-height: 1;
-        writing-mode: vertical-rl; /* Gira el texto verticalmente */
-        transform: rotate(180deg); /* Ajusta la orientación */
+        writing-mode: vertical-rl; 
+        transform: rotate(180deg); 
         text-align: center;
         margin-right: 50%;
       }

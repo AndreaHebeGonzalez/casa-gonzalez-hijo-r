@@ -16,7 +16,7 @@ export const Marquee = () => {
   }, [startAnimation]);
 
   return (
-    <section className="marquee">
+    <section className="marquee section">
       <div className="marquee__wrapp" ref={ marqueeWrappRef }>
         <p className="marquee__text" ref={ textRef }>Potencia y precisión en cada disparo-</p>
         <p className="marquee__text" ref={ textCloneRef }>Potencia y precisión en cada disparo-</p>

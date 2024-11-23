@@ -69,7 +69,7 @@ export const horizontalScroll = (categorys, categorysBox, titleWrapp) => {
           trigger: titleWrapp,
           scroller: '#main-container', 
           pin: true,
-          scrub: 0.25,
+          scrub: 0.5,
         }
       })
 
