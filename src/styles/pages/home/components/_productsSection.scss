@@ -1,5 +1,5 @@
-@use '../../base/variables' as v;
-@use '../../utils/mixins' as m;
+@use '../../../base/variables' as v;
+@use '../../../utils/mixins' as m;
 
 .categorys {
   
@@ -16,7 +16,7 @@
 
   &__box {
     position: relative;
-    @include m.flex(column, 5rem);
+    @include m.flex(column, 3rem);
     
     @media (min-width: 768px) {
       margin: 20vh 0;

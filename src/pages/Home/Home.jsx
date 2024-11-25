@@ -1,5 +1,5 @@
 import { Marquee } from "../../components";
-import { AboutSection, HeroSection, ProductsSection } from "./components";
+import { AboutSection, FeaturedProduct, HeroSection, ProductsSection } from "./components";
 
 
 export const Home = () => {
@@ -9,6 +9,7 @@ export const Home = () => {
       <AboutSection />
       <ProductsSection />
       <Marquee /> 
+      <FeaturedProduct />
     </>
     
   )
