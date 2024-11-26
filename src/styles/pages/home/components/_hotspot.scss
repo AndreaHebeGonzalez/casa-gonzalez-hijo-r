@@ -1,0 +1,101 @@
+@use '../../../base/variables' as v;
+@use '../../../utils/mixins' as m;
+
+.hotspot {
+  
+  z-index: 20;
+  position: absolute;
+  width: auto;
+
+  &__wrapp{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__btn-pulse {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background-color: v.$secondary;
+  }
+
+  &__line-one,
+  &__line-two  {
+    position: absolute;
+    width: 5rem;
+    background-color: v.$secondary;
+    height: 1px;
+    transform-origin: left center; // Punto de origen de rotación
+  }
+
+  &__line-one {
+    top: 100%;
+    left: 100%;
+    transform: translate(-0.55rem, -0.55rem) rotate(45deg);
+  }
+
+  &__line-one--right {
+    top: 50%;
+    left: 40%;
+    transform: translate(-5rem, 0rem) rotate(-44deg);
+    transform-origin: right top;
+  }
+
+  &__line-two {
+    top: 100%;
+    left: 100%;
+    transform: translate(3rem, 3rem) rotate(70deg);
+  }
+
+  &__line-two--right {
+    top: 100%;
+    left: -100%;
+    transform: translate(-1.4rem, 2.8rem) rotate(100deg);
+    transform-origin: left top;
+  }
+
+  &__tooltip-wrapp {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(-6%, 63%);
+  }
+
+  &__tooltip-wrapp--right {
+    transform: translate(-90%, 63%);
+  }
+
+  &__tooltip {
+    position: relative;
+    overflow: hidden;
+    width: 30rem;
+
+    @include m.tablet {
+      width: 40rem;
+    }
+
+    @include m.desktop {
+      width: 50rem;
+    }
+    
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #0456407d;
+      backdrop-filter: blur(2.3px);
+      z-index: -1;
+      border-radius: 1rem;
+    }
+
+    & p {
+      padding: 2rem;
+    }
+  }
+}
