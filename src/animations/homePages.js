@@ -79,3 +79,32 @@ export const horizontalScroll = (categorys, categorysBox, titleWrapp) => {
 
   
 };
+
+
+export const openHotspost = (lineOne, lineTwo, tooltip) => {
+  const tlHostpost = gsap.timeline()
+
+  tlHostpost.to(lineOne, {
+    width: "5rem",
+    duration: 0.1,
+    ease: "power1.inOut"
+  })
+  .to(lineTwo, {
+    width: "5rem",
+    duration: 0.1,
+    ease: "power1.inOut"
+  })
+  .to(tooltip, {
+    height: "auto",
+    ease: "power1.inOut",
+    duration: 0.5,
+  })
+
+  ScrollTrigger.refresh();
+  
+}
+
+export const closeHotspost = (lineOne, lineTwo, tooltip) => {
+  const tlHostpost = gsap.timeline()
+
+}

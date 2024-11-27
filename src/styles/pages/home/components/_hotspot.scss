@@ -19,12 +19,14 @@
     height: 1.5rem;
     border-radius: 50%;
     background-color: v.$secondary;
+    cursor: pointer;
+    border: 1px solid black
   }
 
   &__line-one,
   &__line-two  {
     position: absolute;
-    width: 5rem;
+    width: 0; //5rem
     background-color: v.$secondary;
     height: 1px;
     transform-origin: left center; // Punto de origen de rotación
@@ -58,9 +60,11 @@
 
   &__tooltip-wrapp {
     position: absolute;
-    top: 50%;
+    top: 621%;
     left: 0%;
-    transform: translate(-6%, 63%);
+    /* transform: translate(-6%, 63%); */
+    height: 0;
+    overflow: hidden;
   }
 
   &__tooltip-wrapp--right {

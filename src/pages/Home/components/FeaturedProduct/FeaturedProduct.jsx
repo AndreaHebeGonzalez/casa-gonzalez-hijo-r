@@ -1,18 +1,46 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
+import { openHotspost } from "../../../../animations";
+
 
 export const FeaturedProduct = () => {
-  const [activeHotspot, setActiveHotspot] = useState(null);
+  //const [activeHotspot, setActiveHotspot] = useState(null);
+  const [prevHotspot, setPrevHotspot] = useState(null);
 
+  const refs = useRef({});
+
+  const setRef = (node, id) => {
+    console.log(node);
+    if(node) {
+      refs.current[id] = node; 
+    }
+  }
 
 
   const hotspotsLeft = [
     { id: 1, description: 'Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno ', top: '28%', left: '2%' },
-    
   ]
 
   const hotspotsRight = [
     { id: 2, description: 'Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno ', top: '50%', left: '60%' },
   ]
+
+
+  const handleHotspot = (id) => {
+    if(prevHotspot) {
+      //animacion de cierre
+    };
+    
+
+    const hotspot =  refs.current[id];
+    
+    const lineOne = hotspot.querySelector(".hotspot__line-one");
+    const lineTwo = hotspot.querySelector(".hotspot__line-two");
+    const tooltip = hotspot.querySelector(".hotspot__tooltip-wrapp");
+
+    openHotspost(lineOne, lineTwo, tooltip);
+
+    setPrevHotspot(hotspot)
+  }
   
   return (
     <section className="featured-product section">
@@ -29,9 +57,9 @@ export const FeaturedProduct = () => {
             
             {
               hotspotsLeft.map(hotspot => 
-                (<div className="hotspot" style={{ top: hotspot.top, left: hotspot.left }} key={ hotspot.id }>
+                (<div ref={ (node) => setRef(node, hotspot.id) }  className="hotspot" style={{ top: hotspot.top, left: hotspot.left }} key={ hotspot.id }>
                   <div className="hotspot__wrapp">
-                    <div className="hotspot__btn-pulse"></div>
+                    <button className="hotspot__btn-pulse" onClick={ () => handleHotspot(hotspot.id) }></button>
                     <div className="hotspot__line-one"></div>
                     <div className="hotspot__line-two"></div>
                     <div className="hotspot__tooltip-wrapp">
@@ -41,7 +69,6 @@ export const FeaturedProduct = () => {
                         </div>
                       </div>
                     </div>
-                    
                   </div>
                 </div>)
               )
@@ -51,7 +78,7 @@ export const FeaturedProduct = () => {
               hotspotsRight.map(hotspot => 
                 (<div className="hotspot" style={{ top: hotspot.top, left: hotspot.left }} key={ hotspot.id }>
                   <div className="hotspot__wrapp">
-                    <div className="hotspot__btn-pulse"></div>
+                    <button className="hotspot__btn-pulse" onClick={ handleHotspot }></button>
                     <div className="hotspot__line-one hotspot__line-one--right"></div>
                     <div className="hotspot__line-two hotspot__line-two--right"></div>
                     <div className="hotspot__tooltip-wrapp hotspot__tooltip-wrapp--right">
