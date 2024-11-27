@@ -26,10 +26,10 @@
   &__line-one,
   &__line-two  {
     position: absolute;
-    width: 0; //5rem
+    width: 0; 
     background-color: v.$secondary;
     height: 1px;
-    transform-origin: left center; // Punto de origen de rotación
+    transform-origin: left top; 
   }
 
   &__line-one {
@@ -39,10 +39,9 @@
   }
 
   &__line-one--right {
-    top: 50%;
-    left: 40%;
-    transform: translate(-5rem, 0rem) rotate(-44deg);
-    transform-origin: right top;
+    top: 97%;
+    left: 78%;
+    transform: translate(-0.55rem, -0.55rem) rotate(136deg);
   }
 
   &__line-two {
@@ -54,21 +53,21 @@
   &__line-two--right {
     top: 100%;
     left: -100%;
-    transform: translate(-1.4rem, 2.8rem) rotate(100deg);
-    transform-origin: left top;
+    transform: translate(-1.6rem, 2.9rem) rotate(100deg);
   }
 
   &__tooltip-wrapp {
     position: absolute;
-    top: 621%;
+    top: 500%;
     left: 0%;
-    /* transform: translate(-6%, 63%); */
     height: 0;
     overflow: hidden;
   }
 
   &__tooltip-wrapp--right {
-    transform: translate(-90%, 63%);
+    transform: translateX(-70%);
+    top: 500%;
+    left: -100%;
   }
 
   &__tooltip {
@@ -99,7 +98,11 @@
     }
 
     & p {
+      
       padding: 2rem;
+      @include m.tablet {
+        font-size: 1.8rem;
+      }
     }
   }
 }

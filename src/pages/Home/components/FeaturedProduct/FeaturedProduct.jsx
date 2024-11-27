@@ -1,9 +1,8 @@
 import { useRef, useState } from "react"
-import { openHotspost } from "../../../../animations";
+import { closeHotspost, openHotspost } from "../../../../animations";
 
 
 export const FeaturedProduct = () => {
-  //const [activeHotspot, setActiveHotspot] = useState(null);
   const [prevHotspot, setPrevHotspot] = useState(null);
 
   const refs = useRef({});
@@ -26,19 +25,21 @@ export const FeaturedProduct = () => {
 
 
   const handleHotspot = (id) => {
-    if(prevHotspot) {
-      //animacion de cierre
-    };
-    
-
     const hotspot =  refs.current[id];
-    
+    if(prevHotspot) {   
+      const lineOne = prevHotspot.querySelector(".hotspot__line-one");
+      const lineTwo = prevHotspot.querySelector(".hotspot__line-two");
+      const tooltip = prevHotspot.querySelector(".hotspot__tooltip-wrapp");
+      closeHotspost(lineOne, lineTwo, tooltip);
+      if(prevHotspot === hotspot) {
+        setPrevHotspot(null);
+        return;
+      };      
+    };
     const lineOne = hotspot.querySelector(".hotspot__line-one");
     const lineTwo = hotspot.querySelector(".hotspot__line-two");
     const tooltip = hotspot.querySelector(".hotspot__tooltip-wrapp");
-
     openHotspost(lineOne, lineTwo, tooltip);
-
     setPrevHotspot(hotspot)
   }
   
@@ -54,7 +55,6 @@ export const FeaturedProduct = () => {
             <picture className="featured-product__picture">
               <img className="featured-product__img" src="/public/img/fusiles/FusilMMMInicio.png" alt="Fusil MMM" />
             </picture>
-            
             {
               hotspotsLeft.map(hotspot => 
                 (<div ref={ (node) => setRef(node, hotspot.id) }  className="hotspot" style={{ top: hotspot.top, left: hotspot.left }} key={ hotspot.id }>
@@ -73,12 +73,11 @@ export const FeaturedProduct = () => {
                 </div>)
               )
             }
-
             {
               hotspotsRight.map(hotspot => 
-                (<div className="hotspot" style={{ top: hotspot.top, left: hotspot.left }} key={ hotspot.id }>
+                (<div ref={ (node) => setRef(node, hotspot.id) } className="hotspot" style={{ top: hotspot.top, left: hotspot.left }} key={ hotspot.id }>
                   <div className="hotspot__wrapp">
-                    <button className="hotspot__btn-pulse" onClick={ handleHotspot }></button>
+                    <button className="hotspot__btn-pulse" onClick={ () => handleHotspot(hotspot.id) }></button>
                     <div className="hotspot__line-one hotspot__line-one--right"></div>
                     <div className="hotspot__line-two hotspot__line-two--right"></div>
                     <div className="hotspot__tooltip-wrapp hotspot__tooltip-wrapp--right">

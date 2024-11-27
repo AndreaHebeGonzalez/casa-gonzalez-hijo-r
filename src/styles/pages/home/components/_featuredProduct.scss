@@ -4,7 +4,7 @@
 .featured-product {
 
   &__wrapp {
-    @include m.flex(column, 3rem);
+    @include m.flex(column, 5rem);
   }
 
   &__heading {
@@ -36,7 +36,7 @@
   }
 
   &__info {
-    @include m.flex(column, 2.5rem);
+    @include m.flex(column, 3rem);
 
     @include m.desktop {
       @include m.grid(3, 0);

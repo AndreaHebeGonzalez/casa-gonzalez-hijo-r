@@ -82,15 +82,15 @@ export const horizontalScroll = (categorys, categorysBox, titleWrapp) => {
 
 
 export const openHotspost = (lineOne, lineTwo, tooltip) => {
-  const tlHostpost = gsap.timeline()
+  const tlOpen = gsap.timeline()
 
-  tlHostpost.to(lineOne, {
+  tlOpen.to(lineOne, {
     width: "5rem",
     duration: 0.1,
     ease: "power1.inOut"
   })
   .to(lineTwo, {
-    width: "5rem",
+    width: "3rem",
     duration: 0.1,
     ease: "power1.inOut"
   })
@@ -98,13 +98,29 @@ export const openHotspost = (lineOne, lineTwo, tooltip) => {
     height: "auto",
     ease: "power1.inOut",
     duration: 0.5,
-  })
+  });
 
   ScrollTrigger.refresh();
-  
 }
 
 export const closeHotspost = (lineOne, lineTwo, tooltip) => {
-  const tlHostpost = gsap.timeline()
+  const tlClose = gsap.timeline();
 
+  tlClose.to(tooltip, {
+    height: "0",
+    ease: "power1.inOut",
+    duration: 0.5,
+  })
+  .to(lineTwo, {
+    width: "0",
+    duration: 0.1,
+    ease: "power1.inOut"
+  })
+  .to(lineOne, {
+    width: "0",
+    duration: 0.1,
+    ease: "power1.inOut"
+  });
+
+  ScrollTrigger.refresh();
 }
