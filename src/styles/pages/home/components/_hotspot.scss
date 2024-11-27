@@ -3,7 +3,7 @@
 
 .hotspot {
   
-  z-index: 20;
+  z-index: 15;
   position: absolute;
   width: auto;
 
@@ -32,19 +32,22 @@
     transform-origin: left top; 
   }
 
-  &__line-one {
+  &__line-one--left {
     top: 100%;
     left: 100%;
     transform: translate(-0.55rem, -0.55rem) rotate(45deg);
   }
 
   &__line-one--right {
-    top: 97%;
+    top: 55%;
+    left: 50%;
+    transform: rotate(134deg)
+    /* top: 97%;
     left: 78%;
-    transform: translate(-0.55rem, -0.55rem) rotate(136deg);
+    transform: translate(-0.55rem, -0.55rem) rotate(136deg); */
   }
 
-  &__line-two {
+  &__line-two--left {
     top: 100%;
     left: 100%;
     transform: translate(3rem, 3rem) rotate(70deg);
@@ -53,7 +56,7 @@
   &__line-two--right {
     top: 100%;
     left: -100%;
-    transform: translate(-1.6rem, 2.9rem) rotate(100deg);
+    transform: translate(-1.2rem, 2.9rem) rotate(100deg);
   }
 
   &__tooltip-wrapp {

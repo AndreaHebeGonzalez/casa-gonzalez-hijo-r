@@ -1,6 +1,7 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+
 gsap.registerPlugin(ScrollTrigger);
 
 
@@ -81,10 +82,20 @@ export const horizontalScroll = (categorys, categorysBox, titleWrapp) => {
 };
 
 
-export const openHotspost = (lineOne, lineTwo, tooltip) => {
+export const openHotspost = (lineOne, lineTwo, tooltip, prevHotspot) => {
+
+  let delay;
+
+  if(prevHotspot) {
+    delay = 0.5;
+  } else {
+    delay = 0;
+  }
+
   const tlOpen = gsap.timeline()
 
   tlOpen.to(lineOne, {
+    delay: delay,
     width: "5rem",
     duration: 0.1,
     ease: "power1.inOut"

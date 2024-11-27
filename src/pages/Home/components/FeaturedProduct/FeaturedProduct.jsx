@@ -1,5 +1,6 @@
 import { useRef, useState } from "react"
 import { closeHotspost, openHotspost } from "../../../../animations";
+import { Hotspots } from "./Hotspots";
 
 
 export const FeaturedProduct = () => {
@@ -14,7 +15,6 @@ export const FeaturedProduct = () => {
     }
   }
 
-
   const hotspotsLeft = [
     { id: 1, description: 'Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno ', top: '28%', left: '2%' },
   ]
@@ -24,23 +24,28 @@ export const FeaturedProduct = () => {
   ]
 
 
+  const setElements = (hotspot) => {
+
+    const lineOne = hotspot.querySelector(".hotspot__line-one");
+    const lineTwo = hotspot.querySelector(".hotspot__line-two");
+    const tooltip = hotspot.querySelector(".hotspot__tooltip-wrapp");
+
+    return { lineOne, lineTwo, tooltip };
+  }
+
   const handleHotspot = (id) => {
     const hotspot =  refs.current[id];
-    if(prevHotspot) {   
-      const lineOne = prevHotspot.querySelector(".hotspot__line-one");
-      const lineTwo = prevHotspot.querySelector(".hotspot__line-two");
-      const tooltip = prevHotspot.querySelector(".hotspot__tooltip-wrapp");
+    if(prevHotspot) { 
+      const { lineOne, lineTwo, tooltip } = setElements(prevHotspot);
       closeHotspost(lineOne, lineTwo, tooltip);
       if(prevHotspot === hotspot) {
         setPrevHotspot(null);
         return;
       };      
     };
-    const lineOne = hotspot.querySelector(".hotspot__line-one");
-    const lineTwo = hotspot.querySelector(".hotspot__line-two");
-    const tooltip = hotspot.querySelector(".hotspot__tooltip-wrapp");
-    openHotspost(lineOne, lineTwo, tooltip);
-    setPrevHotspot(hotspot)
+    const { lineOne, lineTwo, tooltip } = setElements(hotspot);
+    openHotspost(lineOne, lineTwo, tooltip, prevHotspot);
+    setPrevHotspot(hotspot);
   }
   
   return (
@@ -57,42 +62,14 @@ export const FeaturedProduct = () => {
             </picture>
             {
               hotspotsLeft.map(hotspot => 
-                (<div ref={ (node) => setRef(node, hotspot.id) }  className="hotspot" style={{ top: hotspot.top, left: hotspot.left }} key={ hotspot.id }>
-                  <div className="hotspot__wrapp">
-                    <button className="hotspot__btn-pulse" onClick={ () => handleHotspot(hotspot.id) }></button>
-                    <div className="hotspot__line-one"></div>
-                    <div className="hotspot__line-two"></div>
-                    <div className="hotspot__tooltip-wrapp">
-                      <div className="hotspot__tooltip">
-                        <div className="hotspot__tooltip-text">
-                          <p>{ hotspot.description }</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>)
+                <Hotspots hotspot = { hotspot } handleHotspot = { handleHotspot } setRef = { setRef } position = "left" />
               )
             }
             {
               hotspotsRight.map(hotspot => 
-                (<div ref={ (node) => setRef(node, hotspot.id) } className="hotspot" style={{ top: hotspot.top, left: hotspot.left }} key={ hotspot.id }>
-                  <div className="hotspot__wrapp">
-                    <button className="hotspot__btn-pulse" onClick={ () => handleHotspot(hotspot.id) }></button>
-                    <div className="hotspot__line-one hotspot__line-one--right"></div>
-                    <div className="hotspot__line-two hotspot__line-two--right"></div>
-                    <div className="hotspot__tooltip-wrapp hotspot__tooltip-wrapp--right">
-                      <div className="hotspot__tooltip">
-                        <div className="hotspot__tooltip-text">
-                          <p>{ hotspot.description }</p>
-                        </div>
-                      </div>
-                    </div>
-                    
-                  </div>
-                </div>)
+                <Hotspots hotspot = { hotspot } handleHotspot = { handleHotspot } setRef = { setRef } position = "right" />
               )
             }
-            
           </div>
           <div className="featured-product__info">
               <div className="featured-product__info-heading">
