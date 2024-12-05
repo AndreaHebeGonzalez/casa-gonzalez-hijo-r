@@ -36,7 +36,7 @@
   }
 
   &__info {
-    @include m.flex(column, 3rem);
+    @include m.flex(column, 2rem);
 
     @include m.desktop {
       @include m.grid(3, 0);
@@ -46,7 +46,7 @@
   &__info-title {
     text-align: left;
     font-family: v.$primaryFont;
-    font-weight: 800;
+    font-weight: 600;
     font-size: 3.5rem;
 
     @include m.tablet {

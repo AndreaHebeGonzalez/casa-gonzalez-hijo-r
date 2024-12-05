@@ -1,5 +1,5 @@
 import { useRef, useState } from "react"
-import { closeHotspost, openHotspost } from "../../../../animations";
+import { closeHotspot, openHotspot } from "../../../../animations";
 import { Hotspots } from "./Hotspots";
 
 
@@ -16,35 +16,40 @@ export const FeaturedProduct = () => {
   }
 
   const hotspotsLeft = [
-    { id: 1, description: 'Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno ', top: '28%', left: '2%' },
+    { id: 1, description: 'Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto.', top: '28%', left: '2%', position: "left" },
+    { id: 5, description: 'Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto.', top: '30%', left: '42%', position: "left" }
+    
   ]
 
   const hotspotsRight = [
-    { id: 2, description: 'Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno ', top: '50%', left: '60%' },
+    { id: 2, description: 'Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto.', top: '16%', left: '53%', position: "right" },
+    { id: 3, description: 'Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto.', top: '65%', left: '74%', position: "right" },
+    { id: 4, description: 'Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto.', top: '38%', left: '84%', position: "right" },
+    
   ]
 
 
   const setElements = (hotspot) => {
 
-    const lineOne = hotspot.querySelector(".hotspot__line-one");
-    const lineTwo = hotspot.querySelector(".hotspot__line-two");
+    const btnHotspot = hotspot.querySelector(".hotspot__btn-pulse");
     const tooltip = hotspot.querySelector(".hotspot__tooltip-wrapp");
 
-    return { lineOne, lineTwo, tooltip };
+    return { btnHotspot, tooltip };
   }
 
   const handleHotspot = (id) => {
     const hotspot =  refs.current[id];
+    console.log('el hots anterior fue:', prevHotspot);
     if(prevHotspot) { 
-      const { lineOne, lineTwo, tooltip } = setElements(prevHotspot);
-      closeHotspost(lineOne, lineTwo, tooltip);
+      const { btnHotspot, tooltip } = setElements(prevHotspot);
+      closeHotspot(btnHotspot, tooltip);
       if(prevHotspot === hotspot) {
         setPrevHotspot(null);
         return;
       };      
     };
-    const { lineOne, lineTwo, tooltip } = setElements(hotspot);
-    openHotspost(lineOne, lineTwo, tooltip, prevHotspot);
+    const { btnHotspot, tooltip } = setElements(hotspot);
+    openHotspot(btnHotspot, tooltip, prevHotspot);
     setPrevHotspot(hotspot);
   }
   
@@ -62,12 +67,12 @@ export const FeaturedProduct = () => {
             </picture>
             {
               hotspotsLeft.map(hotspot => 
-                <Hotspots hotspot = { hotspot } handleHotspot = { handleHotspot } setRef = { setRef } position = "left" />
+                <Hotspots hotspot = { hotspot } handleHotspot = { handleHotspot } setRef = { setRef } key = { hotspot.id } />
               )
             }
             {
               hotspotsRight.map(hotspot => 
-                <Hotspots hotspot = { hotspot } handleHotspot = { handleHotspot } setRef = { setRef } position = "right" />
+                <Hotspots hotspot = { hotspot } handleHotspot = { handleHotspot } setRef = { setRef } key = { hotspot.id } />
               )
             }
           </div>

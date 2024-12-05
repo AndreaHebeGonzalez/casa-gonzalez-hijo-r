@@ -46,13 +46,13 @@ export const ProductsSection = () => {
   
   return (
     <section className="categorys section container" ref={ categorysRef }>
+      
       <div className="categorys__box" ref={ categorysBoxRef }>
-        
         <div className="categorys__title-wrapp" ref={ titleWrappRef }>
-          <div className="categorys__line"></div>
-          <h2 className="categorys__heading">Productos</h2>
+            <div className="categorys__line"></div>
+            <h2 className="categorys__heading">Productos</h2>
         </div>
-        
+
         {
           categorysList.map((item, i) => (
             <Category key= { `${item.category}-${i}` } { ...item } />

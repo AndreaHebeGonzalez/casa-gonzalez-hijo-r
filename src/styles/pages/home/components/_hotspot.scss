@@ -3,7 +3,7 @@
 
 .hotspot {
   
-  z-index: 15;
+  
   position: absolute;
   width: auto;
 
@@ -15,6 +15,7 @@
   }
 
   &__btn-pulse {
+    z-index: 5;
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 50%;
@@ -23,68 +24,33 @@
     border: 1px solid black
   }
 
-  &__line-one,
-  &__line-two  {
-    position: absolute;
-    width: 0; 
-    background-color: v.$secondary;
-    height: 1px;
-    transform-origin: left top; 
-  }
-
-  &__line-one--left {
-    top: 100%;
-    left: 100%;
-    transform: translate(-0.55rem, -0.55rem) rotate(45deg);
-  }
-
-  &__line-one--right {
-    top: 55%;
-    left: 50%;
-    transform: rotate(134deg)
-    /* top: 97%;
-    left: 78%;
-    transform: translate(-0.55rem, -0.55rem) rotate(136deg); */
-  }
-
-  &__line-two--left {
-    top: 100%;
-    left: 100%;
-    transform: translate(3rem, 3rem) rotate(70deg);
-  }
-
-  &__line-two--right {
-    top: 100%;
-    left: -100%;
-    transform: translate(-1.2rem, 2.9rem) rotate(100deg);
-  }
-
   &__tooltip-wrapp {
-    position: absolute;
-    top: 500%;
-    left: 0%;
+    z-index: 10;
     height: 0;
+    width: 40vw;
     overflow: hidden;
+    border-radius: 1rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-top-left-radius: 0%;
+    
+    @include m.tablet {
+      width: 40rem;
+    }
   }
 
   &__tooltip-wrapp--right {
-    transform: translateX(-70%);
-    top: 500%;
-    left: -100%;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 0%;
+    transform: translateX(-100%);
+    left: 50%;
   }
 
   &__tooltip {
     position: relative;
     overflow: hidden;
-    width: 30rem;
-
-    @include m.tablet {
-      width: 40rem;
-    }
-
-    @include m.desktop {
-      width: 50rem;
-    }
+    
     
 
     &::before {
@@ -97,14 +63,16 @@
       background-color: #0456407d;
       backdrop-filter: blur(2.3px);
       z-index: -1;
-      border-radius: 1rem;
+      
     }
 
     & p {
       
-      padding: 2rem;
+      padding: 1.5rem;
+      font-size: 1.6rem;
       @include m.tablet {
         font-size: 1.8rem;
+        padding: 2rem;
       }
     }
   }

@@ -48,7 +48,7 @@ return (
                   key={`${subIndex}-${index}`} 
                   title={feature.title} 
                   text={feature.text} 
-                  id={feature.title}
+                  index={index}
                 />
               ))}
             </div>

@@ -24,10 +24,10 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) =
       if(scrollEl) {
         observer.disconnect();
 
-        const locoScrollInstance = new LocomotiveScroll({
+        let locoScrollInstance = new LocomotiveScroll({
           el: scrollEl,
           smooth: true,
-          lerp: 0.06,
+          lerp: 0.05,
           mobile:{
             breakpoint:0,
             smooth: true,
@@ -72,6 +72,7 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) =
       if (locoScrollInstance) { 
         locoScrollInstance.destroy();
         ScrollTrigger.removeEventListener("refresh", locoScrollInstance.update);
+        locoScrollInstance = null
       };
     };   
   }, [start]);

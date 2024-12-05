@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const AboutItem = ({ title, text }) => {
+export const AboutItem = ({ title, text, index }) => {
 
   const { startAnimation } = useContext(PreloaderContext);
 
@@ -15,7 +15,7 @@ export const AboutItem = ({ title, text }) => {
 
   useEffect(() => {
     if(!startAnimation) return;
-    aboutItemAnimation(itemRef.current);
+    aboutItemAnimation(itemRef.current, index);
   }, [startAnimation]);
   
   return (

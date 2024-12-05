@@ -36,20 +36,18 @@
 
     &__content {
         width: 100%;
-        height: 100%;
         position: relative;
         will-change: transform;
         display: flex;
         align-items: center;
+        transform-origin: bottom;
     }
 
     &__img { 
+        overflow: hidden;
         width: 100%;
         height: 100%;
-        will-change: transform; 
-        transform: scale(1);
         border-radius: 0.5rem;
-        overflow: hidden;
         filter: brightness(0.7); 
 
         @include m.telefono-2 {
@@ -60,8 +58,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transform: scale(1.1);
+            transition: ease 0.5s;
         }
     }
+    
 
     &__information {
         @include m.flex(column, 1rem);
@@ -157,27 +158,55 @@
 
     &__link {
         margin-bottom: 0;
-        
-        img {
-            width: 2.5rem;
-            height: auto;
+        display: block;
+        overflow: hidden;
+        position: relative;
+        width: 2.5rem;
+        height: 2.5rem;
 
-            @include m.telefono {
-                width: 3rem;
-            }
-
-            @include m.tablet {
-                width: 4rem;
-            }
+        @include m.telefono {
+            width: 3rem;
+            height: 3rem;
         }
 
-        @include m.tablet {
-            margin-bottom: 2.5%;
+        @include m.tablet { 
+            width: 4rem;
+            height: 4rem;
         }
 
         @include m.desktop {
             width: 5rem;
-            margin-bottom: 5%;
+            height: 5rem;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            transition: 0.5s;
+        }
+
+        & img:nth-child(1) {
+            transform: translateX(0%) scale(1);
+            color: #fff;
+        }
+
+        & img:nth-child(2) {
+            transform: translateX(-100%) scale(0);
+            color:  #fff;
         }
     }
+
+    &__link:hover img:nth-child(1) {
+        transform: translate(100%, -100%) scale(0);
+    }
+
+    &__link:hover img:nth-child(2) {
+        transform: translate(0%, -100%) scale(1);
+    }
+}
+
+
+.img-reveal {
+    transform: scale(1)
 }
