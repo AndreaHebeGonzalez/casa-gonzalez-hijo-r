@@ -37,7 +37,7 @@
   }
 
   &__info {
-    @include m.flex(column, 2rem);
+    @include m.flex(column, 3rem);
 
     @include m.desktop {
       @include m.grid(3, 0);
@@ -74,7 +74,7 @@
     font-size: 2.8rem;
     color: v.$secondary;
     font-family: v.$primaryFont;
-    font-weight: 600;
+    font-weight: 500;
 
     @include m.telefono {
       font-size: 3rem;

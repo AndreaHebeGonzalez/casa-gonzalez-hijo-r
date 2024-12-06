@@ -219,7 +219,7 @@ export const featuredProductAnimation = (featuredProduct, title, image, info) =>
   if(!title || !image || !info) return;
 
   gsap.set(title, { yPercent: 50, opacity: 0 });
-  gsap.set(image, { yPercent: 50, opacity: 0, scale: 0 });
+  gsap.set(image, { yPercent: 25, opacity: 0, scale: 0 });
   
   
   console.log(title, image, info); 
@@ -258,7 +258,7 @@ export const featuredProductAnimation = (featuredProduct, title, image, info) =>
 
   gsap.utils.toArray('.featured-product__info > div').forEach((element) => {
 
-    gsap.set(element, { yPercent: 50, opacity: 0 });
+    gsap.set(element, { yPercent: 25, opacity: 0 });
 
     console.log(element)
 
@@ -277,7 +277,7 @@ export const featuredProductAnimation = (featuredProduct, title, image, info) =>
     })
     .to(element, {
       opacity: 1,
-      duration: 1,
+      duration: 2,
       ease: "power1"
     }, 0)
   });

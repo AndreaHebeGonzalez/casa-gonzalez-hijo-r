@@ -27,7 +27,7 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) =
         let locoScrollInstance = new LocomotiveScroll({
           el: scrollEl,
           smooth: true,
-          lerp: 0.05,
+          lerp: 0.06,
           mobile:{
             breakpoint:0,
             smooth: true,
