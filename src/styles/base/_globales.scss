@@ -26,6 +26,17 @@ body {
     }
 }
 
+body::after {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: red;
+    pointer-events: none;
+}
+
 [class$="container"] {
     max-width: 130rem;
     width: 92%;
@@ -52,7 +63,7 @@ body {
 }
 
 [class*="section"] {
-    padding: 4rem 0; 
+    padding: 5rem 0; 
 
     @include m.tablet {
         padding: 4rem 0; 

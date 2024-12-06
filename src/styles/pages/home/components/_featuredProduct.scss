@@ -2,9 +2,10 @@
 @use '../../../utils/mixins' as m;
 
 .featured-product {
+  //overflow: hidden;
 
   &__wrapp {
-    @include m.flex(column, 5rem);
+    @include m.flex(column, 8rem);
   }
 
   &__heading {

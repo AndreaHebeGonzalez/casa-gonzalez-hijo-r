@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef } from "react"
 import { PreloaderContext } from "../../../../context/PreloaderContext";
 import { Link } from "react-router-dom"
-import { categoryAnimation } from "../../../../animations";
+import { categorysAnimationMobile } from "../../../../animations";
 
 export const Category = ({ category, description, image, link }) => {
 
@@ -12,19 +12,19 @@ export const Category = ({ category, description, image, link }) => {
   const imgRef = useRef(null);
 
 
-  /* useEffect(() => {
+  useEffect(() => {
     if(!startAnimation) return;
-    categoryAnimation(categoryRef.current, infoRef.current, imgRef.current);
-  }, [startAnimation, onScreen]) */
+    categorysAnimationMobile(categoryRef.current, infoRef.current, imgRef.current);
+  }, [startAnimation])
   
   
   
 
   return (
-    <div  className="category">    
+    <div  className="category" ref={categoryRef}>    
       <div /> 
       
-      <div className="category__content" ref={categoryRef}>
+      <div className="category__content">
         <picture className= "category__img">
           <img src= { image } alt="Imagen de fusil" ref={ imgRef }/>
         </picture>

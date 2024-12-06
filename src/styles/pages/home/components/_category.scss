@@ -58,16 +58,20 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transform: scale(1.1);
             transition: ease 0.5s;
+
+            @include m.tablet {
+                transform: scale(1.1);
+            }
         }
     }
     
 
     &__information {
         @include m.flex(column, 1rem);
+        overflow: hidden;
         position: absolute;
-        right: 0;
+        right: 1%;
         top: 15%;
         align-items: start;
         justify-content: center;

@@ -1,5 +1,6 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SplitType from "split-type";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -51,14 +52,7 @@ export const aboutItemAnimation = (element, index) => {
   });
 };
 
-export const horizontalScroll = (categorys, categorysBox, titleWrapp) => {
-
-  gsap.matchMedia().add(
-    "(max-width: 767px)",
-    () => {
-      
-    }
-  )
+export const horizontalScroll = (categorys, categorysBox, titleWrapp, ) => {
 
   gsap.matchMedia().add(
     "(min-width: 768px)",
@@ -154,9 +148,140 @@ export const horizontalScroll = (categorys, categorysBox, titleWrapp) => {
   );
 };
 
-export const categoryAnimation = () => {
 
+export const categorysAnimationMobile = (category, info, img) => {
+  gsap.matchMedia().add(
+    "(max-width: 767px)",
+    () => {
+
+      const titleProducts =  new SplitType('.categorys__heading', {
+        types: "chars",
+        wordClass: "chars"
+      });
+
+      gsap.set(titleProducts.chars, {yPercent: 100, opacity: 0});
+      gsap.set('.categorys__line', {yPercent: 100, scaleX: 0});
+
+      /* Linea de tiempo para animacion del titulo */
+
+      const tlTitleProducts = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.categorys__title-wrapp',
+          start: "top 80%",
+          scroller: '#main-container',
+        }
+      });
+
+      tlTitleProducts.to(titleProducts.chars, {
+        yPercent: 0,
+        opacity:1,
+        stagger: 0.03,
+      })
+      .to('.categorys__line', {
+        yPercent: 0,
+        scaleX: 1,
+      })
+
+      /* Linea de tiempo para animacion de categorias */
+
+      gsap.set(category, { yPercent: 50, opacity: 0 });
+      gsap.set(info, { yPercent: 50, opacity: 0 });
+
+      const tlCategoryMobile = gsap.timeline({
+        scrollTrigger: {
+          trigger: category,
+          start: "top 80%",
+          scroller: '#main-container',
+        }
+      });
+
+      tlCategoryMobile.to(category, {
+        yPercent: 0,
+        duration: 0.5,
+        ease: "power1"
+      })
+      .to(category, {
+        opacity: 1,
+        duration: 1,
+        ease: "power1"
+      }, 0)
+      .to(info, {
+        yPercent: 0,
+        opacity: 1,
+        ease: "power1"
+      }, "<.2")
+    }
+  )
 }
+
+export const featuredProductAnimation = (featuredProduct, title, image, info) => {
+
+  if(!title || !image || !info) return;
+
+  gsap.set(title, { yPercent: 50, opacity: 0 });
+  gsap.set(image, { yPercent: 50, opacity: 0, scale: 0 });
+  
+  
+  console.log(title, image, info); 
+
+  const tlFeaturedProduct = gsap.timeline({
+    scrollTrigger: {
+      trigger: featuredProduct,
+      start: "top 50%", //Averiguar porque no funciona para valores porcentuales mayores al 50%
+      scroller: '#main-container',
+      
+    }
+  });
+
+  tlFeaturedProduct.to(title, {
+    yPercent: 0,
+    duration: 0.5,
+    ease: "power1"
+  })
+  .to(title, {
+    opacity: 1,
+    duration: 1,
+    ease: "power1"
+  }, 0)
+  .to(image, {
+    yPercent: 0,
+    duration: 0.3,
+    ease: "power1"
+  }, "<0.1")
+  .to(image, {
+    opacity: 1,
+    scale: 1,
+    duration: 1,
+    ease: "power1"
+  }, 0)
+  
+
+  gsap.utils.toArray('.featured-product__info > div').forEach((element) => {
+
+    gsap.set(element, { yPercent: 50, opacity: 0 });
+
+    console.log(element)
+
+    const tlInfo = gsap.timeline({
+      scrollTrigger: {
+        trigger: info,
+        start: "top 75%", //Averiguar porque no funciona para valores porcentuales mayores al 75%
+        scroller: '#main-container',
+      }
+    });
+
+    tlInfo.to(element, {
+      yPercent: 0,
+      duration: 0.5,
+      ease: "power1"
+    })
+    .to(element, {
+      opacity: 1,
+      duration: 1,
+      ease: "power1"
+    }, 0)
+  });
+};
 
 export const openHotspot = (btnHotspot, tooltip, prevHotspot) => {
   let delay = prevHotspot ?  0.3:0;
@@ -190,3 +315,4 @@ export const closeHotspot = (btnHotspot, tooltip) => {
     ease: "none",
   });
 };
+

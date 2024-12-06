@@ -1,12 +1,18 @@
-import { useRef, useState } from "react"
-import { closeHotspot, openHotspot } from "../../../../animations";
+import { useContext, useEffect, useRef, useState } from "react"
+import { closeHotspot, featuredProductAnimation, openHotspot } from "../../../../animations";
 import { Hotspots } from "./Hotspots";
-
+import { PreloaderContext } from "../../../../context/PreloaderContext";
 
 export const FeaturedProduct = () => {
   const [prevHotspot, setPrevHotspot] = useState(null);
 
+  const { startAnimation } = useContext(PreloaderContext);
+
   const refs = useRef({});
+  const featuredProductRef = useRef(null);
+  const titleProductRef = useRef(null);
+  const imageProductRef = useRef(null);
+  const infoRef = useRef(null);
 
   const setRef = (node, id) => {
     console.log(node);
@@ -25,7 +31,6 @@ export const FeaturedProduct = () => {
     { id: 2, description: 'Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto.', top: '16%', left: '53%', position: "right" },
     { id: 3, description: 'Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto.', top: '65%', left: '74%', position: "right" },
     { id: 4, description: 'Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto.', top: '38%', left: '84%', position: "right" },
-    
   ]
 
 
@@ -53,16 +58,21 @@ export const FeaturedProduct = () => {
     setPrevHotspot(hotspot);
   }
   
+  useEffect(() => {
+    console.log('Se ejecuto la linea')
+    featuredProductAnimation(featuredProductRef.current, titleProductRef.current, imageProductRef.current, infoRef.current);
+  }, [startAnimation])
+  
   return (
     <section className="featured-product section">
       <div className="featured-product__container">
-        <div className="featured-product__wrapp">
-          <div className="featured-product__heading">
+        <div className="featured-product__wrapp" ref={ featuredProductRef }>
+          <div className="featured-product__heading" ref={ titleProductRef }>
             <p className="featured-product__label">Nuevo</p>
             <h2 className="featured-product__title">Modelo MMM</h2>
           </div>
-          <div className="featured-product__image">
-            <picture className="featured-product__picture">
+          <div className="featured-product__image" ref={ imageProductRef }>
+            <picture className="featured-product__picture" >
               <img className="featured-product__img" src="/public/img/fusiles/FusilMMMInicio.png" alt="Fusil MMM" />
             </picture>
             {
@@ -76,7 +86,7 @@ export const FeaturedProduct = () => {
               )
             }
           </div>
-          <div className="featured-product__info">
+          <div className="featured-product__info" ref={infoRef}>
               <div className="featured-product__info-heading">
                 <h3 className="featured-product__info-title">Diseño superior</h3>
               </div>

@@ -51,7 +51,7 @@
   }
   
   &__heading {     
-      font-size: 3.5rem;
+      font-size: 3.8rem;
       font-family: v.$primaryFont;
       line-height: 1;
       
@@ -77,13 +77,12 @@
     align-self: end;
     height: 1px;
     background-color: v.$secondary;
+    transform-origin: left center;
 
     @include m.tablet {
       align-self: center;
       width: 1px;
     }
-
-    
   }
 }
 

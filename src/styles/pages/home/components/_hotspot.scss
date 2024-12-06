@@ -16,12 +16,7 @@
 
   &__btn-pulse {
     z-index: 5;
-    width: 1.5rem;
-    height: 1.5rem;
-    border-radius: 50%;
-    background-color: v.$secondary;
     cursor: pointer;
-    border: 1px solid black
   }
 
   &__tooltip-wrapp {
