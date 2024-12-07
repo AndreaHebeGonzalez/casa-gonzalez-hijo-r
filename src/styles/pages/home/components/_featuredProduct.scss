@@ -60,6 +60,11 @@
     @include m.flex(column, 0);
   }
 
+  &__info-title, &__info-items {
+    transform: none;
+    opacity: 0;
+  }
+
   &__info-item {
     @include m.flex(column, 1.5rem);
     border-bottom: 1px solid v.$secondary;

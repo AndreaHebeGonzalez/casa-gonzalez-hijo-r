@@ -87,9 +87,7 @@ export const FeaturedProduct = () => {
             }
           </div>
           <div className="featured-product__info" ref={infoRef}>
-              <div className="featured-product__info-heading">
-                <h3 className="featured-product__info-title">Diseño superior</h3>
-              </div>
+              <h3 className="featured-product__info-title">Diseño superior</h3>
               <div className="featured-product__info-items">
                 <div className="featured-product__info-item">
                   <h4 className="featured-product__item-title">Lorem Ipsum</h4>

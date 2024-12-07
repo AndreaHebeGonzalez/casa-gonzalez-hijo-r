@@ -143,13 +143,16 @@ export const horizontalScroll = (categorys, categorysBox, titleWrapp, ) => {
           });
         });
 
-      ScrollTrigger.refresh();
+      
     }
   );
+
+  ScrollTrigger.refresh();
 };
 
 
 export const categorysAnimationMobile = (category, info, img) => {
+
   gsap.matchMedia().add(
     "(max-width: 767px)",
     () => {
@@ -215,7 +218,7 @@ export const categorysAnimationMobile = (category, info, img) => {
 }
 
 export const featuredProductAnimation = (featuredProduct, title, image, info) => {
-
+  ScrollTrigger.refresh();
   if(!title || !image || !info) return;
 
   gsap.set(title, { yPercent: 50, opacity: 0 });
@@ -236,7 +239,8 @@ export const featuredProductAnimation = (featuredProduct, title, image, info) =>
   tlFeaturedProduct.to(title, {
     yPercent: 0,
     duration: 0.5,
-    ease: "power1"
+    ease: "power1",
+    overwrite: true
   })
   .to(title, {
     opacity: 1,
@@ -246,7 +250,8 @@ export const featuredProductAnimation = (featuredProduct, title, image, info) =>
   .to(image, {
     yPercent: 0,
     duration: 0.3,
-    ease: "power1"
+    ease: "power1",
+    overwrite: true
   }, "<0.1")
   .to(image, {
     opacity: 1,
@@ -256,29 +261,30 @@ export const featuredProductAnimation = (featuredProduct, title, image, info) =>
   }, 0)
   
 
-  gsap.utils.toArray('.featured-product__info > div').forEach((element) => {
+  gsap.utils.toArray('.featured-product__info > *').forEach((element) => {
 
-    gsap.set(element, { yPercent: 25, opacity: 0 });
+    gsap.set(element, { y: "25%", opacity: 0 });
 
     console.log(element)
 
     const tlInfo = gsap.timeline({
       scrollTrigger: {
         trigger: info,
-        start: "top 75%", //Averiguar porque no funciona para valores porcentuales mayores al 75%
+        start: "top 75%",
         scroller: '#main-container',
       }
     });
 
     tlInfo.to(element, {
-      yPercent: 0,
+      y: 0,
       duration: 0.5,
-      ease: "power1"
+      ease: "power1",
+      overwrite: true 
     })
     .to(element, {
       opacity: 1,
       duration: 2,
-      ease: "power1"
+      ease: "power1",
     }, 0)
   });
 };
