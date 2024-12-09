@@ -1,4 +1,231 @@
+@use '../../base/variables' as v;
+@use '../../utils/mixins' as m;
+
 .footer {
-  background-color: black;
-  min-height: 100vh;
+  margin-top: 5rem;
+  background-color: #04564025;
+
+  @include m.tablet {
+    margin-top: 4rem 0; 
+  }
+
+  @include m.desktop {
+    margin-top: 4.5rem 0; 
+  }
+
+  @include m.desktop-2 {
+    margin-top: 5rem 0; 
+  }
+
+  @include m.desktop-3 {
+    margin-top: 6rem 0; 
+  }
+
+  &__container {
+    padding: 1rem 0;
+  }
+
+  &__content {
+    @include m.flex(column, 0);
+
+    @include m.desktop {
+      @include m.flex(row, 1rem);
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__column-first {
+    order: 2;
+    @include m.flex(column, 2rem);
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #9F9F9F;
+    padding: 2rem;
+
+    @include m.desktop {
+      border-bottom: none;
+      order: 1;
+    }
+  }
+
+  &__logo {
+    min-width: 15rem;
+    max-width: 17rem;
+    width: 50%;
+
+
+    @include m.tablet {
+      max-width: 19rem;
+      width: 50%;
+    }
+
+    @include m.desktop {
+      width: 90%;
+    }
+
+    & img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__social {
+    @include m.flex(row, 2rem);
+  }
+
+  &__ico-social {
+    width: 3rem;
+
+    & img {
+      width: 100%;
+      height: auto
+    }
+  }
+
+  &__column-second {
+    order: 3;
+    @include m.flex(column, 1.5rem);
+    align-items: center;
+    border-bottom: 1px solid #9F9F9F;
+    padding: 2rem;
+
+    @include m.desktop {
+      border-bottom: none;
+      order: 2;
+    }
+
+  }
+
+  &__column-title {
+    font-size: 2.5rem;
+  }
+
+  &__categories {
+    @include m.flex(column, 1rem);
+    align-items: center;
+  }
+
+  &__link {
+    font-size: 2rem;
+  }
+
+  &__column-third {
+    order: 1;
+    @include m.flex(column, 1.5rem);
+    align-items: center;
+    border-bottom: 1px solid #9F9F9F;
+    padding: 2rem;
+
+    @include m.desktop {
+      border-bottom: none;
+      order: 3;
+      min-width: 30rem;
+    }
+  }
+
+  &__navigation {
+    @include m.flex(row, 1rem);
+    width: 80%;
+    justify-content: space-between;
+    align-items: center;
+
+    @include m.desktop {
+      @include m.flex(column, 1.5rem);
+      width: 100%;
+    }
+  }
+
+  &__link--nav {
+    text-align: center;
+
+    @include m.desktop {
+      padding: 1rem;
+      width: 100%;
+      border-bottom: 1px solid #9F9F9F;
+    }
+    
+  }
+
+  &__column-fourth {
+    order: 4;
+    @include m.flex(column, 1rem);
+    align-items: center;
+    padding: 2rem;
+
+    @include m.desktop {
+      gap: 1.5rem;
+    }
+  }
+
+  &__contact-phone {
+    @include m.flex(row, 1rem);
+  }
+
+  &__ico-phone,
+  &__ico-email {
+    display: none;
+    width: 2.5rem;
+    height: auto;
+
+    @include m.desktop {
+      display: block;
+    }
+  }
+
+  &__phone-details {
+    @include m.flex(column, 0);
+  } 
+
+  &__phone-details p {
+    font-size: 1.6rem;
+  }
+
+  &__phone-details a {
+    font-size: 1.6rem;
+    text-align: center;
+    color: v.$primary;
+    font-weight: 700;
+
+    @include m.desktop {
+      text-align: left;
+    }
+  }
+
+  &__contact-mail {
+    @include m.flex(row, 1rem);
+  }
+
+  &__copyright {
+    background-color: #000;
+    padding: 1rem 0;
+    
+  }
+
+  &__copyright-container {
+    @include m.flex(row, 0);
+    align-items: center;
+    justify-content: center;
+
+    & > * {
+      padding: 0 1rem;
+    }
+  }
+
+  &__copyright-name {
+    font-size: 2.2rem;
+  }
+
+  &__copyright-developer {
+    font-size: 1.8rem;
+  }
+
+  &__separator {
+    padding: 0;
+    width: 1px;
+    height: 3rem;
+    background-color: #9F9F9F;
+  }
 }
+
+

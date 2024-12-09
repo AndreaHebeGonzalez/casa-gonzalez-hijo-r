@@ -86,7 +86,12 @@
         @include m.flex(row, 1.5rem);
     }
 
-    &__icons-social img {
+    &__ico-social {
         width: 2.5rem;
+
+        & img {
+            width: 100%;
+            height: auto;
+        }
     }
 }

@@ -60,8 +60,13 @@ export const Navbar = ({ hasScrolled }) => {
                 <div className="nav__box-social">
                   <h3 className="nav__name">Casa Gonzalez e Hijo</h3>
                   <div className="nav__icons-social">
-                    <img className="nav__ico-whatsapp" src="/public/icons/ico-whatsapp.svg" alt="icono whatsapp" />
-                    <img className="nav__ico-whatsapp" src="/public/icons/ico-facebook.svg" alt="icono whatsapp" />
+                    <a className="nav__ico-social" href="https//facebook.com" target="_blank" rel="noopener noreferrer">
+                      <img src="/public/icons/ico-whatsapp.svg" alt="icono whatsapp" />
+                    </a>
+                    <a className="nav__ico-social" href="https//whatsapp.com" target="_blank" rel="noopener noreferrer">
+                      <img src="/public/icons/ico-facebook.svg" alt="icono whatsapp" />
+                    </a>
+                    
                   </div>
                 </div>
               )

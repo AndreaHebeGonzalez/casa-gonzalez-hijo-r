@@ -26,7 +26,7 @@ body {
     }
 }
 
-body::after {
+/* body::after {
     content: '';
     position: fixed;
     top: 50%;
@@ -35,7 +35,7 @@ body::after {
     height: 1px;
     background: red;
     pointer-events: none;
-}
+} */
 
 [class$="container"] {
     max-width: 130rem;

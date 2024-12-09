@@ -67,7 +67,7 @@
 
   &__info-item {
     @include m.flex(column, 1.5rem);
-    border-bottom: 1px solid v.$secondary;
+    border-bottom: 1px solid #9F9F9F;
     padding: 2rem 0 3rem 0;
 
     &:first-child {
