@@ -1,28 +1,25 @@
 @use '../../base/variables' as v;
 @use '../../utils/mixins' as m;
 
+
+/* === Footer Component Styles === */
+
+
+
+
 .footer {
   margin-top: 5rem;
   background-color: #04564025;
 
-  @include m.tablet {
-    margin-top: 4rem 0; 
-  }
+  /* Responsive Margins */
+  @include m.tablet { margin-top: 4rem; }
+  @include m.desktop { margin-top: 4.5rem; }
+  @include m.desktop-2 { margin-top: 5rem; }
+  @include m.desktop-3 { margin-top: 6rem; }
 
-  @include m.desktop {
-    margin-top: 4.5rem 0; 
-  }
-
-  @include m.desktop-2 {
-    margin-top: 5rem 0; 
-  }
-
-  @include m.desktop-3 {
-    margin-top: 6rem 0; 
-  }
 
   &__container {
-    padding: 1rem 0;
+    padding: 2rem 0;
   }
 
   &__content {
@@ -35,12 +32,14 @@
     }
   }
 
+  /* === Column First === */
+
   &__column-first {
     order: 2;
     @include m.flex(column, 2rem);
     justify-content: center;
     align-items: center;
-    border-bottom: 1px solid #9F9F9F;
+    border-bottom: 1px solid v.$gray-light;
     padding: 2rem;
 
     @include m.desktop {
@@ -60,11 +59,9 @@
       width: 50%;
     }
 
-    @include m.desktop {
-      width: 90%;
-    }
+    @include m.desktop { width: 85%; }
 
-    & img {
+    img {
       width: 100%;
       height: auto;
     }
@@ -83,18 +80,20 @@
     }
   }
 
+  /* === Column Second === */
+
   &__column-second {
     order: 3;
     @include m.flex(column, 1.5rem);
     align-items: center;
-    border-bottom: 1px solid #9F9F9F;
+    border-bottom: 1px solid v.$gray-light;
     padding: 2rem;
 
     @include m.desktop {
+      align-items: start;
       border-bottom: none;
       order: 2;
     }
-
   }
 
   &__column-title {
@@ -104,17 +103,27 @@
   &__categories {
     @include m.flex(column, 1rem);
     align-items: center;
+
+    @include m.desktop {
+      align-items: start;
+    }
   }
 
   &__link {
     font-size: 2rem;
+
+    &:hover {
+      //color: v.$primary-dark;
+    }
   }
+
+  /* === Column Third === */
 
   &__column-third {
     order: 1;
     @include m.flex(column, 1.5rem);
     align-items: center;
-    border-bottom: 1px solid #9F9F9F;
+    border-bottom: 1px solid v.$gray-light;
     padding: 2rem;
 
     @include m.desktop {
@@ -132,7 +141,6 @@
 
     @include m.desktop {
       @include m.flex(column, 1.5rem);
-      width: 100%;
     }
   }
 
@@ -142,10 +150,11 @@
     @include m.desktop {
       padding: 1rem;
       width: 100%;
-      border-bottom: 1px solid #9F9F9F;
+      border-bottom: 1px solid v.$gray-light;
     }
-    
   }
+
+  /* === Column Fourth === */
 
   &__column-fourth {
     order: 4;
@@ -154,11 +163,13 @@
     padding: 2rem;
 
     @include m.desktop {
+      align-items: start;
       gap: 1.5rem;
     }
   }
 
-  &__contact-phone {
+  &__contact-phone,
+  &__contact-mail {
     @include m.flex(row, 1rem);
   }
 
@@ -168,38 +179,31 @@
     width: 2.5rem;
     height: auto;
 
-    @include m.desktop {
-      display: block;
-    }
+    @include m.desktop { display: block; }
   }
 
   &__phone-details {
     @include m.flex(column, 0);
   } 
 
-  &__phone-details p {
+  &__phone-details p,
+  &__phone-details a {
     font-size: 1.6rem;
   }
 
-  &__phone-details a {
-    font-size: 1.6rem;
+  &__phone-details a {   
     text-align: center;
     color: v.$primary;
     font-weight: 700;
 
-    @include m.desktop {
-      text-align: left;
-    }
+    @include m.desktop { text-align: left; }
   }
 
-  &__contact-mail {
-    @include m.flex(row, 1rem);
-  }
+  /* === Copyright Section === */
 
   &__copyright {
     background-color: #000;
     padding: 1rem 0;
-    
   }
 
   &__copyright-container {
@@ -207,25 +211,20 @@
     align-items: center;
     justify-content: center;
 
-    & > * {
+    > * {
       padding: 0 1rem;
     }
-  }
 
-  &__copyright-name {
-    font-size: 2.2rem;
-  }
-
-  &__copyright-developer {
-    font-size: 1.8rem;
+    > p {
+      font-size: 1.6rem;
+      font-family: v.$tertiaryFont;
+    }
   }
 
   &__separator {
     padding: 0;
     width: 1px;
     height: 3rem;
-    background-color: #9F9F9F;
+    background-color: v.$gray-light;
   }
 }
-
-
