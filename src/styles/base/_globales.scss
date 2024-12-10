@@ -21,7 +21,7 @@ body {
     font-family: v.$secondaryFont; //para parrafos
     font-size: 1.6rem;
 
-    @include m.tablet { //768px
+    @include m.tablet { 
         font-size: 1.8rem;
     }
 }

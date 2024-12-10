@@ -155,49 +155,88 @@
     }
 
     &__items {
-        @include m.grid(1, 3rem);
 
-        @include m.desktop { 
-            @include m.grid(2, 4.2rem);
+        @include m.grid(1, 4rem);
+
+        @include m.telefono-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: 4rem;
+            row-gap: 5rem;
+            
+            & > * {
+                align-self: start;
+            }
         }
-    }
-
-    &__items-col {
-        display: grid;
-        gap: 3rem;
-        @include m.desktop { 
-            gap: 3rem;
-        }
-
-    }
-
-
-    &__items-content { 
         
+        @include m.desktop {
+            @include m.grid(4, 0);
+            column-gap: 2rem;
+            row-gap: 3rem;
+        }
+    }
 
+    &__item-content { 
+
+        position: relative;
         @include m.flex(column, 1rem);
         justify-content: start;
-        padding: 2rem;
-        min-height: 20rem;
+        padding: 6rem 2rem 2rem 2rem;
         border-radius: 0.5rem;
+        border: 1px solid v.$primary;
         background-color: transparentize(v.$primary, 0.87);
+        
 
         @include m.telefono {
             gap: 1.5rem;
             border-radius: 1rem;
         }
 
+        @include m.telefono-2 {
+            max-width: 30rem;
+
+            &:first-child, 
+            &:last-child {
+                min-height: 30rem;
+            }
+
+            &:nth-child(2), 
+            &:nth-child(3) {
+                min-height: 42rem
+            }
+
+            &:nth-child(1),
+            &:nth-child(3) {
+                justify-self: end; 
+            }
+        }
+
         @include m.tablet {
-            padding: 2.5rem 3rem;
             @include m.flex(column, 1rem);
+        }
+
+        @include m.desktop {
+            &:nth-child(n) {
+                min-height: 30rem;
+            }
+
+            &:nth-child(2n) {
+                min-height: 42rem
+            }
+
+            &:nth-child(1),
+            &:nth-child(3) {
+                justify-self: initial; 
+            }
+
         }
     }
 
-    &__items-title {
+    &__item-title {
         text-transform: uppercase;
         color: v.$primary;
         font-family: v.$primaryFont;
-        font-size: 2.8rem;
+        font-size: 3.5rem;
         font-weight: 700;
 
         @include m.tablet { 
@@ -205,15 +244,22 @@
         }
     }
 
-    &__items-text {
+    &__item-number {
+        position: absolute;
+        top: -10%;
+        left: -0.5rem;
+        font-size: 7rem;
+        font-family: v.$primaryFont;
+        color: v.$primary;
+        font-weight: 900;
+        line-height: 1;
+    }
+
+    &__item-text {
         font-size: 1.8rem;
 
         @include m.telefono { 
             font-size: 2rem;
         }
-
-        /* @include m.tablet { 
-            font-size: 2.2rem;
-        } */
     }
 }

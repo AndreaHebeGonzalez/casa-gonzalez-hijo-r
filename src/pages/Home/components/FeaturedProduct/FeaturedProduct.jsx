@@ -15,7 +15,6 @@ export const FeaturedProduct = () => {
   const infoRef = useRef(null);
 
   const setRef = (node, id) => {
-    console.log(node);
     if(node) {
       refs.current[id] = node; 
     }
@@ -44,7 +43,6 @@ export const FeaturedProduct = () => {
 
   const handleHotspot = (id) => {
     const hotspot =  refs.current[id];
-    console.log('el hots anterior fue:', prevHotspot);
     if(prevHotspot) { 
       const { btnHotspot, tooltip } = setElements(prevHotspot);
       closeHotspot(btnHotspot, tooltip);
@@ -59,7 +57,6 @@ export const FeaturedProduct = () => {
   }
   
   useEffect(() => {
-    console.log('Se ejecuto la linea')
     featuredProductAnimation(featuredProductRef.current, titleProductRef.current, imageProductRef.current, infoRef.current);
   }, [startAnimation])
   

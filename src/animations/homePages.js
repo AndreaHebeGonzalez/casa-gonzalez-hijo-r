@@ -223,9 +223,6 @@ export const featuredProductAnimation = (featuredProduct, title, image, info) =>
 
   gsap.set(title, { yPercent: 50, opacity: 0 });
   gsap.set(image, { yPercent: 25, opacity: 0, scale: 0 });
-  
-  
-  console.log(title, image, info); 
 
   const tlFeaturedProduct = gsap.timeline({
     scrollTrigger: {
@@ -264,8 +261,6 @@ export const featuredProductAnimation = (featuredProduct, title, image, info) =>
   gsap.utils.toArray('.featured-product__info > *').forEach((element) => {
 
     gsap.set(element, { y: "25%", opacity: 0 });
-
-    console.log(element)
 
     const tlInfo = gsap.timeline({
       scrollTrigger: {

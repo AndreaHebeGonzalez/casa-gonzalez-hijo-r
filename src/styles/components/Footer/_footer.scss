@@ -83,13 +83,12 @@
   /* === Column Second === */
 
   &__column-second {
+    display: none;
     order: 3;
-    @include m.flex(column, 1.5rem);
-    align-items: center;
-    border-bottom: 1px solid v.$gray-light;
     padding: 2rem;
 
     @include m.desktop {
+      @include m.flex(column, 1.5rem);
       align-items: start;
       border-bottom: none;
       order: 2;
