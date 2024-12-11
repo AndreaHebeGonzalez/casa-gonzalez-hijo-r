@@ -24,33 +24,42 @@ export const aboutImageAnimation = (element) => {
   );
 };
 
-export const aboutItemAnimation = (element, index) => {
-  console.log(index);
+export const aboutItemAnimation = (trigger) => {
+  
+  const listItems = gsap.utils.toArray('.about-s__item-content');
 
-  const position = index === 0 ? "left":"right";
+    gsap.set(listItems, { y: "50%", x: "50%", opacity: 0 });
 
-  if (position === "left") {
-    console.log(index, position);
-    gsap.set(element, {xPercent: -50, yPercent:50, opacity: 1, transformOrigin: "top left"})
-  } else if (position ==="right") {
-    gsap.set(element, {xPercent: 50, yPercent:50, opacity: 1, transformOrigin: "top right"})
-  }
+    const ltItems = gsap.timeline({
+      scrollTrigger: {
+        trigger: trigger,
+        start: "top 80%",
+        scroller: '#main-container',
+      }
+    });
 
-  gsap.to(element, {
-    xPercent: 0,
-    yPercent:0,  
-    opacity: 1,
-    rotation: 0,  
-    duration: 0.8,    
-    ease: "circ", 
-    scrollTrigger: {
-      trigger: element, 
-      start: "top 100%", 
-      scroller: "#main-container", 
-      toggleActions: "play none none none",
-    },
-  });
+
+    ltItems.to(listItems, {
+      y: 0,
+      x: 0,          
+      opacity: 1,   
+      ease: 'power1.inOut',
+      duration: 1, 
+      stagger: 0.1,  
+    });
 };
+
+/* ltItems.to(listItems, {
+      y: 0,
+      ease: 'power1.inOut',
+      overwrite: true,
+      duration: 0.5,
+    })
+    .to('.about-s__item-content', {
+      opacity: 1,
+      ease: 'power1.inOut',
+      duration: 1,
+    }) */
 
 export const horizontalScroll = (categorys, categorysBox, titleWrapp, ) => {
 
@@ -229,7 +238,6 @@ export const featuredProductAnimation = (featuredProduct, title, image, info) =>
       trigger: featuredProduct,
       start: "top 50%", //Averiguar porque no funciona para valores porcentuales mayores al 50%
       scroller: '#main-container',
-      
     }
   });
 

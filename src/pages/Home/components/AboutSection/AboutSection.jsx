@@ -1,7 +1,8 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import { PreloaderContext } from "../../../../context/PreloaderContext";
-import { AboutInformation } from './AboutInformation'
-import { AboutItem } from './AboutItem'
+import { AboutInformation } from './AboutInformation';
+import { AboutItem } from './AboutItem';
+import { aboutItemAnimation } from '../../../../animations';
 
 
 const features = [
@@ -42,6 +43,7 @@ export const AboutSection = () => {
   const { completeBar, startAnimation } = useContext(PreloaderContext);
 
   const refs = useRef({}); 
+  const itemsRef = useRef(null);
 
   const setRef = (node, id) => {
     if(node) {
@@ -77,8 +79,9 @@ export const AboutSection = () => {
   };
 
   useEffect(() => {
+    if(!completeBar) return;
+
     window.addEventListener('resize', updateViewVersion);
-    console.log(tabletVersion)
     setTimeout(() => {
       if(tabletVersion) {
         calculateHeightDifference();
@@ -86,6 +89,9 @@ export const AboutSection = () => {
         refs.current[3].style.marginTop = '0px';
       }
 
+      if(refs.current[3]) {
+        refs.current[3].style.height = `${refs.current[1].offsetHeight}px`
+      }
     }, 200);
 
     return () => {
@@ -93,13 +99,17 @@ export const AboutSection = () => {
     }
   }, [completeBar, tabletVersion]);
   
+  useEffect(() => {
+    if(!startAnimation) return;
+    aboutItemAnimation(itemsRef.current);
+  }, [startAnimation]);
 
 return (
   <section className="about-s section container">
     <div className="about-s__flex">
       <AboutInformation />
 
-      <div className="about-s__items">
+      <div className="about-s__items" ref={ itemsRef }>
         {
           features.map((feature, index) => (
             <AboutItem 
