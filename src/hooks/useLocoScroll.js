@@ -24,10 +24,10 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) =
       if(scrollEl) {
         observer.disconnect();
 
-        let locoScrollInstance = new LocomotiveScroll({
+        locoScrollInstance = new LocomotiveScroll({
           el: scrollEl,
           smooth: true,
-          lerp: 0.06,
+          lerp: 0.1,
           mobile:{
             breakpoint:0,
             smooth: true,
@@ -49,17 +49,24 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) =
         });
       
         ScrollTrigger.scrollerProxy(scrollEl, {
+
           scrollTop(value) {
-            return arguments.length ? locoScrollInstance.scrollTo(value, 0, 0) : locoScrollInstance.scroll.instance.scroll.y;
+            if (locoScrollInstance) {
+              return arguments.length ? locoScrollInstance.scrollTo(value, 0, 0) : locoScrollInstance.scroll.instance.scroll.y;
+            }
+            return null;
           },
           scrollLeft(value) {
-            return arguments.length ? locoScrollInstance.scrollTo(value, 0, 0) : locoScrollInstance.scroll.instance.scroll.x;
+            if (locoScrollInstance) {
+              return arguments.length ? locoScrollInstance.scrollTo(value, 0, 0) : locoScrollInstance.scroll.instance.scroll.x;
+            }
+            return null;
           },
           getBoundingClientRect() {
             return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
           },
         });
-      
+        
         ScrollTrigger.addEventListener("refresh", () => locoScrollInstance.update());
         setLocoScroll(locoScrollInstance);
         ScrollTrigger.refresh(); 

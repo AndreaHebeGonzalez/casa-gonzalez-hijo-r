@@ -24,42 +24,68 @@ export const aboutImageAnimation = (element) => {
   );
 };
 
+
 export const aboutItemAnimation = (trigger) => {
   
   const listItems = gsap.utils.toArray('.about-s__item-content');
 
-    gsap.set(listItems, { y: "50%", x: "50%", opacity: 0 });
+  gsap.matchMedia().add(
+    "(max-width: 664px)",
+    () => {
+      listItems.forEach((item, index) => {
 
-    const ltItems = gsap.timeline({
-      scrollTrigger: {
-        trigger: trigger,
-        start: "top 80%",
-        scroller: '#main-container',
-      }
-    });
+        const ltItems = gsap.timeline({
+          scrollTrigger: {
+            trigger: item,
+            start: "top 100%",
+            scroller: '#main-container',
+          }
+        });
+          ltItems.to(item, {
+            y: 0,
+            opacity: 1,
+            ease: 'none',
+            duration: 0.5, 
+            delay: index * 0.1, 
+          })
+      });
+    }
+  )
 
+  gsap.matchMedia().add(
+    "(min-width: 665px)",
+    () => {
+      listItems.forEach((item, index) => {
 
-    ltItems.to(listItems, {
-      y: 0,
-      x: 0,          
-      opacity: 1,   
-      ease: 'power1.inOut',
-      duration: 1, 
-      stagger: 0.1,  
-    });
+        const ltItems = gsap.timeline({
+          scrollTrigger: {
+            trigger: item,
+            start: "top 100%",
+            scroller: '#main-container',
+          }
+        });
+    
+        if(index % 2 !== 0) {
+          ltItems.to(item, {
+            y: "3rem",
+            opacity: 1,
+            ease: 'none',
+            duration: 0.5, 
+            delay: index * 0.1, 
+          });
+        } else {
+          ltItems.to(item, {
+            y: 0,
+            opacity: 1,
+            ease: 'none',
+            duration: 0.5, 
+            delay: index * 0.1, 
+          })
+        }
+      });
+    }
+  );
 };
-
-/* ltItems.to(listItems, {
-      y: 0,
-      ease: 'power1.inOut',
-      overwrite: true,
-      duration: 0.5,
-    })
-    .to('.about-s__item-content', {
-      opacity: 1,
-      ease: 'power1.inOut',
-      duration: 1,
-    }) */
 
 export const horizontalScroll = (categorys, categorysBox, titleWrapp, ) => {
 

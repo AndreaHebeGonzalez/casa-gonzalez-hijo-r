@@ -52,7 +52,7 @@ export const MainLayout = () => {
   const id = useRef(null);
 
   const { mobileVersion } = useContext(ScreenContext);
-  const { completeBar, setCompleteBar } = useContext(PreloaderContext);
+  const { completeBar, setCompleteBar, startAnimation } = useContext(PreloaderContext);
 
   const location = useLocation();
 

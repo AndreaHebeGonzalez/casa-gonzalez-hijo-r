@@ -156,7 +156,6 @@
 
     &__items {
         
-
         @include m.grid(1, 4rem);
 
         @include m.telefono-2 {
@@ -178,14 +177,15 @@
     }
 
     &__item-content { 
-
+        opacity: 0;
         position: relative;
         @include m.flex(column, 1rem);
         justify-content: start;
-        padding: 6rem 2rem 2rem 2rem;
+        padding: 6rem 2rem 3rem 2rem;
         border-radius: 0.5rem;
         border: 1px solid v.$primary;
         background-color: transparentize(v.$primary, 0.87);
+        transform: translateY(20rem);
         
 
         @include m.telefono {
@@ -222,7 +222,7 @@
             }
 
             &:nth-child(2n) {
-                min-height: 42rem
+                min-height: 40rem
             }
 
             &:nth-child(1),
@@ -254,6 +254,7 @@
         color: v.$primary;
         font-weight: 900;
         line-height: 1;
+        transition: 0.4s ease-in-out;
     }
 
     &__item-text {

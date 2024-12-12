@@ -1,8 +1,10 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import { PreloaderContext } from "../../../../context/PreloaderContext";
 import { AboutInformation } from './AboutInformation';
 import { AboutItem } from './AboutItem';
 import { aboutItemAnimation } from '../../../../animations';
+import { PreloaderContext, ScreenContext } from '../../../../context';
+
+
 
 
 const features = [
@@ -24,23 +26,12 @@ const features = [
   },
 ];
 
-
-const splitFeatures = (arr, size) => {
-  const result = [];
-  for (let i = 0; i < arr.length; i += size) {
-    result.push(arr.slice(i, i + size));
-  }
-  return result;
-};
-
-const featurePairs = splitFeatures(features, 2); 
-
-
 export const AboutSection = () => {
 
   const [tabletVersion, setTabletVersion] = useState(window.innerWidth >= 665 &&  window.innerWidth < 1024);
 
   const { completeBar, startAnimation } = useContext(PreloaderContext);
+  const { screenPx  } = useContext(ScreenContext);
 
   const refs = useRef({}); 
   const itemsRef = useRef(null);
@@ -71,28 +62,33 @@ export const AboutSection = () => {
 
     if(heightDifference !== 0 && refs.current[3]) {
       refs.current[3].style.marginTop = `${-Math.abs(heightDifference)}px`; 
+      refs.current[3].style.height = `${refs.current[1].offsetHeight}px`
     }
 
     if(refs.current[4]) {
-      refs.current[4].style.height = `${refs.current[1].offsetHeight}px`
+      refs.current[4].style.height = `${refs.current[1].offsetHeight}px`;
     }
+    
   };
 
   useEffect(() => {
     if(!completeBar) return;
 
     window.addEventListener('resize', updateViewVersion);
+
     setTimeout(() => {
       if(tabletVersion) {
         calculateHeightDifference();
       } else {
-        refs.current[3].style.marginTop = '0px';
+        if(refs.current[3]) {
+          refs.current[3].style.marginTop = '0px';
+          refs.current[3].style.height = 'auto';
+        };
+        if(refs.current[4]) {
+          refs.current[4].style.height = 'auto';
+        };
       }
-
-      if(refs.current[3]) {
-        refs.current[3].style.height = `${refs.current[1].offsetHeight}px`
-      }
-    }, 200);
+    }, 100);
 
     return () => {
       window.removeEventListener('resize', updateViewVersion);
