@@ -1,5 +1,9 @@
 export * from './Buttons';
-export * from './Header';
-export * from './Intro';
-export * from './Footer';
 export * from './Carousel';
+export * from './Footer';
+export * from './Header';
+export * from './HighlightedText';
+export * from './Intro';
+
+
+

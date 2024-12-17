@@ -84,21 +84,24 @@ export const FeaturedProduct = () => {
             }
           </div>
           <div className="featured-product__info" ref={infoRef}>
-              <h3 className="featured-product__info-title">Diseño superior</h3>
-              <div className="featured-product__info-items">
-                <div className="featured-product__info-item">
-                  <h4 className="featured-product__item-title">Lorem Ipsum</h4>
-                  <p className="featured-product__item-description">Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500</p>
-                </div>
-                <div className="featured-product__info-item">
-                  <h4 className="featured-product__item-title">Lorem Ipsum</h4>
-                  <p className="featured-product__item-description">Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500</p>
-                </div>
-                <div className="featured-product__info-item">
-                  <h4 className="featured-product__item-title">Lorem Ipsum</h4>
-                  <p className="featured-product__item-description">Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500</p>
-                </div>
-              </div>   
+            <div className="featured-product__bg-image">
+              <img src="/public/img/blanco-de-tiro.svg" alt="blanco de tiro" />
+            </div>
+            <h3 className="featured-product__info-title">Diseño superior</h3>
+            <div className="featured-product__info-items">
+              <div className="featured-product__info-item">
+                <h4 className="featured-product__item-title">Lorem Ipsum</h4>
+                <p className="featured-product__item-description">Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500</p>
+              </div>
+              <div className="featured-product__info-item">
+                <h4 className="featured-product__item-title">Lorem Ipsum</h4>
+                <p className="featured-product__item-description">Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500</p>
+              </div>
+              <div className="featured-product__info-item">
+                <h4 className="featured-product__item-title">Lorem Ipsum</h4>
+                <p className="featured-product__item-description">Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500</p>
+              </div>
+            </div>   
           </div>
         </div>
       </div>

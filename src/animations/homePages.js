@@ -25,7 +25,7 @@ export const aboutImageAnimation = (element) => {
 };
 
 
-export const aboutItemAnimation = (trigger) => {
+export const aboutItemAnimation = () => {
   
   const listItems = gsap.utils.toArray('.about-s__item-content');
 

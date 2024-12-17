@@ -63,7 +63,7 @@ body {
     }
 }
 
-[class*="section"] {
+.section {
     padding: 5rem 0; 
 
     @include m.tablet {

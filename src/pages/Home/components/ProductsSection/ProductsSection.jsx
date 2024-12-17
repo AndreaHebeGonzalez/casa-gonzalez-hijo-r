@@ -12,20 +12,20 @@ gsap.registerPlugin(ScrollTrigger);
 
 const categorysList = [
   {
+    id: 1,
     category: "Fusiles",
-    description: "Cada componente de nuestros fusiles es fabricado en nuestras instalaciones, utilizando procesos de mecanizado CNC de última generación y software de diseño por computadora",
     image: "/public/img/fusiles/fusil-portada.jpg",
     link: '#',
   },
-  {
+  { 
+    id: 2,
     category: "Accesorios",
-    description: "Cada componente de nuestros fusiles es fabricado en nuestras instalaciones, utilizando procesos de mecanizado CNC de última generación y software de diseño por computadora",
     image: "/public/img/accesorios/accesorios-portada.jpg",
     link: '#',
   },
   {
+    id: 3,
     category: "Componentes",
-    description: "Cada componente de nuestros fusiles es fabricado en nuestras instalaciones, utilizando procesos de mecanizado CNC de última generación y software de diseño por computadora",
     image: "/public/img/componentes/componentes-portada.jpg",
     link: '#',
   },
@@ -41,24 +41,24 @@ export const ProductsSection = () => {
 
   useEffect(() => {
     if(!startAnimation) return;
-    horizontalScroll(categorysRef.current, categorysBoxRef.current, titleWrappRef.current);
+    //horizontalScroll(categorysRef.current, categorysBoxRef.current, titleWrappRef.current);
   }, [startAnimation]);
   
   return (
-    <section className="categorys section container" ref={ categorysRef }>
-      
-      <div className="categorys__box" ref={ categorysBoxRef }>
-        <div className="categorys__title-wrapp" ref={ titleWrappRef }>
-            <div className="categorys__line"></div>
+    <section className="categorys section" ref={ categorysRef }>
+      <div className="categorys__wrapper">
+        <div className="categorys__box container" ref={ categorysBoxRef }>
+          <div className="categorys__title-wrapp" ref={ titleWrappRef }>
             <h2 className="categorys__heading">Productos</h2>
+            <div className="categorys__line"></div>
+          </div>
+          {
+            categorysList.map((category) => (
+              <Category key={ `${category.category}-${category.id}` } { ...category } />)
+            )
+          }
         </div>
-
-        {
-          categorysList.map((item, i) => (
-            <Category key= { `${item.category}-${i}` } { ...item } />
-          ))
-        }
-      </div>
+      </div>      
     </section>
   )
 }

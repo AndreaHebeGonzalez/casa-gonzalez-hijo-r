@@ -12,7 +12,6 @@ export const Navbar = ({ hasScrolled }) => {
   const logoHeaderRef = useRef(null);
 
   const handleOpenMenu = () => {
-    console.log('click en abrir menu');
     setOpenMenu(openMenu => !openMenu);
   };
 
@@ -26,19 +25,27 @@ export const Navbar = ({ hasScrolled }) => {
   return ( 
     <div className="header__barra container-2">
       
-      <figure className= { `header__logo ${hasScrolled && mobileVersion ? 'disappear':''}` } ref={ logoHeaderRef }>
-        <img className="header__logo-img" src="/public/img/logob.png" alt="logo" />
-      </figure>
+      <picture className= { `header__logo ${hasScrolled && mobileVersion ? 'disappear':''}` } ref={ logoHeaderRef }>
+        <img className="header__logo-img" src="/public/img/logob.png" alt="logo de la empresa" />
+      </picture>
 
       <div className="header__menu"> 
-        <div onClick= { handleOpenMenu } className={`header__menu-abrir ${hasScrolled && mobileVersion ? 'disappear':''}`}> 
+
+        {/* <div onClick= { handleOpenMenu } className={`header__menu-abrir ${hasScrolled && mobileVersion ? 'disappear':''}`}> 
           <img className="header__menu-icono" src="/public/icons/menu-abrir.svg" alt="Icono menu" />
-        </div>
+        </div> */}
+        { mobileVersion &&  (<div onClick= { handleOpenMenu } className={`header__menu-abrir ${hasScrolled && mobileVersion ? 'disappear':''}`}> 
+          <img className="header__menu-icono" src="/public/icons/menu-abrir.svg" alt="Icono menu" />
+        </div>)
+        }
         <div className= "header__menu-contenido" style={{ transform: openMenu ? 'translateX(0)':'' }} > 
           <div className="header__menu-top">
-            <div onClick= { handleOpenMenu } className="header__menu-cerrar">
+            {/* <div onClick= { handleOpenMenu } className="header__menu-cerrar">
               <img className="header__menu-icono" src="/public/icons/menu-cerrar.svg" alt="Icono menu" />
-            </div>
+            </div> */}
+            { mobileVersion && (<div onClick= { handleOpenMenu } className="header__menu-cerrar">
+              <img className="header__menu-icono" src="/public/icons/menu-cerrar.svg" alt="Icono menu" />
+            </div>)}
           </div>
           <nav className="nav">
             <ul className="nav__lista"> 
@@ -76,4 +83,6 @@ export const Navbar = ({ hasScrolled }) => {
     </div>
   );
 };
+
+
 

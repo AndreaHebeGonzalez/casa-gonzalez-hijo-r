@@ -49,6 +49,7 @@ h3  {
 p {
     color: v.$secondary;
     font-size: 1.6rem;
+    
     @include m.tablet {
         font-size: 2rem;
     }

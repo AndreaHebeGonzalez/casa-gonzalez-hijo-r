@@ -3,6 +3,7 @@ import { AboutInformation } from './AboutInformation';
 import { AboutItem } from './AboutItem';
 import { aboutItemAnimation } from '../../../../animations';
 import { PreloaderContext, ScreenContext } from '../../../../context';
+import { HighlightedText } from '../../../../components';
 
 
 
@@ -31,10 +32,9 @@ export const AboutSection = () => {
   const [tabletVersion, setTabletVersion] = useState(window.innerWidth >= 665 &&  window.innerWidth < 1024);
 
   const { completeBar, startAnimation } = useContext(PreloaderContext);
-  const { screenPx  } = useContext(ScreenContext);
+
 
   const refs = useRef({}); 
-  const itemsRef = useRef(null);
 
   const setRef = (node, id) => {
     if(node) {
@@ -47,22 +47,16 @@ export const AboutSection = () => {
   };
 
   const calculateHeightDifference = () => {
-    if (!refs.current[1] || !refs.current[3]) {
-      console.log(refs.current[1]);
-      console.log(refs.current[3]);
-      console.log("Las referencias no están listas.");
+    if (!refs.current[1] || !refs.current[2]) {
       return;
     } 
-    console.log("Calculando la diferencia de altura...");
 
     const heightDifference =
-    refs.current[1].offsetHeight - refs.current[3].offsetHeight;
-
-    console.log('la diferencia es:', heightDifference);
+    refs.current[1].offsetHeight - refs.current[2].offsetHeight;
 
     if(heightDifference !== 0 && refs.current[3]) {
       refs.current[3].style.marginTop = `${-Math.abs(heightDifference)}px`; 
-      refs.current[3].style.height = `${refs.current[1].offsetHeight}px`
+      refs.current[3].style.height = `${refs.current[2].offsetHeight}px`
     }
 
     if(refs.current[4]) {
@@ -97,7 +91,7 @@ export const AboutSection = () => {
   
   useEffect(() => {
     if(!startAnimation) return;
-    aboutItemAnimation(itemsRef.current);
+    aboutItemAnimation();
   }, [startAnimation]);
 
 return (
@@ -105,7 +99,7 @@ return (
     <div className="about-s__flex">
       <AboutInformation />
 
-      <div className="about-s__items" ref={ itemsRef }>
+      <div className="about-s__items">
         {
           features.map((feature, index) => (
             <AboutItem 

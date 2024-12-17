@@ -3,7 +3,7 @@ import { PreloaderContext } from "../../../../context/PreloaderContext";
 import { Link } from "react-router-dom"
 import { categorysAnimationMobile } from "../../../../animations";
 
-export const Category = ({ category, description, image, link }) => {
+export const Category = ({ id, category, image, link }) => {
 
   const { startAnimation } = useContext(PreloaderContext);
 
@@ -14,34 +14,33 @@ export const Category = ({ category, description, image, link }) => {
 
   useEffect(() => {
     if(!startAnimation) return;
-    categorysAnimationMobile(categoryRef.current, infoRef.current, imgRef.current);
+    /* categorysAnimationMobile(categoryRef.current, infoRef.current, imgRef.current); */
   }, [startAnimation])
   
   
   
 
   return (
-    <div  className="category" ref={categoryRef}>    
-      <div /> 
-      
-      <div className="category__content">
-        <picture className= "category__img">
-          <img src= { image } alt="Imagen de fusil" ref={ imgRef }/>
-        </picture>
-        
-        <div className= "category__information" ref={ infoRef }>
-          <h3 className="category__title">{ category }</h3>
-          <div className="category__link-box">
-            <p className="category__link-text">Ver productos</p>   
-            <a className="category__link" href={ link }>
-              <img src="/public/icons/ico-diagonal-arrow-right.svg" alt="Click para ir a categoría" />
-              <img src="/public/icons/ico-diagonal-arrow-right.svg" alt="Click para ir a categoría" />
+    <div  className="product-category container" ref={categoryRef}>    
+      <div className="product-category__wrapper">
+        <div className= {`product-category__header ${id % 2 === 0 ? 'product-category__header--reverse':''}` } ref={ infoRef }>
+          <div className="product-category__heading">
+            <h3 className= "product-category__title">{ category }</h3>
+            <a className="product-category__link" href={ link }>
+              <img src="/public/icons/ico-arrow-top-right.svg" alt="Click para ir a categoría" />
+              <img src="/public/icons/ico-arrow-top-right.svg" alt="Click para ir a categoría" />
             </a>
-          </div>         
-        </div>     
+          </div>
+          <div className="product-category__line"></div>
+        </div> 
+        <div className= {`product-category__img-box  ${id % 2 === 0 ? 'product-category__img-box--reverse':''}` } ref={ infoRef }>
+          <picture className= {`product-category__img  ${id % 2 === 0 ? 'product-category__img--reverse':''}` }>
+            <img src= { image } alt="Imagen de fusil" ref={ imgRef }/>
+          </picture>
+        </div>
       </div>
 
-      <div />
+      
     </div>
   )
 }

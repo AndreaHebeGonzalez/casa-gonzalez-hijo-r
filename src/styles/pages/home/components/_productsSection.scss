@@ -2,87 +2,70 @@
 @use '../../../utils/mixins' as m;
 
 .categorys {
-  
-  position: relative;
-  width: 92%;
-  margin-left: auto;
-  margin-right: auto;
-  
+    min-height: 100vh;
 
-  @media (min-width: 768px) {
-    height: 100vh;
-  }
-  
+    &__wrapper {
+      background: #0B0B0E /* linear-gradient(to bottom, #0E0E12 0%, #070709 35%, #0E0E12 100% ) */; 
+      
+      padding: 5rem 0;
+
+      @include m.telefono-2 {
+        padding: 6rem 0;
+      }
+
+      @include m.tablet-2 {
+        padding: 7rem 0;
+      }
+    }
 
   &__box {
-    padding-top: 11rem;
+    height: 100%;
     position: relative;
 
-    @include m.flex(column, 4rem);
-    
-    @media (min-width: 768px) {    
-      margin: 20vh 0;
-      padding-top: 0;
-      padding-bottom: 1px;
-      height: fit-content;
-      width: 300%;
-      @include m.flex(row, 0);
-      flex-wrap: nowrap;
+    @include m.flex(column, 5rem);
+
+
+    @include m.telefono-2 {
+      gap: 6rem
     }
+    
+    @include m.tablet-2 {
+      gap: 10rem
+    }
+
+  }
+
+  &__category-one-heading {
+    display: grid;
+    grid-template-columns: 0.65fr 0.35fr;
   }
 
   &__title-wrapp {
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: 0;
-    @include m.flex(row-reverse, 0);
-    justify-content: space-between; 
-    align-items: center;
-    transform: translateX(0%);
-    
+    @include m.flex(column, 2rem);
 
-    @include m.tablet {
-      @include m.flex(column, 0);
-      width: auto;
-      height: 100%;
-      transform: translateX(-250%);
-    }
   }
   
   &__heading {     
       font-size: 3.8rem;
       font-family: v.$primaryFont;
       line-height: 1;
-      
+      text-transform: uppercase;
+      font-weight: 700;
 
       @include m.telefono-2 { 
-          font-size: 4rem;
-      }
+        font-size: 4.5rem;
+    }
 
-      @include m.tablet {
-        text-transform: uppercase;
-        font-size: 3rem;
-        font-family: v.$primaryFont;
-        line-height: 1;
-        writing-mode: vertical-rl; 
-        transform: rotate(180deg); 
-        text-align: center;
-        margin-right: 50%;
+      @include m.tablet { 
+          font-size: 5rem;
       }
   }
 
   &__line {
-    flex-grow: 0.98; 
-    align-self: end;
-    height: 1px;
     background-color: v.$secondary;
-    transform-origin: left center;
-
-    @include m.tablet {
-      align-self: center;
-      width: 1px;
-    }
+    flex-grow: 1; //animamos flex-grow
+    height: 1px;
+    background-color: wheat;
   }
 }
 

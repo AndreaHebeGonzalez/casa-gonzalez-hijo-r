@@ -1,0 +1,196 @@
+@use '../../../base/variables' as v;
+@use '../../../utils/mixins' as m;
+
+
+.product-category {
+
+    &__wrapper {
+        
+        @include m.flex(column, 4rem);
+
+
+        @include m.telefono-2 {  
+            gap: 5rem;
+        }
+
+        @include m.tablet {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        @include m.tablet-2{  
+            gap: 7rem;
+        }
+
+    }
+
+    &__header {
+        @include m.flex(row, 2rem);
+        align-items: baseline;
+
+        @include m.tablet {
+            gap: 5rem;
+        }
+
+        &--reverse {
+            @include m.flex(row-reverse, 2rem);
+
+            @include m.tablet {
+                gap: 5rem;
+            }
+        }
+    }
+
+    &__header-reverse {
+        @include m.flex(row-reverse, 2rem);
+
+        @include m.tablet {
+            gap: 5rem;
+        }
+    }
+
+    &__heading {
+        @include m.flex(row, 2rem);
+        align-items: baseline;
+
+        @include m.tablet {
+            gap: 3rem;
+        }
+    }
+
+    &__title {
+        font-size: 3.5rem;
+        font-family: v.$primaryFont;
+        font-weight: 600;
+        line-height: 1;
+
+        @include m.telefono { 
+            font-size: 4rem;
+        }
+
+        @include m.tablet { 
+            font-size: 5rem;
+        }
+
+        
+
+        @media (min-height: 1024px) {
+            margin-left: 0;
+            font-size: 7rem;
+        }
+    }
+
+    &__link {
+        margin-bottom: 0;
+        display: block;
+        overflow: hidden;
+        position: relative;
+        width: 2.5rem;
+        height: 2.5rem;
+
+        @include m.telefono {
+            width: 3rem;
+            height: 3rem;
+        }
+
+        @include m.tablet { 
+            width: 4rem;
+            height: 4rem;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            transition: 0.5s;
+        }
+
+        & img:nth-child(1) {
+            transform: translateX(0%) scale(1);
+            color: #fff;
+        }
+
+        & img:nth-child(2) {
+            transform: translateX(-100%) scale(0);
+            color:  #fff;
+        }
+    }
+
+    &__link:hover img:nth-child(1) {
+        transform: translate(100%, -100%) scale(0);
+    }
+
+    &__link:hover img:nth-child(2) {
+        transform: translate(0%, -100%) scale(1);
+    }
+
+
+    &__line {
+        display: none;
+        flex-grow: 1;
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.164);
+
+        @include m.telefono {
+            display: block;
+        }
+    }
+
+    &__img-box {
+        display: grid;
+        grid-template-columns: 1fr 0.20fr;
+        
+
+        @include m.telefono {
+            margin-left: 2rem;
+        }
+
+        @include m.telefono-2 {
+            grid-template-columns: 1fr 0.25fr;
+        }
+
+        @include m.tablet {
+            grid-template-columns: 1fr 0.35fr;
+        }
+
+        &--reverse {
+            display: grid;
+        grid-template-columns: 0.20fr 1fr;
+
+        @include m.telefono {
+            margin-left: 0;
+            margin-right: 2rem;
+        }
+
+        @include m.telefono-2 {
+            grid-template-columns: 0.25fr 1fr;
+        }
+
+        @include m.tablet {
+            grid-template-columns: 0.35fr 1fr;
+        }
+        }
+    }
+
+    &__img { 
+        overflow: hidden;
+        border-radius: 0.5rem;
+        filter: brightness(0.7);  
+
+        @include m.telefono-2 {
+            border-radius: 0.8rem;
+        }
+
+        img { 
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        &--reverse {
+            grid-column: 2 / 3;
+        }
+    }
+}
+
+

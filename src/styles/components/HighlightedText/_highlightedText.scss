@@ -1,0 +1,58 @@
+@use '../../base/variables' as v;
+@use '../../utils/mixins' as m;
+
+.highlighted-text {
+  padding: 13rem 0 10rem 0;
+  
+
+  &__wrapp {
+    @include m.flex(column, 0);
+    position: relative;
+  }
+
+  &__bg-image {
+    position: absolute;
+    top: 0%;
+    right: 1%;
+    transform: translate(30%, -50%);
+    
+    z-index: -1;
+
+    @include m.desktop {
+      transform: translate(25%, -50%);
+    }
+
+    @include m.desktop-2 {
+      transform: translate(8%, -50%);
+    }
+
+
+
+    & img {
+      z-index: -1;
+    }
+  }
+
+  &__line {
+    width: 25%;
+    height: 1px;
+    background-color: v.$secondary;
+
+    @include m.telefono {
+      
+    }
+  }
+
+  &__text {
+    width: 45%;
+    margin: 0 auto;
+    padding: 8rem 0;
+    font-size: 2.5rem;
+    font-family: v.$primaryFont;
+
+    @include m.telefono {
+      
+    }
+
+  }
+}
