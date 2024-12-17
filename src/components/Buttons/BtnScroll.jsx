@@ -14,7 +14,7 @@ export const BtnScroll = ({ showBtnScroll, locoScroll  }) => {
 
   return (
     <div onClick={ handleScrollToTop } className={`button-scroll ${showBtnScroll ? '':'disappear'}` } data-scroll-ignore>
-      <img src="/public/icons/ico-btn-scroll.svg" alt="scroll al menu" />
+      <img src="/icons/ico-btn-scroll.svg" alt="scroll al menu" />
     </div>
   )
 }

@@ -27,8 +27,8 @@ export const Category = ({ id, category, image, link }) => {
           <div className="product-category__heading">
             <h3 className= "product-category__title">{ category }</h3>
             <a className="product-category__link" href={ link }>
-              <img src="/public/icons/ico-arrow-top-right.svg" alt="Click para ir a categoría" />
-              <img src="/public/icons/ico-arrow-top-right.svg" alt="Click para ir a categoría" />
+              <img src="/icons/ico-arrow-top-right.svg" alt="Click para ir a categoría" />
+              <img src="/icons/ico-arrow-top-right.svg" alt="Click para ir a categoría" />
             </a>
           </div>
           <div className="product-category__line"></div>

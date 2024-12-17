@@ -8,14 +8,14 @@ export const Footer = () => {
         <div className="footer__content">
           <div className="footer__column-first">
             <Link to="/" className="footer__logo">
-              <img src="/public/img/logol.webp" alt="Logo de la empresa"/>
+              <img src="/img/logol.webp" alt="Logo de la empresa"/>
             </Link>
             <div className="footer__social">
               <a className="footer__ico-social" href="https//facebook.com" target="_blank" rel="noopener noreferrer">
-                <img src="/public/icons/ico-facebook.svg" alt="icono de facebook"/>
+                <img src="/icons/ico-facebook.svg" alt="icono de facebook"/>
               </a>
               <a className="footer__ico-social" href="https//whatsapp.com" target="_blank" rel="noopener noreferrer">
-                <img src="/public/icons/ico-whatsapp.svg" alt="icono de whatsapp" />
+                <img src="/icons/ico-whatsapp.svg" alt="icono de whatsapp" />
               </a>
             </div>
           </div>
@@ -37,14 +37,14 @@ export const Footer = () => {
           <div className="footer__column-fourth">
             <h3 className="footer__column-title">Datos de contacto</h3>
             <div className="footer__contact-phone">
-              <img className="footer__ico-phone" src="/public/icons/ico-phone.svg" alt=""/>
+              <img className="footer__ico-phone" src="/icons/ico-phone.svg" alt=""/>
               <div className="footer__phone-details">
                 <p >Lu-Vi de 9:30 a 19hs / Sá de 10:30 a 17hs</p>
                 <a href="tel:+5411452563">+5411452563</a>
               </div>
             </div>
             <div className="footer__contact-mail">
-              <img className="footer__ico-email" src="/public/icons/ico-light--email.svg" alt=""/>
+              <img className="footer__ico-email" src="/icons/ico-light--email.svg" alt=""/>
               <p>info@casagonzalezehijo.com.ar</p>
             </div>
           </div>
@@ -52,7 +52,7 @@ export const Footer = () => {
       </div>
       <div className="footer__copyright">
         <div className="footer__copyright-container">
-            <img className="footer__copyright-ico" src="/public/icons/ico-copyright-blanco.svg" alt="icono copyright" />
+            <img className="footer__copyright-ico" src="/icons/ico-copyright-blanco.svg" alt="icono copyright" />
             <div className="footer__separator"></div>
             <p className="footer__copyright-year">2024</p>
             <div className="footer__separator"></div>

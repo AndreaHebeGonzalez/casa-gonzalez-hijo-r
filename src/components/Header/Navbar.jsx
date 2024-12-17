@@ -26,25 +26,20 @@ export const Navbar = ({ hasScrolled }) => {
     <div className="header__barra container-2">
       
       <picture className= { `header__logo ${hasScrolled && mobileVersion ? 'disappear':''}` } ref={ logoHeaderRef }>
-        <img className="header__logo-img" src="/public/img/logob.png" alt="logo de la empresa" />
+        <img className="header__logo-img" src="/img/logob.png" alt="logo de la empresa" />
       </picture>
 
       <div className="header__menu"> 
 
-        {/* <div onClick= { handleOpenMenu } className={`header__menu-abrir ${hasScrolled && mobileVersion ? 'disappear':''}`}> 
-          <img className="header__menu-icono" src="/public/icons/menu-abrir.svg" alt="Icono menu" />
-        </div> */}
         { mobileVersion &&  (<div onClick= { handleOpenMenu } className={`header__menu-abrir ${hasScrolled && mobileVersion ? 'disappear':''}`}> 
-          <img className="header__menu-icono" src="/public/icons/menu-abrir.svg" alt="Icono menu" />
+          <img className="header__menu-icono" src="/icons/menu-abrir.svg" alt="Icono menu" />
         </div>)
         }
         <div className= "header__menu-contenido" style={{ transform: openMenu ? 'translateX(0)':'' }} > 
           <div className="header__menu-top">
-            {/* <div onClick= { handleOpenMenu } className="header__menu-cerrar">
-              <img className="header__menu-icono" src="/public/icons/menu-cerrar.svg" alt="Icono menu" />
-            </div> */}
+            
             { mobileVersion && (<div onClick= { handleOpenMenu } className="header__menu-cerrar">
-              <img className="header__menu-icono" src="/public/icons/menu-cerrar.svg" alt="Icono menu" />
+              <img className="header__menu-icono" src="/icons/menu-cerrar.svg" alt="Icono menu" />
             </div>)}
           </div>
           <nav className="nav">
@@ -53,7 +48,7 @@ export const Navbar = ({ hasScrolled }) => {
                 <NavItem key={ item.label } {...item} /> ) 
               }
             </ul>
-            <div className="nav__divider"><img src="/public/icons/ico-divider.svg" /></div>
+            <div className="nav__divider"><img src="/icons/ico-divider.svg" /></div>
             <div className="nav__item">
               <a className="nav__link" href="#">
                 <span>CONTACTO</span>
@@ -68,10 +63,10 @@ export const Navbar = ({ hasScrolled }) => {
                   <h3 className="nav__name">Casa Gonzalez e Hijo</h3>
                   <div className="nav__icons-social">
                     <a className="nav__ico-social" href="https//facebook.com" target="_blank" rel="noopener noreferrer">
-                      <img src="/public/icons/ico-whatsapp.svg" alt="icono whatsapp" />
+                      <img src="/icons/ico-whatsapp.svg" alt="icono whatsapp" />
                     </a>
                     <a className="nav__ico-social" href="https//whatsapp.com" target="_blank" rel="noopener noreferrer">
-                      <img src="/public/icons/ico-facebook.svg" alt="icono whatsapp" />
+                      <img src="/icons/ico-facebook.svg" alt="icono whatsapp" />
                     </a>
                     
                   </div>

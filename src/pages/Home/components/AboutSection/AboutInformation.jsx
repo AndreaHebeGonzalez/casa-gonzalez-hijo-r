@@ -23,7 +23,7 @@ export const AboutInformation = () => {
         <div className="about-s__images">
           <div className="about-s__image" >
             <picture>
-              <img ref={ aboutImageRef } src="/public/img/home/about-image.jpg" alt="imagen fusil" />
+              <img ref={ aboutImageRef } src="/img/home/about-image.jpg" alt="imagen fusil" />
             </picture> 
           </div>
         </div>

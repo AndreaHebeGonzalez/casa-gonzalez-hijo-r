@@ -1,0 +1,11 @@
+
+.svg-wrapper {
+
+  will-change: transform;
+  width: max-content;
+
+  & svg {
+    width: 92rem;
+    height: auto;
+  }
+}

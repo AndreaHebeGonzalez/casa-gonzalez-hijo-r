@@ -14,16 +14,17 @@
     position: absolute;
     top: 0%;
     right: 1%;
-    transform: translate(30%, -50%);
+    transform: translate(30%, -49.66%);
+    width: max-content;
     
     z-index: -1;
 
     @include m.desktop {
-      transform: translate(25%, -50%);
+      transform: translate(25%, -49.66%);
     }
 
     @include m.desktop-2 {
-      transform: translate(8%, -50%);
+      transform: translate(8%, -49.66%);
     }
 
 

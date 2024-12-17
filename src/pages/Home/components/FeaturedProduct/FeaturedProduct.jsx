@@ -70,7 +70,7 @@ export const FeaturedProduct = () => {
           </div>
           <div className="featured-product__image" ref={ imageProductRef }>
             <picture className="featured-product__picture" >
-              <img className="featured-product__img" src="/public/img/fusiles/FusilMMMInicio.png" alt="Fusil MMM" />
+              <img className="featured-product__img" src="/img/fusiles/FusilMMMInicio.png" alt="Fusil MMM" />
             </picture>
             {
               hotspotsLeft.map(hotspot => 
@@ -85,7 +85,7 @@ export const FeaturedProduct = () => {
           </div>
           <div className="featured-product__info" ref={infoRef}>
             <div className="featured-product__bg-image">
-              <img src="/public/img/blanco-de-tiro.svg" alt="blanco de tiro" />
+              <img src="/img/blanco-de-tiro.svg" alt="blanco de tiro" />
             </div>
             <h3 className="featured-product__info-title">Diseño superior</h3>
             <div className="featured-product__info-items">

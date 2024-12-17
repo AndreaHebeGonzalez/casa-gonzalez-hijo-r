@@ -14,19 +14,19 @@ const categorysList = [
   {
     id: 1,
     category: "Fusiles",
-    image: "/public/img/fusiles/fusil-portada.jpg",
+    image: "/img/fusiles/fusil-portada.jpg",
     link: '#',
   },
   { 
     id: 2,
     category: "Accesorios",
-    image: "/public/img/accesorios/accesorios-portada.jpg",
+    image: "/img/accesorios/accesorios-portada.jpg",
     link: '#',
   },
   {
     id: 3,
     category: "Componentes",
-    image: "/public/img/componentes/componentes-portada.jpg",
+    image: "/img/componentes/componentes-portada.jpg",
     link: '#',
   },
 ] 
