@@ -52,7 +52,7 @@ export const MainLayout = () => {
   const id = useRef(null);
 
   const { mobileVersion } = useContext(ScreenContext);
-  const { completeBar, setCompleteBar, startAnimation } = useContext(PreloaderContext);
+  const { completeBar, setCompleteBar } = useContext(PreloaderContext);
 
   const location = useLocation();
 
@@ -64,7 +64,6 @@ export const MainLayout = () => {
 
   useEffect(() => {
     id.current = setInterval(() => {
-
       setProgress(prev => {
         const updatedProgress = prev + Math.floor(Math.random() * 50); 
         return updatedProgress >= 100  ? 100 : updatedProgress;

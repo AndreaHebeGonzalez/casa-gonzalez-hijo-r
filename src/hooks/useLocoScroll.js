@@ -1,21 +1,23 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useRef } from "react";
 import LocomotiveScroll from 'locomotive-scroll';
 import 'locomotive-scroll/src/locomotive-scroll.scss';
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { LocoScrollContext } from "../context/LocoScrollContext";
 
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) => {
 
-  const [locoScroll, setLocoScroll] = useState(null);
+  const { setInstance } = useContext(LocoScrollContext);
+  const locoScrollRef = useRef(null);
+
+  
 
   useEffect(() => {
     if(!start) return;
-
-    let locoScrollInstance;
-
+    
     const observer = new MutationObserver(() => {
       const scrollEl = document.querySelector('#main-container');
 
@@ -24,7 +26,7 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) =
       if(scrollEl) {
         observer.disconnect();
 
-        locoScrollInstance = new LocomotiveScroll({
+        locoScrollRef.current = new LocomotiveScroll({
           el: scrollEl,
           smooth: true,
           lerp: 0.1,
@@ -42,7 +44,10 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) =
           },
         });
 
-        locoScrollInstance.on('scroll', (obj) => {
+
+        setInstance(locoScrollRef.current);
+
+        locoScrollRef.current.on('scroll', (obj) => {
           ScrollTrigger.update();
           setHasScrolled(obj.scroll.y > 100);
           setShowBtnScroll(obj.scroll.y > 250);
@@ -51,14 +56,14 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) =
         ScrollTrigger.scrollerProxy(scrollEl, {
 
           scrollTop(value) {
-            if (locoScrollInstance) {
-              return arguments.length ? locoScrollInstance.scrollTo(value, 0, 0) : locoScrollInstance.scroll.instance.scroll.y;
+            if (locoScrollRef.current) {
+              return arguments.length ? locoScrollRef.current.scrollTo(value, 0, 0) : locoScrollRef.current.scroll.instance.scroll.y;
             }
             return null;
           },
           scrollLeft(value) {
-            if (locoScrollInstance) {
-              return arguments.length ? locoScrollInstance.scrollTo(value, 0, 0) : locoScrollInstance.scroll.instance.scroll.x;
+            if (locoScrollRef.current) {
+              return arguments.length ? locoScrollRef.current.scrollTo(value, 0, 0) : locoScrollRef.current.scroll.instance.scroll.x;
             }
             return null;
           },
@@ -67,22 +72,23 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) =
           },
         });
         
-        ScrollTrigger.addEventListener("refresh", () => locoScrollInstance.update());
-        setLocoScroll(locoScrollInstance);
+        ScrollTrigger.addEventListener("refresh", () => locoScrollRef.current.update());
+
         ScrollTrigger.refresh(); 
       };
     });    
 
     observer.observe(document.body, { childList: true, subtree: true });
+
     return () => {
       observer.disconnect();
-      if (locoScrollInstance) { 
-        locoScrollInstance.destroy();
-        ScrollTrigger.removeEventListener("refresh", locoScrollInstance.update);
-        locoScrollInstance = null
+      if (locoScrollRef.current) { 
+        locoScrollRef.current.destroy();
+        ScrollTrigger.removeEventListener("refresh", locoScrollRef.current.update);
+        locoScrollRef.current = null
       };
     };   
   }, [start]);
 
-  return locoScroll;
+  return locoScrollRef.current;
 };

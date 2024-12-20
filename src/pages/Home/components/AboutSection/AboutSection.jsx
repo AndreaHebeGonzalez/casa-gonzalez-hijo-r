@@ -2,11 +2,7 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { AboutInformation } from './AboutInformation';
 import { AboutItem } from './AboutItem';
 import { aboutItemAnimation } from '../../../../animations';
-import { PreloaderContext, ScreenContext } from '../../../../context';
-import { HighlightedText } from '../../../../components';
-
-
-
+import { PreloaderContext } from '../../../../context';
 
 const features = [
   { 
@@ -32,7 +28,6 @@ export const AboutSection = () => {
   const [tabletVersion, setTabletVersion] = useState(window.innerWidth >= 665 &&  window.innerWidth < 1024);
 
   const { completeBar, startAnimation } = useContext(PreloaderContext);
-
 
   const refs = useRef({}); 
 
