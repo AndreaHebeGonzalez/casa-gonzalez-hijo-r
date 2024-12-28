@@ -29,6 +29,7 @@
         min-width: 8rem;
         width: 7%;
         max-width: 12.2rem;
+        opacity: 0;
 
         @include m.tablet {
             width: 8%;

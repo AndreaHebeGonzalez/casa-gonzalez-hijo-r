@@ -87,4 +87,5 @@ export const introAnimation = (barComplete) => {
     scale: 1, 
     ease: "back.inOut", 
   });
+  
 */

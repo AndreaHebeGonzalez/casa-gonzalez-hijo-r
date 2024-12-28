@@ -7,15 +7,15 @@ import { PreloaderContext } from '../../../../context';
 const features = [
   { 
     title: 'Diseño',
-    text: 'Nuestro enfoque combina ingeniería, experiencia, tecnología de fabricación y pruebas en campo para crear fusiles que destacan en todos los aspectos.'
-  },
-  {
-    title: 'Versatilidad',
-    text: 'Adaptamos nuestros fusiles a tus necesidades, permitiendo configuraciones personalizadas dentro de su propósito principal.'
+    text: 'Combinamos ingeniería, experiencia, tecnología de fabricación y pruebas en campo para crear fusiles que destacan en todos los aspectos.'
   },
   {
     title: 'Calidad',
     text: 'Utilizamos materiales de alto rendimiento y tecnología CNC de última generación para garantizar la máxima calidad en cada pieza.'
+  },
+  {
+    title: 'Versatilidad',
+    text: 'Adaptamos nuestros fusiles a tus necesidades, permitiendo configuraciones personalizadas dentro de su propósito principal.'
   },
   {
     title: 'Precisión',

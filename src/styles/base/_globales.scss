@@ -19,7 +19,7 @@ html, body  {
 
 body {
     background-color: v.$bgBody;
-    font-family: v.$secondaryFont; //para parrafos
+    font-family: v.$secondaryFont;
     font-size: 1.6rem;
 
     @include m.tablet { 
@@ -71,15 +71,15 @@ body {
     }
 
     @include m.desktop {
-        padding: 4.5rem 0; 
+        padding: 6rem 0; 
     }
 
     @include m.desktop-2 {
-        padding: 5rem 0; 
+        padding: 8rem 0; 
     }
 
     @include m.desktop-3 {
-        padding: 6rem 0; 
+        padding: 9rem 0; 
     }
 }
 

@@ -1,6 +1,6 @@
 import { Category } from "./Category";
 import { useContext, useEffect, useRef } from "react";
-import { horizontalScroll } from "../../../../animations";
+import { horizontalScrollTitle } from "../../../../animations";
 
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
@@ -41,20 +41,20 @@ export const ProductsSection = () => {
 
   useEffect(() => {
     if(!startAnimation) return;
-    //horizontalScroll(categorysRef.current, categorysBoxRef.current, titleWrappRef.current);
+    horizontalScrollTitle(categorysBoxRef.current, titleWrappRef.current);
   }, [startAnimation]);
   
   return (
     <section className="categorys section" ref={ categorysRef }>
       <div className="categorys__wrapper">
         <div className="categorys__box container" ref={ categorysBoxRef }>
+
           <div className="categorys__title-wrapp" ref={ titleWrappRef }>
             <h2 className="categorys__heading">Productos</h2>
-            <div className="categorys__line"></div>
           </div>
           {
             categorysList.map((category) => (
-              <Category key={ `${category.category}-${category.id}` } { ...category } />)
+              <Category key={ `${category.category}-${category.id}` } { ...category } titleWrapp = { titleWrappRef.current } />)
             )
           }
         </div>

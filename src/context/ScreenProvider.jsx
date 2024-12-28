@@ -9,12 +9,13 @@ export const ScreenProvider = ({ children }) => {
   const [screenPx, setScreenPx] = useState(null);
 
   useEffect(() => {
-
+    
     const viewVersion = () => {
       setMobileVersion(window.innerWidth < 1280);
       setScreenPx(window.innerWidth);
     };
     
+    viewVersion();
     window.addEventListener('resize', viewVersion);
 
     return () => {

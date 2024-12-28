@@ -1,44 +1,40 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { BlancoDeTiro } from "../SvgComponents/BlancoDeTiro";
-import { PreloaderContext } from "../../context";
+import { PreloaderContext, ScreenContext } from "../../../../context";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { BlancoDeTiro } from "./BlancoDeTiro";
+import { hTImageAnimation, hTLineAnimation, hTTextAnimation, svgParentAnimation } from "../../../../animations";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const HighlightedText = () => {
 
   const { startAnimation } = useContext(PreloaderContext);
+  const { screenPx } = useContext(ScreenContext);
 
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [valuesSvg, setValuesSvg] = useState({ left: 0, top: 0, height: 0, width: 0 }); 
 
+
   const containerHoverRef = useRef(null);
-  
   const svgParentRef = useRef(null);
+  const textRef = useRef(null);
 
   useEffect(() => {
     if(!startAnimation) return;
-
-    gsap.set('.highlighted-text__line', { width: 0 });
-
-    gsap.to('.highlighted-text__line', {
-      width: "28%",
-      duration: 1.5,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: '.highlighted-text__wrapp',
-        start: "top 85%",
-        scroller: '#main-container'
-      }
-    });
-    
+    hTLineAnimation();
+    hTImageAnimation();
+    hTTextAnimation(textRef.current);
+    /* svgParentAnimation(svgParentRef.current); */
   }, [startAnimation]);
 
 
-
-  useEffect(() => {
+  /* useEffect(() => {
     if(!startAnimation) return;
+
+    
+    if(screenPx < 768) return;
+    
     
     const containerHover = containerHoverRef.current;
 
@@ -66,43 +62,28 @@ export const HighlightedText = () => {
 
     return () => containerHover.removeEventListener('mousemove', handleMouseMove);
 
-  }, [startAnimation, valuesSvg]);
+  }, [startAnimation, valuesSvg]); */
 
-  useEffect(() => {
-    gsap.set(svgParentRef.current, { scale: 1 })
-
-
-    gsap.to(svgParentRef.current, {
-      scale: 0,
-      xPercent: -50,
-      yPercent: 50,
-      duration: 1,
-      scrollTrigger: {
-        trigger: svgParentRef.current,
-        start: "60% 20%",
-        scrub: true,
-        scroller: '#main-container'
-      }
-    })
-  }, [startAnimation])
-  
-  
-  
   return (
     <section className="highlighted-text">
-
       <div className="highlighted-text__wrapp">
         <div className="highlighted-text__line"></div>
-        <div className="highlighted-text__bg-image" ref={ svgParentRef }>
-          <BlancoDeTiro setValues ={ setValuesSvg } tilt= { tilt } />
-        </div>
-        <div className="highlighted-text__hover"  ref={ containerHoverRef  }
-        /* onMouseLeave= {() => {
-          setTilt({ x: 0, y:0 })
-        }} */
-        ></div>
+        <div className="highlighted-text__content container">
 
-        <p className="highlighted-text__text">Nuestros fusiles de precisión están diseñados para superar los estándares más exigentes, tanto en el deporte de Benchrest como en las operaciones tácticas de fuerzas de seguridad.</p>
+          <p ref={ textRef } className="highlighted-text__text">Nuestros fusiles de precisión están diseñados para superar los estándares más exigentes, tanto en el deporte de Benchrest como en las operaciones tácticas de fuerzas de seguridad.</p>
+
+          <div className="highlighted-text__imgs">
+            <picture className="highlighted-text__img">
+              <img src="/img/home/rifle-HT-01.jpg" alt="imagen de fusiles" />
+            </picture>
+            <picture className="highlighted-text__img">
+              <img src="/img/home/rifle-HT-02.jpg" alt="imagen de fusiles" />
+            </picture>
+            
+          </div>
+
+        </div>
+        <div className="highlighted-text__line highlighted-text__line--bottom"></div>
       </div>
     </section>
   )

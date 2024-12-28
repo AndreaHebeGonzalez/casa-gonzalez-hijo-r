@@ -69,7 +69,6 @@
         z-index: 10; 
         margin-top: -6%;
         width: 90%;
-        font-size: 3rem;
         color: v.$secondary;
         text-wrap: balance;
 
@@ -81,7 +80,6 @@
 
         & p {
             font-size: 2.2rem;
-            
 
             @include m.telefono-2{ 
                 font-size: 2.4rem;
@@ -156,7 +154,7 @@
 
     &__items {
         
-        @include m.grid(1, 4rem);
+        @include m.grid(1, 5rem);
 
         @include m.telefono-2 {
             display: grid;
@@ -173,6 +171,7 @@
             @include m.grid(4, 0);
             column-gap: 2rem;
             row-gap: 3rem;
+            margin-bottom: 3rem;
         }
     }
 
@@ -181,7 +180,7 @@
         position: relative;
         @include m.flex(column, 1rem);
         justify-content: start;
-        padding: 6rem 2rem 3rem 2rem;
+        padding: 4.5rem 2rem 3rem 2rem;
         border-radius: 0.5rem;
         border: 1px solid v.$primary;
         background-color: #0D1718;
@@ -213,6 +212,7 @@
         }
 
         @include m.tablet {
+            padding: 6rem 2rem 3rem 2rem;
             @include m.flex(column, 1rem);
         }
 
@@ -247,7 +247,7 @@
 
     &__item-number {
         position: absolute;
-        top: -10%;
+        top: -15%;
         left: -0.5rem;
         font-size: 7rem;
         font-family: v.$primaryFont;
@@ -255,6 +255,11 @@
         font-weight: 900;
         line-height: 1;
         transition: 0.4s ease-in-out;
+
+        @include m.tablet {
+            top: -10%;
+
+        }
     }
 
     &__item-text {

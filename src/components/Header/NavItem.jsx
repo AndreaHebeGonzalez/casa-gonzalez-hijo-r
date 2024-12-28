@@ -7,6 +7,7 @@ export const NavItem = ({ label, link }) => {
         <span>{ label }</span>
         <span>{ label }</span>
       </a>
+      
     </li>
   )
 }

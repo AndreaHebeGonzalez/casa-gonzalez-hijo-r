@@ -23,11 +23,15 @@
     font-size: 4rem;
 
     @include m.telefono {
-      font-size: 4.5rem
+      font-size: 5rem
     }
 
     @include m.tablet {
-      font-size: 5.5rem;
+      font-size: 6rem;
+    }
+
+    @include m.desktop {
+      font-size: 7rem;
     }
   }
 
@@ -70,17 +74,19 @@
 
   &__info-items {
     grid-column: 2 / 4;
+    width: 100%;
     @include m.flex(column, 0);
+    align-items: start;
   }
 
-  &__info-title, &__info-items {
-    transform: none;
-    opacity: 0;
+  &__line {
+    height: 1px;
+    width: 0;
+    background-color: rgba(255, 255, 255, 0.164);
   }
 
   &__info-item {
     @include m.flex(column, 1.5rem);
-    border-bottom: 1px solid #9F9F9F;
     padding: 2rem 0 3rem 0;
 
     &:first-child {
@@ -102,5 +108,7 @@
       font-size: 3.5rem;
     }
   }
+
+  
 }
 

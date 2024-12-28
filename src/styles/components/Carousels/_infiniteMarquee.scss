@@ -13,10 +13,24 @@
   }
 
   &__text {
-    font-size: 8vw;
+    font-size: 10rem;
     font-family: v.$primaryFont;
     color: v.$secondary;
-    text-transform: uppercase
+    text-transform: uppercase;
+
+
+    @include m.tablet {
+      font-size: 15rem;
+    }
+
+    @include m.tablet-2 {
+      font-size: 20rem;
+    }
+
+    @include m.desktop {
+      font-size: 8vw;
+    }
+
   }
 
   &__text:nth-of-type(2) {

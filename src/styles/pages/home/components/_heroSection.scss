@@ -3,7 +3,7 @@
 
 
 .hero {
-  background-image: url(/img/imgPortada1.jpg);
+  background-image: url(/img/hero-2.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -11,6 +11,19 @@
 
   height: 65vh;
   margin-bottom: 3rem;
+  position: relative;
+
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    background-color: #00000075;
+  }
 
   @include m.telefono-2 {
       height: 70vh;
@@ -58,6 +71,7 @@
     position: relative;
     @include m.flex(column, 1rem);
     padding-top: 12rem; 
+    z-index: 10;
 
     @include m.tablet-2 {
       padding-top: 20rem; 
@@ -65,7 +79,6 @@
   }
 
   &__heading {
-
     margin-bottom: 1.5rem;
 
     @include m.desktop {

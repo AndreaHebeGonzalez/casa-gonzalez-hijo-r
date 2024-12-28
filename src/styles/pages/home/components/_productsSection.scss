@@ -2,37 +2,30 @@
 @use '../../../utils/mixins' as m;
 
 .categorys {
-    min-height: 100vh;
+    
 
-    &__wrapper {
-      background: #0B0B0E /* linear-gradient(to bottom, #0E0E12 0%, #070709 35%, #0E0E12 100% ) */; 
-      
-      padding: 5rem 0;
-
-      @include m.telefono-2 {
-        padding: 6rem 0;
-      }
-
-      @include m.tablet-2 {
-        padding: 7rem 0;
-      }
-    }
+  &__wrapper {
+    
+  }
 
   &__box {
-    height: 100%;
     position: relative;
+    width: 100%;
+    overflow: hidden;
+    @include m.flex(column, 4rem);
 
-    @include m.flex(column, 5rem);
 
+    @include m.telefono {
+      gap: 6rem
+    }
 
     @include m.telefono-2 {
-      gap: 6rem
+      gap: 7rem
     }
     
     @include m.tablet-2 {
-      gap: 10rem
+      gap: 8rem
     }
-
   }
 
   &__category-one-heading {
@@ -41,23 +34,30 @@
   }
 
   &__title-wrapp {
-    @include m.flex(column, 2rem);
+    @include m.flex(row, 0);
+    align-items: center;
+    width: max-content;
+    will-change: transform;
+    padding: 10rem 0 ;
 
+    @include m.tablet-2 {
+      min-height: 95vh;
+    }
   }
   
   &__heading {     
-      font-size: 3.8rem;
+      font-size: 15rem;
       font-family: v.$primaryFont;
       line-height: 1;
       text-transform: uppercase;
       font-weight: 700;
 
-      @include m.telefono-2 { 
-        font-size: 4.5rem;
-    }
+      @include m.telefono { 
+        font-size: 18rem;
+      }
 
-      @include m.tablet { 
-          font-size: 5rem;
+      @include m.tablet-2 { 
+          font-size: 32rem;
       }
   }
 

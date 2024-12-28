@@ -8,28 +8,12 @@
   z-index: -1;
   
   & svg {
-    width: 55rem;
+    width: 45rem;
     height: auto;
-    
 
-    @include m.telefono {
-      width: 65rem;
-    }
-
-    @include m.telefono-2 {
-      width: 70rem;
-    }
-
-    @include m.tablet {
-      width: 75rem;
-    }
-
-    @include m.desktop {
-      width: 80rem;
-    }
 
     @include m.desktop-2 {
-      width: 85rem;
+      width: 55rem;
     }
 
   }

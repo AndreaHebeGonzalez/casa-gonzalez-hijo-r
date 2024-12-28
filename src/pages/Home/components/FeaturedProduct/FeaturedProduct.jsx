@@ -1,7 +1,9 @@
 import { useContext, useEffect, useRef, useState } from "react"
 import { closeHotspot, featuredProductAnimation, openHotspot } from "../../../../animations";
 import { Hotspots } from "./Hotspots";
+import { Feature } from "./Feature";
 import { PreloaderContext } from "../../../../context/PreloaderContext";
+
 
 export const FeaturedProduct = () => {
   const [prevHotspot, setPrevHotspot] = useState(null);
@@ -31,6 +33,25 @@ export const FeaturedProduct = () => {
     { id: 3, description: 'Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto.', top: '65%', left: '74%', position: "right" },
     { id: 4, description: 'Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto.', top: '38%', left: '84%', position: "right" },
   ]
+
+  const features = [
+    {
+      id: 1,
+      title: "Lorem Ipsum",
+      description: "Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500",
+    },
+    {
+      id: 2,
+      title: "Lorem Ipsum",
+      description: "Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500",
+    },
+    {
+      id: 3,
+      title: "Lorem Ipsum",
+      description: "Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500",
+    }
+  ];
+
 
 
   const setElements = (hotspot) => {
@@ -84,23 +105,13 @@ export const FeaturedProduct = () => {
             }
           </div>
           <div className="featured-product__info" ref={infoRef}>
-            <div className="featured-product__bg-image">
-              <img src="/img/blanco-de-tiro.svg" alt="blanco de tiro" />
-            </div>
             <h3 className="featured-product__info-title">Diseño superior</h3>
             <div className="featured-product__info-items">
-              <div className="featured-product__info-item">
-                <h4 className="featured-product__item-title">Lorem Ipsum</h4>
-                <p className="featured-product__item-description">Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500</p>
-              </div>
-              <div className="featured-product__info-item">
-                <h4 className="featured-product__item-title">Lorem Ipsum</h4>
-                <p className="featured-product__item-description">Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500</p>
-              </div>
-              <div className="featured-product__info-item">
-                <h4 className="featured-product__item-title">Lorem Ipsum</h4>
-                <p className="featured-product__item-description">Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500</p>
-              </div>
+              {
+                features.map(feature => 
+                  <Feature key={`${feature.title}-${feature.id}`} { ...feature } />
+                )
+              }
             </div>   
           </div>
         </div>

@@ -5,7 +5,7 @@ import SplitType from "split-type";
 
 gsap.registerPlugin(ScrollTrigger);
 
-
+/* About Image */
 export const aboutImageAnimation = (element) => {
 
   gsap.to(
@@ -24,7 +24,7 @@ export const aboutImageAnimation = (element) => {
   );
 };
 
-
+/* About Items */
 export const aboutItemAnimation = () => {
   
   const listItems = gsap.utils.toArray('.about-s__item-content');
@@ -50,7 +50,7 @@ export const aboutItemAnimation = () => {
           })
       });
     }
-  )
+  );
 
   gsap.matchMedia().add(
     "(min-width: 665px)",
@@ -87,203 +87,236 @@ export const aboutItemAnimation = () => {
   );
 };
 
-export const horizontalScroll = (categorys, categorysBox, titleWrapp, ) => {
+/* About HighlightedText */
+export const hTLineAnimation = () => {
 
-  gsap.matchMedia().add(
-    "(min-width: 768px)",
+  gsap.utils.toArray('.highlighted-text__line').forEach((element) => {
 
-    () => {
+    gsap.set(element, { width: 0 });
 
-      const categoryList = gsap.utils.toArray('.category');
+    gsap.to(element, {
+      width: "35%",
+      duration: 1.5,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: element,
+        start: "top 85%",
+        scroller: '#main-container'
+      }
+    });
 
-      gsap.to(categoryList, {
-        xPercent: -100 * (categoryList.length-1),
-        ease: 'none',
-        scrollTrigger: {
-          start: 'top top',
-          trigger: categorys,
-          scroller: '#main-container', 
-          pin: true,
-          scrub: 0.5,
-          span: 1 / (categoryList.length-1),
-          end: () => `+=${categorysBox.offsetWidth}`
-        }
-      });
+  });
 
-
-      gsap.to(titleWrapp, {
-        x: 0,
-        ease: "power3",
-        scrollTrigger: {
-          start: "top 50%", 
-          trigger: titleWrapp,
-          scroller: "#main-container", 
-          scrub: 0.5,
-        }
-      });
-
-      gsap.to(titleWrapp, {
-        opacity: 0,
-        ease: "power3",
-        scrollTrigger: {
-          start: "top top",
-          trigger: titleWrapp,
-          scroller: '#main-container', 
-          pin: true,
-          scrub: 0.5,
-        }
-      })
-
-        categoryList.forEach((category) => {
-          const imgWrapp = category.querySelector('.category__img');
-          const img = category.querySelector('.category__img img');
-          const info = category.querySelector('.category__information');
-          
-          gsap.to(imgWrapp, {
-            y: "5%",
-            ease: "none",
-            scrollTrigger: {
-              trigger: imgWrapp,
-              scroller: "#main-container", 
-              start: "left center",
-              end: () => `+=${categorysBox.offsetWidth}`,
-              scrub:  0.5,
-            },
-          });
-      
-          gsap.to(img, {
-            scale: "1", 
-            ease: "none",
-            scrollTrigger: {
-              trigger: img,
-              scroller: "#main-container", 
-              start: "left center",
-              end: () => `+=${categorysBox.offsetWidth}`,
-              scrub:  0.5,
-            },
-          });
-  
-          gsap.to(info, {
-            scale: 1.1,
-            x: "10%",
-            y: "50%",
-            ease: "none",
-            scrollTrigger: {
-              trigger: info,
-              scroller: "#main-container",
-              start: "left center",
-              end: () => `+=${categorysBox.offsetWidth}`, 
-              scrub: 0.5,
-            },
-          });
-        });
-
-      
-    }
-  );
-
-  ScrollTrigger.refresh();
 };
 
+export const hTTextAnimation = (text) => {
 
-export const categorysAnimationMobile = (category, info, img) => {
+  const textChars = new SplitType(text, { 
+    types: 'words, char', 
+    wordClass: 'highlighted-text__word',
+    charClass: 'highlighted-text__char' 
+  });
 
-  gsap.matchMedia().add(
-    "(max-width: 767px)",
-    () => {
+  gsap.set(textChars.chars, { color: "#dadada82" });
 
-      const titleProducts =  new SplitType('.categorys__heading', {
-        types: "chars",
-        wordClass: "chars"
-      });
+  gsap.to(textChars.chars, {
+    color: "#fff",
+    duration: 0.5,
+    ease: "none",
+    stagger: 0.01,
+    scrollTrigger: {
+      trigger: text,
+      start: "top bottom",
+      scroller: "#main-container",
+      scrub: 1,
 
-      gsap.set(titleProducts.chars, {yPercent: 100, opacity: 0});
-      gsap.set('.categorys__line', {yPercent: 100, scaleX: 0});
+    }
+  })
+};
 
-      /* Linea de tiempo para animacion del titulo */
+export const hTImageAnimation = () => {
 
-      const tlTitleProducts = gsap.timeline({
-        scrollTrigger: {
-          trigger: '.categorys__title-wrapp',
-          start: "top 80%",
-          scroller: '#main-container',
-        }
-      });
+  const imgs = gsap.utils.toArray('.highlighted-text__imgs > *');
 
-      tlTitleProducts.to(titleProducts.chars, {
-        yPercent: 0,
-        opacity:1,
-        stagger: 0.03,
-      })
-      .to('.categorys__line', {
-        yPercent: 0,
-        scaleX: 1,
-      })
+  imgs.forEach((img) => {
+    gsap.set(img, {
+      clipPath: "inset(100% 0% 100% 0%)",
+    });
 
-      /* Linea de tiempo para animacion de categorias */
+    gsap.to(img, {
+      //scale: 1,
+      clipPath: "inset(0% 0% 0% 0%)",
+      duration: 1,
+      ease: "power3.inOut",
+      scrollTrigger: {
+        trigger: img,
+        start: "top 70%",
+        scroller: "#main-container",
+        
+      }
+    });
+  });
+};
 
-      gsap.set(category, { yPercent: 50, opacity: 0 });
-      gsap.set(info, { yPercent: 50, opacity: 0 });
+export const svgParentAnimation = (svgParent) => {
+  gsap.set(svgParent, { rotate: "0", scale: 1 });
 
-      const tlCategoryMobile = gsap.timeline({
-        scrollTrigger: {
-          trigger: category,
-          start: "top 80%",
-          scroller: '#main-container',
-        }
-      });
+  gsap.to(svgParent, {
+    rotate: "90deg",
+    scale: 1.5,
+    duration: 1,
+    scrollTrigger: {
+      trigger: svgParent,
+      start: "60% 20%",
+      scrub: true,
+      scroller: '#main-container'
+    }
+  });
+};
 
-      tlCategoryMobile.to(category, {
-        yPercent: 0,
-        duration: 0.5,
-        ease: "power1"
-      })
-      .to(category, {
-        opacity: 1,
-        duration: 1,
-        ease: "power1"
-      }, 0)
-      .to(info, {
-        yPercent: 0,
-        opacity: 1,
-        ease: "power1"
-      }, "<.2")
+export const svgAnimation = (svg, setValues) => {
+  gsap.set('.svg-wrapper', { scale: 0 });
+  gsap.set("circle", { strokeDasharray: "3000", strokeDashoffset: "3000" });
+
+  const tlSvg = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.svg-wrapper',
+      start: "top 70%",
+      scroller: '#main-container',
+    }
+  });
+
+  tlSvg.to("circle", {
+      strokeDashoffset: "0", 
+      duration: 4, 
+      ease: "power2.out", 
     }
   )
-}
+  .to('.svg-wrapper', {
+    scale: 1,
+    duration: 1.5,
+    onComplete: () => {
+      if(!svg) return;
 
-export const featuredProductAnimation = (featuredProduct, title, image, info) => {
+      const { left, top, height, width } = svg.getBoundingClientRect();
+      setValues({ left, top, height, width });
+    }
+  }, '<.1');
+};
+
+/* Products Categorys */
+export const horizontalScrollTitle = (categorysBox, titleWrapp) => {
+
+  gsap.set(titleWrapp, { xPercent: 0 } ) 
+
+  gsap.to(titleWrapp, {
+    xPercent: -100,
+    ease: 'none',
+    scrollTrigger: {
+      start: 'top top',
+      trigger: categorysBox,
+      scroller: '#main-container', 
+      pin: true,
+      scrub: 0.5,
+      end: () => `+=${titleWrapp.offsetWidth}`,
+      //onLeave: () => ScrollTrigger.refresh()
+    }
+  });
+
+};
+
+export const categorysAnimation = (titleWrapp, categoryHeader, categoryHeadingBox, categoryLine, imgBox) => {
   ScrollTrigger.refresh();
-  if(!title || !image || !info) return;
+  /* Animation heading */
 
-  gsap.set(title, { yPercent: 50, opacity: 0 });
+  const title = categoryHeadingBox.querySelector('.product-category__title');
+  const link = categoryHeadingBox.querySelector('.product-category__link');
+  const imgCategory = imgBox.querySelector('.product-category__img img');
+
+  const isReverse = imgBox.classList.contains('product-category__img-box-grid--reverse');
+  
+  const titleChars = new SplitType(title, { 
+    types: 'char', 
+    wordClass: 'category__titleChar' 
+  });
+
+  /* initializations  */
+  gsap.set(titleChars.chars, { yPercent: 50, opacity: 0 });
+  gsap.set(link, { scale: 0, opacity: 0 });
+  gsap.set(categoryLine, { flexGrow: 0 });
+
+  gsap.set(imgCategory, { clipPath: isReverse ? "inset(0% 0% 0% 100%)": "inset(0% 100% 0% 0%)"});
+  
+  
+
+  /* Animations category */
+  const tlHeadingCategory = gsap.timeline({
+    scrollTrigger: {
+      trigger: categoryHeader,
+      start: () => `+=${titleWrapp.offsetWidth} 70%`,
+      scroller: '#main-container',
+    }
+  });
+
+  tlHeadingCategory.to(titleChars.chars, {
+    yPercent: 0,
+    opacity: 1,
+    stagger: 0.04,
+    duration: 0.4,
+    ease: 'expo'
+  })
+  .to(link, {
+    scale: 1,
+    opacity: 1,
+    duration: 0.4,
+    ease: 'power1.out',
+  },'<0.2')
+  .to(categoryLine, {
+    flexGrow: 1,
+    duration: 1,
+    ease: 'power1.out',
+  }, '<0.2')
+  .to(imgCategory, {
+    clipPath: "inset(0% 0% 0% 0%)",
+    ease: "power3",
+    duration: 1,
+  }, '<0.2') 
+};
+
+/* Featured Product */
+export const featuredProductAnimation = (featuredProduct, title, image, info) => {
+
+  const titleChars = new SplitType(title, {
+    types: "words, char",
+    wordClass: "featuredProduct__word",
+    charClass: "featuredProduct__char"
+  })
+
+  gsap.set(titleChars.chars, { yPercent: 50, opacity: 0 });
   gsap.set(image, { yPercent: 25, opacity: 0, scale: 0 });
 
   const tlFeaturedProduct = gsap.timeline({
     scrollTrigger: {
       trigger: featuredProduct,
-      start: "top 50%", //Averiguar porque no funciona para valores porcentuales mayores al 50%
+      start: "top 60%", 
       scroller: '#main-container',
     }
   });
 
-  tlFeaturedProduct.to(title, {
+  tlFeaturedProduct.to(titleChars.chars, {
+    yPercent: 0,
+    opacity: 1,
+    stagger: 0.04,
+    duration: 0.4,
+    ease: 'expo',
+    overwrite: true,
+  })
+  .to(image, {
     yPercent: 0,
     duration: 0.5,
     ease: "power1",
     overwrite: true
-  })
-  .to(title, {
-    opacity: 1,
-    duration: 1,
-    ease: "power1"
-  }, 0)
-  .to(image, {
-    yPercent: 0,
-    duration: 0.3,
-    ease: "power1",
-    overwrite: true
-  }, "<0.1")
+  }, "<0.2")
   .to(image, {
     opacity: 1,
     scale: 1,
@@ -292,48 +325,68 @@ export const featuredProductAnimation = (featuredProduct, title, image, info) =>
   }, 0)
   
 
-  gsap.utils.toArray('.featured-product__info > *').forEach((element) => {
+  /* featured-product__info */
+  const titleInfo = info.querySelector('.featured-product__info-title');
 
-    gsap.set(element, { y: "25%", opacity: 0 });
+  gsap.set(titleInfo, { y: "25%", opacity: 0 });
 
-    const tlInfo = gsap.timeline({
-      scrollTrigger: {
-        trigger: info,
-        start: "top 75%",
-        scroller: '#main-container',
-      }
-    });
-
-    tlInfo.to(element, {
-      y: 0,
-      duration: 0.5,
-      ease: "power1",
-      overwrite: true 
-    })
-    .to(element, {
-      opacity: 1,
-      duration: 2,
-      ease: "power1",
-    }, 0)
+  gsap.to(titleInfo, {
+    y: 0,
+    opacity: 1,
+    duration: 1,
+    ease: "expo",
+    overwrite: true, 
+    scrollTrigger: {
+      trigger: titleInfo,
+      start: "top 70%",
+      scroller: '#main-container',
+    }
   });
 };
 
+export const featureItemAnimation = (item, line) => {
+
+  gsap.set(item, { y: "25%", opacity: 0 });
+  gsap.set(line, { width: "0" });
+
+  const tlFeatureItem = gsap.timeline({
+    scrollTrigger: {
+      trigger: item,
+      start: "top 70%", 
+      scroller: "#main-container"
+    }
+  }) 
+
+  tlFeatureItem.to(item, {
+    y: 0,
+    opacity: 1,
+    duration: 1,
+    ease: "expo",
+    overwrite: true 
+  })
+  .to(line, {
+    width: "100%",
+    duration: 0.8,
+    ease: "power1.out",
+  }, '<0.1')
+}
+
 export const openHotspot = (btnHotspot, tooltip, prevHotspot) => {
-  let delay = prevHotspot ?  0.3:0;
-  console.log(delay)
+  
+
   const tlOpen = gsap.timeline();
   
   tlOpen.to(btnHotspot, {
     zIndex: 12,
-    delay: delay,
+    duration: 0.01, //10ms 
     ease: "none",
   })
   .to(tooltip, {
     height: "auto",
-    ease: "power3.inOut",
+    delay: 0.01, //10ms
+    ease: "expo",
     duration: 0.5,
   })
-
 };
 
 export const closeHotspot = (btnHotspot, tooltip) => {
@@ -342,12 +395,13 @@ export const closeHotspot = (btnHotspot, tooltip) => {
 
   tlClose.to(tooltip, {
     height: "0",
-    ease: "power3.inOut",
-    duration: 0.5,
+    ease: "expo",
+    duration: 0.5, //500ms
   })
   .to(btnHotspot, {
     zIndex: 5,
     ease: "none",
-  });
+    duration: 0.01, //dura 10ms
+  }, '<0.1');  //Empieza 100ms despues de iniciada la animacion anterior
 };
 
