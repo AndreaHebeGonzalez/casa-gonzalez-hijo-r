@@ -68,7 +68,7 @@
     }
 
     &__menu-contenido {
-        background-color: lighten( v.$bgBody, 3%);
+        background-color: color.scale(v.$bgBody, $lightness: 3%);
         position: fixed;
         top: 0;
         right: 0;
