@@ -1,4 +1,4 @@
-import { Home, Contact, About, Categorie, ProductDetail } from '../pages';
+import { Home, Contact, Categorie, ProductDetail } from '../pages';
 import { Navbar, Footer, Breadcrumbs, BtnScroll, Preloader } from '../components';
 import { Outlet, Navigate, useLocation } from 'react-router-dom';
 import { useContext, useEffect, useRef, useState } from 'react';
@@ -20,10 +20,6 @@ export const childMainLayout = [
   {
     path: '/contacto',
     element: <Contact />
-  },
-  {
-    path: '/about',
-    element: <About />
   },
   {
     path: '/categorie/:name',
