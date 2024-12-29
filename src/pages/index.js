@@ -1,5 +1,5 @@
-export * from './Categories/Categorie.jsx';
-export * from './Contact/Contact.jsx';
+/* export * from './Categories';
+export * from './Contact';
 export * from './Home';
-export * from './Products/ProductDetail.jsx';
-export * from './About/About.jsx';
+export * from './Products';
+export * from './About'; */
