@@ -209,6 +209,8 @@ export const horizontalScrollTitle = (categorysBox, titleWrapp) => {
 
   gsap.set(titleWrapp, { xPercent: 0 } ) 
 
+  console.log(titleWrapp.offsetWidth)
+
   gsap.to(titleWrapp, {
     xPercent: -100,
     ease: 'none',
@@ -217,9 +219,11 @@ export const horizontalScrollTitle = (categorysBox, titleWrapp) => {
       trigger: categorysBox,
       scroller: '#main-container', 
       pin: true,
-      scrub: 0.5,
+      scrub: true,
       end: () => `+=${titleWrapp.offsetWidth}`,
-      //onLeave: () => ScrollTrigger.refresh()
+      onUpdate: () => {
+        ScrollTrigger.refresh();
+      }
     }
   });
 
