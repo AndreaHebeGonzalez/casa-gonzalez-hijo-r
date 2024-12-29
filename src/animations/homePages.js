@@ -221,9 +221,6 @@ export const horizontalScrollTitle = (categorysBox, titleWrapp) => {
       pin: true,
       scrub: true,
       end: () => `+=${titleWrapp.offsetWidth}`,
-      onUpdate: () => {
-        ScrollTrigger.refresh();
-      }
     }
   });
 

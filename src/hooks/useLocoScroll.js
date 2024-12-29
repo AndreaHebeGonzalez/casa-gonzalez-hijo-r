@@ -15,8 +15,9 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) =
 
 
   useEffect(() => {
+    console.log('Me ejecuté');
     if(!start) return;
-    
+    console.log('Me ejecuté otra vez con start true');
     const observer = new MutationObserver(() => {
       const scrollEl = document.querySelector('#main-container');
 

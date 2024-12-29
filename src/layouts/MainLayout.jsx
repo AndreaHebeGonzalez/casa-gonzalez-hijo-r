@@ -48,11 +48,11 @@ export const MainLayout = () => {
   const id = useRef(null);
 
   const { mobileVersion } = useContext(ScreenContext);
-  const { completeBar, setCompleteBar, startAnimation } = useContext(PreloaderContext);
+  const { completeBar, setCompleteBar } = useContext(PreloaderContext);
 
   const location = useLocation();
 
-  const locoScroll = useLocoScroll(setHasScrolled, setShowBtnScroll, startAnimation);
+  const locoScroll = useLocoScroll(setHasScrolled, setShowBtnScroll, completeBar);
 
   const onCompleteBar = () => {
     setCompleteBar(true);
@@ -83,13 +83,13 @@ export const MainLayout = () => {
         document.body.style.height = '100vh'
       } else {
         document.body.style.height = 'auto'
-        introAnimation(startAnimation);
+        introAnimation(completeBar);
       }
-  }, [completeBar, startAnimation]);
+  }, [completeBar]);
 
   useEffect(() => {
 
-    if (!startAnimation) return; 
+    if (!completeBar) return; 
 
     const scrollContainer = document.querySelector('#main-container');
     if (scrollContainer) {
@@ -99,7 +99,7 @@ export const MainLayout = () => {
       ScrollTrigger.refresh();
       locoScroll?.update();
     }
-  }, [location.pathname, startAnimation]);
+  }, [location.pathname, completeBar]);
   
 
   return (
