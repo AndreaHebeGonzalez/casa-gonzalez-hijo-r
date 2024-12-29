@@ -13,7 +13,6 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) =
   const { setInstance } = useContext(LocoScrollContext);
   const locoScrollRef = useRef(null);
 
-  
 
   useEffect(() => {
     if(!start) return;

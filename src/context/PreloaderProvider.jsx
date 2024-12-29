@@ -12,7 +12,7 @@ export const PreloaderProvider = ({ children }) => {
     if(completeBar) {
       setTimeout(() => {
         setStartAnimation(true);
-      }, 100);
+      }, 500);
     }
   }, [completeBar]);
   

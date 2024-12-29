@@ -40,18 +40,10 @@ export const ProductsSection = () => {
   const titleWrappRef = useRef(null);
 
   useEffect(() => {
-
-    const handleLoad = () => {
-      if (startAnimation) {
-        horizontalScrollTitle(categorysBoxRef.current, titleWrappRef.current);
-      }
-    };
-
-    window.onload = handleLoad;
-    ScrollTrigger.refresh();
-    
-    return () => window.onload = null; 
-
+    if(!startAnimation) return;
+    setTimeout(() => {
+      horizontalScrollTitle(categorysBoxRef.current, titleWrappRef.current);
+    }, 500);
   }, [startAnimation]);
   
   return (
