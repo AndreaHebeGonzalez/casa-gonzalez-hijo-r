@@ -1,5 +1,4 @@
-/* import { Home, Contact, About, Categorie, ProductDetail } from '../pages'; */
-
+import { Home, Contact, About, Categorie, ProductDetail } from '../pages';
 import { Navbar, Footer, Breadcrumbs, BtnScroll, Preloader } from '../components';
 import { Outlet, Navigate, useLocation } from 'react-router-dom';
 import { useContext, useEffect, useRef, useState } from 'react';
@@ -10,12 +9,6 @@ import { barPreloader, endPreloader, introAnimation } from '../animations';
 
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-
-import { Categorie } from '../pages/Categories/Categorie';
-import { Contact } from '../pages/Contact/Contact';
-import { Home } from '../pages/Home/Home';
-import { ProductDetail } from '../pages/Products/ProductDetail';
-import { About } from '../pages/About/About';
 
 gsap.registerPlugin(ScrollTrigger);
 

@@ -8,3 +8,11 @@ createRoot(document.getElementById('root')).render(
     <App />
   //</StrictMode>,
 )
+
+
+/* {
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ]
+} */
+
