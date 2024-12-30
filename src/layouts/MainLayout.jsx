@@ -48,7 +48,7 @@ export const MainLayout = () => {
   const id = useRef(null);
 
   const { mobileVersion } = useContext(ScreenContext);
-  const { completeBar, setCompleteBar } = useContext(PreloaderContext);
+  const { completeBar, setCompleteBar, startAnimation } = useContext(PreloaderContext);
 
   const location = useLocation();
 
@@ -83,11 +83,16 @@ export const MainLayout = () => {
         document.body.style.height = '100vh'
       } else {
         document.body.style.height = 'auto'
-        introAnimation(completeBar);
       }
   }, [completeBar]);
 
   useEffect(() => {
+    if(!startAnimation) return;
+    introAnimation();
+  }, [startAnimation])
+  
+
+  /* useEffect(() => {
 
     if (!completeBar) return; 
 
@@ -99,7 +104,7 @@ export const MainLayout = () => {
       ScrollTrigger.refresh();
       locoScroll?.update();
     }
-  }, [location.pathname, completeBar]);
+  }, [location.pathname, completeBar]); */
   
 
   return (

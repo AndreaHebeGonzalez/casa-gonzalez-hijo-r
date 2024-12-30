@@ -2,7 +2,7 @@ import SplitType from "split-type";
 import gsap from "gsap";
 
 
-export const introAnimation = (barComplete) => {
+export const introAnimation = () => {
   gsap.set('.nav__item .nav__link', { opacity: 0, x: -20 });
   gsap.set('.nav__divider', { opacity: 0, x: -20 });
   gsap.set('.header__logo', { opacity: 0, x: -20 });
@@ -19,7 +19,7 @@ export const introAnimation = (barComplete) => {
     wordClass: 'hero__titleChildren'
   });
 
-  if(barComplete) {
+  
     const tlIntro = gsap.timeline();
 
     tlIntro.to('.first',{
@@ -75,7 +75,7 @@ export const introAnimation = (barComplete) => {
       opacity: 1, 
       ease: "power2",
     }, '<0')
-  };
+  
 };
 
 /* 
