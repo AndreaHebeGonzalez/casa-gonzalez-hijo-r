@@ -8,30 +8,7 @@
     
   }
 
-  &__box {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    @include m.flex(column, 4rem);
-
-
-    @include m.telefono {
-      gap: 6rem
-    }
-
-    @include m.telefono-2 {
-      gap: 7rem
-    }
-    
-    @include m.tablet-2 {
-      gap: 8rem
-    }
-  }
-
-  &__category-one-heading {
-    display: grid;
-    grid-template-columns: 0.65fr 0.35fr;
-  }
+  
 
   &__title-wrapp {
     @include m.flex(row, 0);
@@ -61,11 +38,31 @@
       }
   }
 
-  &__line {
+  &__box {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    @include m.flex(column, 4rem);
+
+
+    @include m.telefono {
+      gap: 6rem
+    }
+
+    @include m.telefono-2 {
+      gap: 7rem
+    }
+    
+    @include m.tablet-2 {
+      gap: 8rem
+    }
+  }
+
+  /* &__line {
     background-color: v.$secondary;
     flex-grow: 1; //animamos flex-grow
     height: 1px;
     background-color: wheat;
-  }
+  } */
 }
 

@@ -111,30 +111,28 @@ export const MainLayout = () => {
   return (
     <>
       {
-        !completeBar ? <Preloader /> : 
-        <> 
-          <div className="overlay first"></div>
+      !completeBar && <Preloader /> 
+      }
+      <div className="overlay first"></div>
+    
+      <div className="overlay second"></div>
+      <div className="overlay third"></div>
+
+      <div id="main-container" data-scroll-container>
+        <header className= { `header ${ hasScrolled && !mobileVersion ? 'disappear':''}` } data-scroll-sticky data-scroll-target="#main-container">
+          { location.pathname.includes('categorie') || location.pathname.includes('product') ? <Breadcrumbs /> : <Navbar hasScrolled = { hasScrolled } />}
+        </header>
         
-          <div className="overlay second"></div>
-          <div className="overlay third"></div>
+        <main data-scroll-section>
+          <Outlet />
+        </main>
 
-          <div id="main-container" data-scroll-container>
-            <header className= { `header ${ hasScrolled && !mobileVersion ? 'disappear':''}` } data-scroll-sticky data-scroll-target="#main-container">
-              { location.pathname.includes('categorie') || location.pathname.includes('product') ? <Breadcrumbs /> : <Navbar hasScrolled = { hasScrolled } />}
-            </header>
-            
-            <main data-scroll-section>
-              <Outlet />
-            </main>
+        <footer data-scroll-section>
+          <Footer />
+        </footer>  
 
-            <footer data-scroll-section>
-              <Footer />
-            </footer>  
-
-            <BtnScroll showBtnScroll = { showBtnScroll } locoScroll = { locoScroll } />      
-          </div>
-        </>
-      }  
+        <BtnScroll showBtnScroll = { showBtnScroll } locoScroll = { locoScroll } />      
+      </div>
     </> 
   );
 };
