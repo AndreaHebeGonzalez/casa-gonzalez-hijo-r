@@ -88,6 +88,7 @@ export const MainLayout = () => {
 
   useEffect(() => {
     if(!startAnimation) return;
+    console.log("Ejecuto en effect aparte")
     introAnimation();
   }, [startAnimation])
   
