@@ -41,7 +41,9 @@ export const ProductsSection = () => {
 
   useEffect(() => {
     if(!startAnimation) return;
-    horizontalScrollTitle(categorysBoxRef.current, titleWrappRef.current);
+    setTimeout(() => {
+      horizontalScrollTitle(categorysBoxRef.current, titleWrappRef.current);
+    }, 500);
   }, [startAnimation]);
   
   return (
