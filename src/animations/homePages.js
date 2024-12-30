@@ -209,8 +209,6 @@ export const horizontalScrollTitle = (categorysBox, titleWrapp) => {
 
   gsap.set(titleWrapp, { xPercent: 0 } ) 
 
-  console.log(titleWrapp.offsetWidth)
-
   gsap.to(titleWrapp, {
     xPercent: -100,
     ease: 'none',

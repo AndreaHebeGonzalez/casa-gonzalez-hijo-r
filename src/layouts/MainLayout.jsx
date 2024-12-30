@@ -48,7 +48,7 @@ export const MainLayout = () => {
   const id = useRef(null);
 
   const { mobileVersion } = useContext(ScreenContext);
-  const { completeBar, setCompleteBar, startAnimation } = useContext(PreloaderContext);
+  const { completeBar, setCompleteBar, start, startAnimation} = useContext(PreloaderContext);
 
   const location = useLocation();
 
@@ -87,10 +87,10 @@ export const MainLayout = () => {
   }, [completeBar]);
 
   useEffect(() => {
-    if(!startAnimation) return;
-    console.log("Ejecuto en effect aparte")
+    if(!start) return;
+    console.log("Ejecuto en effect aparte");
     introAnimation();
-  }, [startAnimation])
+  }, [start])
   
 
   /* useEffect(() => {
