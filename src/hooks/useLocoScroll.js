@@ -15,9 +15,9 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) =
 
 
   useEffect(() => {
-    console.log('Me ejecuté');
+    
     if(!start) return;
-    console.log('Me ejecuté otra vez con start true');
+    
     const observer = new MutationObserver(() => {
       const scrollEl = document.querySelector('#main-container');
 
@@ -31,19 +31,18 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) =
           smooth: true,
           lerp: 0.1,
           mobile:{
-            breakpoint:0,
+            breakpoint: 768,
             smooth: true,
-            multiplier: 15,
-            class: "is-reveal",
+            multiplier: 1.2,
+            lerp: 0.2
           },
           tablet:{
-              breakpoint:0,
+              breakpoint: 1024,
               smooth: true,
-              multiplier: 1,
-              class: "is-reveal",
+              multiplier: 1.5,
+              lerp: 0.15
           },
         });
-
 
         setInstance(locoScrollRef.current);
 

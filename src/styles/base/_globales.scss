@@ -50,6 +50,10 @@ body {
     @media(min-width: 1600px) {
         max-width: 140rem;
     }
+
+    @media(min-width: 1900px) {
+        max-width: 170rem;
+    }
 }
 
 [class$="container-2"] {
