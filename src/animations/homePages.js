@@ -28,16 +28,16 @@ export const aboutImageAnimation = (element) => {
 export const aboutItemAnimation = () => {
   
   const listItems = gsap.utils.toArray('.about-s__item-content');
-
+  
   gsap.matchMedia().add(
     "(max-width: 664px)",
     () => {
       listItems.forEach((item, index) => {
-
+        console.log(item)
         const ltItems = gsap.timeline({
           scrollTrigger: {
             trigger: item,
-            start: "top 100%",
+            start: "top 85%",
             scroller: '#main-container',
           }
         });
@@ -46,7 +46,6 @@ export const aboutItemAnimation = () => {
             opacity: 1,
             ease: 'none',
             duration: 0.5, 
-            delay: index * 0.1, 
           })
       });
     }
