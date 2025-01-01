@@ -25,31 +25,29 @@ export const aboutImageAnimation = (element) => {
 };
 
 /* About Items */
-export const aboutItemAnimation = () => {
-  
-  const listItems = gsap.utils.toArray('.about-s__item-content');
+export const aboutItemAnimation = (item) => {
   
   gsap.matchMedia().add(
     "(max-width: 664px)",
+
     () => {
-      listItems.forEach((item, index) => {
-        console.log(item)
-        const ltItems = gsap.timeline({
-          scrollTrigger: {
-            trigger: item,
-            start: "top 85%",
-            scroller: '#main-container',
-          }
-        });
-          ltItems.to(item, {
-            y: 0,
-            opacity: 1,
-            ease: 'none',
-            duration: 0.5, 
-          })
-      });
-    }
-  );
+      console.log(item)
+
+      gsap.set(item, { opacity: 0, y: "100px" });
+
+      gsap.to(item, {
+        y: 0,
+        opacity: 1,
+        ease: 'none',
+        duration: 0.5, 
+        scrollTrigger: {
+          trigger: item,
+          start: "top+=100 bottom",
+          scroller: '#main-container',
+        }
+      })
+    
+    });
 
   gsap.matchMedia().add(
     "(min-width: 665px)",

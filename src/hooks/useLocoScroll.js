@@ -4,6 +4,7 @@ import 'locomotive-scroll/src/locomotive-scroll.scss';
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { LocoScrollContext } from "../context/LocoScrollContext";
+import { ScreenContext } from "../context";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -11,10 +12,13 @@ gsap.registerPlugin(ScrollTrigger);
 export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) => {
 
   const { setInstance } = useContext(LocoScrollContext);
+  const { screenPx } = useContext(ScreenContext);
   const locoScrollRef = useRef(null);
 
 
   useEffect(() => {
+    console.log(screenPx);
+
     
     if(!start) return;
     

@@ -176,7 +176,6 @@
     }
 
     &__item-content { 
-        opacity: 0;
         position: relative;
         @include m.flex(column, 1rem);
         justify-content: start;
@@ -184,9 +183,8 @@
         border-radius: 0.5rem;
         border: 1px solid v.$primary;
         background-color: #0D1718;
-        transform: translateY(20rem);
+        will-change: transform;
         
-
         @include m.telefono {
             gap: 1.5rem;
             border-radius: 0.8rem;
