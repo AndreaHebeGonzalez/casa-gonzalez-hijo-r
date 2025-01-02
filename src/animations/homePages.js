@@ -5,6 +5,8 @@ import SplitType from "split-type";
 
 gsap.registerPlugin(ScrollTrigger);
 
+
+
 /* About Image */
 export const aboutImageAnimation = (element) => {
 
@@ -25,13 +27,12 @@ export const aboutImageAnimation = (element) => {
 };
 
 /* About Items */
-export const aboutItemAnimation = (item) => {
+export const aboutItemAnimation = (item, id) => {
   
   gsap.matchMedia().add(
     "(max-width: 664px)",
 
     () => {
-      console.log(item)
 
       gsap.set(item, { opacity: 0, y: "100px" });
 
@@ -45,14 +46,15 @@ export const aboutItemAnimation = (item) => {
           start: "top+=100 bottom",
           scroller: '#main-container',
         }
-      })
-    
+      });
     });
 
   gsap.matchMedia().add(
     "(min-width: 665px)",
+
     () => {
-      listItems.forEach((item, index) => {
+      gsap.set(item, { opacity: 0, y: "200px" });
+
 
         const ltItems = gsap.timeline({
           scrollTrigger: {
@@ -62,13 +64,13 @@ export const aboutItemAnimation = (item) => {
           }
         });
     
-        if(index % 2 !== 0) {
+        if(id % 2 !== 0) {
           ltItems.to(item, {
             y: "3rem",
             opacity: 1,
             ease: 'none',
             duration: 0.5, 
-            delay: index * 0.1, 
+            delay: id * 0.2, 
           });
         } else {
           ltItems.to(item, {
@@ -76,10 +78,9 @@ export const aboutItemAnimation = (item) => {
             opacity: 1,
             ease: 'none',
             duration: 0.5, 
-            delay: index * 0.1, 
+            delay: id * 0.2, 
           })
         }
-      });
     }
   );
 };

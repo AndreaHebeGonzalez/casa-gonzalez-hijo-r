@@ -86,8 +86,8 @@ export const AboutSection = () => {
   
   useEffect(() => {
     if(!startAnimation) return;
-    Object.values(refs.current).forEach(node => {
-      aboutItemAnimation(node);
+    Object.values(refs.current).forEach((node, index) => {
+      aboutItemAnimation(node, index + 1);
     });
   }, [startAnimation]);
 

@@ -17,8 +17,8 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) =
 
 
   useEffect(() => {
-    console.log(screenPx);
-
+    
+    /* if(screenPx<768) return; */
     
     if(!start) return;
     
@@ -33,17 +33,18 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) =
         locoScrollRef.current = new LocomotiveScroll({
           el: scrollEl,
           smooth: true,
-          lerp: 0.15,
+          lerp: 0.1,
           mobile:{
             breakpoint: 0,
             smooth: true,
             multiplier: 5,
-            lerp: 0.5,
+            lerp: 0.2,
           },
           tablet:{
               breakpoint: 0,
               smooth: true,
               multiplier: 5,
+              lerp: 0.15,
           },
         });
         
