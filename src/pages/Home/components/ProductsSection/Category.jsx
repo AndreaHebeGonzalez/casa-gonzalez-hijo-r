@@ -1,12 +1,15 @@
 import { useContext, useEffect, useRef } from "react"
-import { PreloaderContext } from "../../../../context/Preloader/PreloaderContext";
 import { Link } from "react-router-dom"
 import { categorysAnimation } from "../../../../animations";
+import { PreloaderContext,  ScreenContext } from "../../../../context";
 
 export const Category = ({ id, category, image, link, titleWrapp }) => {
 
+  /* Context */
   const { startAnimation } = useContext(PreloaderContext);
-
+  const { screenPx } = useContext(ScreenContext);
+  
+  /* Refs */
   const categoryHeaderRef = useRef(null);
   const categoryHeadingRef = useRef(null);
   const categoryLineRef = useRef(null);
@@ -15,7 +18,7 @@ export const Category = ({ id, category, image, link, titleWrapp }) => {
 
   useEffect(() => {
     if(!startAnimation) return;
-    categorysAnimation(titleWrapp, categoryHeaderRef.current, categoryHeadingRef.current, categoryLineRef.current, imgBoxRef.current);
+    categorysAnimation(titleWrapp, categoryHeaderRef.current, categoryHeadingRef.current, categoryLineRef.current, imgBoxRef.current,  screenPx);
   }, [startAnimation])
   
   
