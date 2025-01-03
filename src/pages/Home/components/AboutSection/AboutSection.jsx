@@ -27,7 +27,7 @@ export const AboutSection = () => {
 
   const [tabletVersion, setTabletVersion] = useState(window.innerWidth >= 665 &&  window.innerWidth < 1024);
 
-  const { completeBar, startAnimation } = useContext(PreloaderContext);
+  const { start, startAnimation } = useContext(PreloaderContext);
 
   const refs = useRef({}); 
 
@@ -61,7 +61,7 @@ export const AboutSection = () => {
   };
 
   useEffect(() => {
-    if(!completeBar) return;
+    if(!start) return;
 
     window.addEventListener('resize', updateViewVersion);
 
@@ -82,7 +82,7 @@ export const AboutSection = () => {
     return () => {
       window.removeEventListener('resize', updateViewVersion);
     }
-  }, [completeBar, tabletVersion]);
+  }, [start, tabletVersion]);
   
   useEffect(() => {
     if(!startAnimation) return;

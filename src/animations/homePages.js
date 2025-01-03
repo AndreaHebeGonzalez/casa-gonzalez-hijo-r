@@ -43,7 +43,7 @@ export const aboutItemAnimation = (item, id) => {
         duration: 0.5, 
         scrollTrigger: {
           trigger: item,
-          start: "top-=100 80%",
+          start: "top-=100 100%",
           scroller: '#main-container',
         }
       });
@@ -142,7 +142,6 @@ export const hTImageAnimation = () => {
     });
 
     gsap.to(img, {
-      //scale: 1,
       clipPath: "inset(0% 0% 0% 0%)",
       duration: 1,
       ease: "power3.inOut",
@@ -304,7 +303,6 @@ export const featuredProductAnimation = (featuredProduct, title, image, info) =>
       trigger: featuredProduct,
       start: "top 80%", 
       scroller: '#main-container',
-      markers: true,
     }
   });
 
