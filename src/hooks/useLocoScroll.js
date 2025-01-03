@@ -41,7 +41,7 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) =
 
           mobile: {
             breakpoint: 0,
-            smooth: true,
+            smooth: false,
             multiplier: 1,
             lerp: 0.2,
             getDirection: true,

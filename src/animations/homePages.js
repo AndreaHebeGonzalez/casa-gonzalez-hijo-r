@@ -34,10 +34,10 @@ export const aboutItemAnimation = (item, id) => {
 
     () => {
 
-      gsap.set(item, { opacity: 0, y: "100px" });
+      gsap.set(item, { opacity: 0, x: "100px" });
 
       gsap.to(item, {
-        y: 0,
+        x: 0,
         opacity: 1,
         ease: 'none',
         duration: 0.5, 
