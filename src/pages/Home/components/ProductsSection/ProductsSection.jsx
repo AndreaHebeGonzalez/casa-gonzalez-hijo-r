@@ -4,8 +4,7 @@ import { horizontalScrollTitle } from "../../../../animations";
 
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import { PreloaderContext } from "../../../../context/PreloaderContext";
-
+import { PreloaderContext } from "../../../../context/Preloader/PreloaderContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,7 +32,7 @@ const categorysList = [
 
 export const ProductsSection = () => {
   
-  const { startAnimation } = useContext(PreloaderContext);
+  const { startAnimation, setStartAfterHScroll } = useContext(PreloaderContext);
 
   const categorysWrapperRef = useRef(null);
   const titleWrappRef = useRef(null);
@@ -42,6 +41,7 @@ export const ProductsSection = () => {
     if(!startAnimation) return;
     setTimeout(() => {
       horizontalScrollTitle(categorysWrapperRef.current, titleWrappRef.current);
+      setStartAfterHScroll(true);
     }, 500);
   }, [startAnimation]);
   

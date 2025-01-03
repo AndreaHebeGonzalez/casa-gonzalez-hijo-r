@@ -1,2 +1,3 @@
-export * from './PreloaderContext';
-export * from './ScreenContext';
+export * from './Preloader';
+export * from './Screen';
+export * from './LocoScroll';

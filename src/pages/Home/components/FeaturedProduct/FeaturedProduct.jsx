@@ -2,14 +2,15 @@ import { useContext, useEffect, useRef, useState } from "react"
 import { closeHotspot, featuredProductAnimation, openHotspot } from "../../../../animations";
 import { Hotspots } from "./Hotspots";
 import { Feature } from "./Feature";
-import { PreloaderContext } from "../../../../context/PreloaderContext";
-
+import { PreloaderContext } from "../../../../context";
 
 export const FeaturedProduct = () => {
   const [prevHotspot, setPrevHotspot] = useState(null);
 
-  const { startAnimation } = useContext(PreloaderContext);
+  /* Contexts */
+  const { startAfterHScroll } = useContext(PreloaderContext);
 
+  /* Refs */
   const refs = useRef({});
   const featuredProductRef = useRef(null);
   const titleProductRef = useRef(null);
@@ -22,6 +23,7 @@ export const FeaturedProduct = () => {
     }
   }
 
+  /* Data */
   const hotspotsLeft = [
     { id: 1, description: 'Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto.', top: '28%', left: '2%', position: "left" },
     { id: 5, description: 'Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto.', top: '30%', left: '42%', position: "left" }
@@ -78,8 +80,9 @@ export const FeaturedProduct = () => {
   }
   
   useEffect(() => {
+    if(!startAfterHScroll) return;
     featuredProductAnimation(featuredProductRef.current, titleProductRef.current, imageProductRef.current, infoRef.current);
-  }, [startAnimation])
+  }, [startAfterHScroll]);
   
   return (
     <section className="featured-product section">
@@ -90,7 +93,7 @@ export const FeaturedProduct = () => {
             <h2 className="featured-product__title">Modelo MMM</h2>
           </div>
           <div className="featured-product__image" ref={ imageProductRef }>
-            <picture className="featured-product__picture" >
+            <picture className="featured-product__picture">
               <img className="featured-product__img" src="/img/fusiles/FusilMMMInicio.png" alt="Fusil MMM" />
             </picture>
             {

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef } from "react"
-import { PreloaderContext } from "../../../../context/PreloaderContext";
+import { PreloaderContext } from "../../../../context/Preloader/PreloaderContext";
 import { Link } from "react-router-dom"
 import { categorysAnimation } from "../../../../animations";
 

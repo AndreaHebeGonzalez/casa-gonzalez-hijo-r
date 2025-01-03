@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { useRef } from "react"
-import { PreloaderContext } from "../../context/PreloaderContext";
 import { marqueeAnimation } from "../../animations";
+import { PreloaderContext } from "../../context";
 
 export const Marquee = () => {
 

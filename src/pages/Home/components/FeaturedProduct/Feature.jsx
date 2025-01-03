@@ -1,19 +1,21 @@
 import { useContext, useEffect, useRef } from "react"
 import { featureItemAnimation } from "../../../../animations"
-import { PreloaderContext } from "../../../../context"
+import { PreloaderContext } from "../../../../context";
 
 
 export const Feature = ({ id, title, description }) => {
 
-  const { startAnimation } = useContext(PreloaderContext);
+  /* Contexts */
+  const { startAfterHScroll } = useContext(PreloaderContext);
 
+  /* Refs */
   const itemRef = useRef(null);
   const lineRef = useRef(null);
 
   useEffect(() => {
-    if(!startAnimation) return;
+    if(!startAfterHScroll) return;
     featureItemAnimation(itemRef.current, lineRef.current);
-  }, [startAnimation])
+  }, [startAfterHScroll]);
   
   return (
     <>

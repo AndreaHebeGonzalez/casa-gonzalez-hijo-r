@@ -8,13 +8,14 @@ export const PreloaderProvider = ({ children }) => {
   const [completeBar, setCompleteBar] = useState(false);
   const [start, setStart] = useState(false);
   const [startAnimation, setStartAnimation] = useState(false);
+  const [startAfterHScroll, setStartAfterHScroll] = useState(false);
   
 
   useEffect(() => {
     if(completeBar) {
       setTimeout(() => {
         setStart(true);
-      }, 500);
+      }, 100);
     }
   }, [completeBar]);
 
@@ -28,7 +29,7 @@ export const PreloaderProvider = ({ children }) => {
   }, [start]);
 
   return (
-    <PreloaderContext.Provider value= {{ completeBar, setCompleteBar, start, startAnimation }}>
+    <PreloaderContext.Provider value= {{ completeBar, setCompleteBar, start, startAnimation, startAfterHScroll, setStartAfterHScroll }}>
       { children }
     </PreloaderContext.Provider>
 

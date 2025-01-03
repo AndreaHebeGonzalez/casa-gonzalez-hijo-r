@@ -153,7 +153,7 @@
     }
 
     &__items {
-        
+
         @include m.grid(1, 5rem);
 
         @include m.telefono-2 {
@@ -173,6 +173,8 @@
             row-gap: 3rem;
             margin-bottom: 3rem;
         }
+
+        
     }
 
     &__item-content { 
@@ -184,6 +186,7 @@
         border: 1px solid v.$primary;
         background-color: #0D1718;
         will-change: transform;
+
         
         @include m.telefono {
             gap: 1.5rem;

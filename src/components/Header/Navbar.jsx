@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { NavItem } from "./NavItem"
 import { useContext, useEffect, useRef, useState } from "react";
-import { ScreenContext } from "../../context/ScreenContext";
+
+import { ScreenContext } from "../../context";
 
 
 export const Navbar = ({ hasScrolled }) => {

@@ -43,7 +43,7 @@ export const aboutItemAnimation = (item, id) => {
         duration: 0.5, 
         scrollTrigger: {
           trigger: item,
-          start: "top+=100 bottom",
+          start: "top-=100 80%",
           scroller: '#main-container',
         }
       });
@@ -53,13 +53,13 @@ export const aboutItemAnimation = (item, id) => {
     "(min-width: 665px)",
 
     () => {
-      gsap.set(item, { opacity: 0, y: "200px" });
+      gsap.set(item, { opacity: 0, y: "300px" });
 
 
         const ltItems = gsap.timeline({
           scrollTrigger: {
             trigger: item,
-            start: "top 100%",
+            start: "top-=300 80%",
             scroller: '#main-container',
           }
         });
@@ -70,7 +70,7 @@ export const aboutItemAnimation = (item, id) => {
             opacity: 1,
             ease: 'none',
             duration: 0.5, 
-            delay: id * 0.2, 
+            delay: id * 0.1, 
           });
         } else {
           ltItems.to(item, {
@@ -78,7 +78,7 @@ export const aboutItemAnimation = (item, id) => {
             opacity: 1,
             ease: 'none',
             duration: 0.5, 
-            delay: id * 0.2, 
+            delay: id * 0.1, 
           })
         }
     }
@@ -98,7 +98,7 @@ export const hTLineAnimation = () => {
       ease: "power2.out",
       scrollTrigger: {
         trigger: element,
-        start: "top 85%",
+        start: "top 80%",
         scroller: '#main-container'
       }
     });
@@ -124,7 +124,7 @@ export const hTTextAnimation = (text) => {
     stagger: 0.01,
     scrollTrigger: {
       trigger: text,
-      start: "top bottom",
+      start: "top 80%",
       scroller: "#main-container",
       scrub: 1,
 
@@ -148,7 +148,7 @@ export const hTImageAnimation = () => {
       ease: "power3.inOut",
       scrollTrigger: {
         trigger: img,
-        start: "top 70%",
+        start: "top 80%",
         scroller: "#main-container",
         
       }
@@ -205,7 +205,7 @@ export const svgAnimation = (svg, setValues) => {
 /* Products Categorys */
 export const horizontalScrollTitle = (categorysBox, titleWrapp) => {
 
-  gsap.set(titleWrapp, { xPercent: 0 } ) 
+  gsap.set(titleWrapp, { xPercent: 0 }); 
 
   gsap.to(titleWrapp, {
     xPercent: -100,
@@ -215,7 +215,7 @@ export const horizontalScrollTitle = (categorysBox, titleWrapp) => {
       trigger: categorysBox,
       scroller: '#main-container', 
       pin: true,
-      scrub: true,
+      scrub: 0.5,
       end: () => `+=${titleWrapp.offsetWidth}`,
     }
   });
@@ -223,7 +223,7 @@ export const horizontalScrollTitle = (categorysBox, titleWrapp) => {
 };
 
 export const categorysAnimation = (titleWrapp, categoryHeader, categoryHeadingBox, categoryLine, imgBox) => {
-  ScrollTrigger.refresh();
+  
   /* Animation heading */
 
   const title = categoryHeadingBox.querySelector('.product-category__title');
@@ -250,7 +250,8 @@ export const categorysAnimation = (titleWrapp, categoryHeader, categoryHeadingBo
   const tlHeadingCategory = gsap.timeline({
     scrollTrigger: {
       trigger: categoryHeader,
-      start: () => `+=${titleWrapp.offsetWidth} 70%`,
+      start: () => `+=${titleWrapp.offsetWidth} 80%`,
+      end: "bottom top",
       scroller: '#main-container',
     }
   });
@@ -290,36 +291,38 @@ export const featuredProductAnimation = (featuredProduct, title, image, info) =>
   })
 
   gsap.set(titleChars.chars, { yPercent: 50, opacity: 0 });
-  gsap.set(image, { yPercent: 25, opacity: 0, scale: 0 });
+  
 
-  const tlFeaturedProduct = gsap.timeline({
-    scrollTrigger: {
-      trigger: featuredProduct,
-      start: "top 60%", 
-      scroller: '#main-container',
-    }
-  });
-
-  tlFeaturedProduct.to(titleChars.chars, {
+  gsap.to(titleChars.chars, {
     yPercent: 0,
     opacity: 1,
     stagger: 0.04,
     duration: 0.4,
     ease: 'expo',
     overwrite: true,
-  })
-  .to(image, {
-    yPercent: 0,
-    duration: 0.5,
-    ease: "power1",
-    overwrite: true
-  }, "<0.2")
-  .to(image, {
+    scrollTrigger: {
+      trigger: featuredProduct,
+      start: "top 80%", 
+      scroller: '#main-container',
+      markers: true,
+    }
+  });
+
+  gsap.set(image, { y: 300, opacity: 0, scale: 0 });
+
+  
+  gsap.to(image, {
+    y: 0,
     opacity: 1,
     scale: 1,
     duration: 1,
-    ease: "power1"
-  }, 0)
+    ease: "expo",
+    scrollTrigger: {
+      trigger: image,
+      start: "top-=250 80%",
+      scroller: '#main-container',
+    }
+  })
   
 
   /* featured-product__info */
@@ -335,7 +338,7 @@ export const featuredProductAnimation = (featuredProduct, title, image, info) =>
     overwrite: true, 
     scrollTrigger: {
       trigger: titleInfo,
-      start: "top 70%",
+      start: "top 80%",
       scroller: '#main-container',
     }
   });
@@ -349,7 +352,7 @@ export const featureItemAnimation = (item, line) => {
   const tlFeatureItem = gsap.timeline({
     scrollTrigger: {
       trigger: item,
-      start: "top 70%", 
+      start: "top 80%", 
       scroller: "#main-container"
     }
   }) 

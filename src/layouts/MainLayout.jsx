@@ -1,14 +1,15 @@
 import { Home, Contact, Categorie, ProductDetail } from '../pages';
 import { Navbar, Footer, Breadcrumbs, BtnScroll, Preloader } from '../components';
+
 import { Outlet, Navigate, useLocation } from 'react-router-dom';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useLocoScroll } from '../hooks/useLocoScroll';
-import { ScreenContext } from '../context/ScreenContext';
-import { PreloaderContext } from '../context/PreloaderContext';
+
 import { barPreloader, endPreloader, introAnimation } from '../animations';
 
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { PreloaderContext, ScreenContext } from '../context';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -80,9 +81,11 @@ export const MainLayout = () => {
 
   useEffect(() => {
       if(!completeBar) {
-        document.body.style.height = '100vh'
+        document.body.style.height = '100vh';
+        document.documentElement.height = '100vh';
       } else {
-        document.body.style.height = 'auto'
+        document.body.style.height = 'auto';
+        document.documentElement.height = 'auto';
       }
   }, [completeBar]);
 

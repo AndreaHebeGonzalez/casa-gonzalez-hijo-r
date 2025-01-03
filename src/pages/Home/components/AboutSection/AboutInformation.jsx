@@ -1,6 +1,7 @@
 import { useContext, useEffect, useRef } from "react";
 import { aboutImageAnimation } from "../../../../animations";
-import { PreloaderContext } from "../../../../context/PreloaderContext";
+import { PreloaderContext } from "../../../../context";
+
 
 export const AboutInformation = () => {
 

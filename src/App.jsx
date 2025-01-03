@@ -1,7 +1,7 @@
-import { ScreenProvider } from './context/ScreenProvider';
-import { PreloaderProvider } from './context/PreloaderProvider';
-import { LocoScrollProvider } from './context/LocoScrollProvider';
+import { LocoScrollProvider, PreloaderProvider, ScreenProvider } from './context';
 import { AppRouter } from './routes/AppRoutes';
+
+
 
 
 export const App = () => {

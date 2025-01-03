@@ -1,6 +1,6 @@
 
 
-export const BtnScroll = ({ showBtnScroll, locoScroll  }) => {
+export const BtnScroll = ({ showBtnScroll, locoScroll }) => {
 
   const handleScrollToTop = () => {
     if (locoScroll) {

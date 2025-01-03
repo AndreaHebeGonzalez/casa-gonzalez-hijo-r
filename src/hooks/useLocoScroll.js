@@ -3,8 +3,9 @@ import LocomotiveScroll from 'locomotive-scroll';
 import 'locomotive-scroll/src/locomotive-scroll.scss';
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { LocoScrollContext } from "../context/LocoScrollContext";
-import { ScreenContext } from "../context";
+
+import { LocoScrollContext, ScreenContext } from "../context";
+
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -34,16 +35,19 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) =
           el: scrollEl,
           smooth: true,
           lerp: 0.1,
+          multiplier: 0.8,
+
           mobile:{
             breakpoint: 0,
             smooth: true,
-            multiplier: 5,
+            multiplier: 1,
             lerp: 0.2,
           },
+
           tablet:{
               breakpoint: 0,
               smooth: true,
-              multiplier: 5,
+              multiplier: 1,
               lerp: 0.15,
           },
         });
