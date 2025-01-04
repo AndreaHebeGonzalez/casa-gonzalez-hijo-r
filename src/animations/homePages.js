@@ -10,20 +10,45 @@ gsap.registerPlugin(ScrollTrigger);
 /* About Image */
 export const aboutImageAnimation = (element) => {
 
-  gsap.to(
-    element,
-    {
-      y: "15%", 
-      ease: "none",
-      scrollTrigger: {
-        trigger: element,
-        start: "top bottom", 
-        end: "bottom top", 
-        scrub: true, 
-        scroller: "#main-container",  
-      },
+  gsap.matchMedia().add(
+    "(max-width: 767px)", 
+    () => {
+      gsap.to(
+        element,
+        {
+          y: "15%", 
+          ease: "none",
+          scrollTrigger: {
+            trigger: element,
+            start: "top bottom", 
+            end: "bottom top", 
+            scrub: true,  
+          },
+        }
+      );
     }
-  );
+  )
+
+  gsap.matchMedia().add(
+    "(min-width: 768px)", 
+    () => {
+      gsap.to(
+        element,
+        {
+          y: "15%", 
+          ease: "none",
+          scrollTrigger: {
+            trigger: element,
+            start: "top bottom", 
+            end: "bottom top", 
+            scrub: true, 
+            scroller: "#main-container",  
+          },
+        }
+      );
+    }
+  )
+  
 };
 
 /* About Items */
@@ -34,23 +59,56 @@ export const aboutItemAnimation = (item, id) => {
 
     () => {
 
-      gsap.set(item, { opacity: 0, x: "100px" });
+      gsap.set(item, { opacity: 0, y: "100px" });
 
       gsap.to(item, {
-        x: 0,
+        y: 0,
         opacity: 1,
         ease: 'none',
         duration: 0.5, 
         scrollTrigger: {
           trigger: item,
           start: "top-=100 100%",
-          scroller: '#main-container',
         }
       });
-    });
+  });
 
   gsap.matchMedia().add(
     "(min-width: 665px)",
+
+    () => {
+      gsap.set(item, { opacity: 0, y: "300px" });
+
+
+        const ltItems = gsap.timeline({
+          scrollTrigger: {
+            trigger: item,
+            start: "top-=300 80%",
+          }
+        });
+    
+        if(id % 2 !== 0) {
+          ltItems.to(item, {
+            y: "3rem",
+            opacity: 1,
+            ease: 'none',
+            duration: 0.5, 
+            delay: id * 0.1, 
+          });
+        } else {
+          ltItems.to(item, {
+            y: 0,
+            opacity: 1,
+            ease: 'none',
+            duration: 0.5, 
+            delay: id * 0.1, 
+          })
+        }
+    }
+  );
+
+  gsap.matchMedia().add(
+    "(min-width: 768px)",
 
     () => {
       gsap.set(item, { opacity: 0, y: "300px" });
@@ -92,19 +150,39 @@ export const hTLineAnimation = () => {
 
     gsap.set(element, { width: 0 });
 
-    gsap.to(element, {
-      width: "35%",
-      duration: 1.5,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: element,
-        start: "top 80%",
-        scroller: '#main-container'
+    gsap.matchMedia().add(
+      "(max-width: 767px)",
+  
+      () => {
+        gsap.to(element, {
+          width: "35%",
+          duration: 1.5,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: element,
+            start: "top 80%",
+          }
+        });
       }
-    });
+    );
 
+    gsap.matchMedia().add(
+      "(min-width: 768px)",
+  
+      () => {
+        gsap.to(element, {
+          width: "35%",
+          duration: 1.5,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: element,
+            start: "top 80%",
+            scroller: '#main-container'
+          }
+        });
+      }
+    );
   });
-
 };
 
 export const hTTextAnimation = (text) => {
@@ -117,19 +195,42 @@ export const hTTextAnimation = (text) => {
 
   gsap.set(textChars.chars, { color: "#dadada82" });
 
-  gsap.to(textChars.chars, {
-    color: "#fff",
-    duration: 0.5,
-    ease: "none",
-    stagger: 0.01,
-    scrollTrigger: {
-      trigger: text,
-      start: "top 80%",
-      scroller: "#main-container",
-      scrub: 1,
+  gsap.matchMedia().add(
+    "(max-width: 767px)",
 
+    () => {
+      gsap.to(textChars.chars, {
+        color: "#fff",
+        duration: 0.5,
+        ease: "none",
+        stagger: 0.01,
+        scrollTrigger: {
+          trigger: text,
+          start: "top 80%",
+          scrub: 1,
+        }
+      })
     }
-  })
+  );
+
+  gsap.matchMedia().add(
+    "(max-width: 767px)",
+
+    () => {
+      gsap.to(textChars.chars, {
+        color: "#fff",
+        duration: 0.5,
+        ease: "none",
+        stagger: 0.01,
+        scrollTrigger: {
+          trigger: text,
+          start: "top 80%",
+          scroller: "#main-container",
+          scrub: 1,
+        }
+      })
+    }
+  );
 };
 
 export const hTImageAnimation = () => {
@@ -141,17 +242,38 @@ export const hTImageAnimation = () => {
       clipPath: "inset(100% 0% 100% 0%)",
     });
 
-    gsap.to(img, {
-      clipPath: "inset(0% 0% 0% 0%)",
-      duration: 1,
-      ease: "power3.inOut",
-      scrollTrigger: {
-        trigger: img,
-        start: "top 80%",
-        scroller: "#main-container",
-        
+    gsap.matchMedia().add(
+      "(max-width: 767px)",
+      () => {
+        gsap.to(img, {
+          clipPath: "inset(0% 0% 0% 0%)",
+          duration: 1,
+          ease: "power3.inOut",
+          scrollTrigger: {
+            trigger: img,
+            start: "top 80%",
+          }
+        });
       }
-    });
+    )
+
+    gsap.matchMedia().add(
+      "(min-width: 768px)",
+      () => {
+        gsap.to(img, {
+          clipPath: "inset(0% 0% 0% 0%)",
+          duration: 1,
+          ease: "power3.inOut",
+          scrollTrigger: {
+            trigger: img,
+            start: "top 80%",
+            scroller: "#main-container",
+            
+          }
+        });
+      }
+    )
+    
   });
 };
 
@@ -206,19 +328,42 @@ export const horizontalScrollTitle = (categorysBox, titleWrapp) => {
 
   gsap.set(titleWrapp, { xPercent: 0 }); 
 
-  gsap.to(titleWrapp, {
-    xPercent: -100,
-    ease: 'none',
-    scrollTrigger: {
-      start: 'top top',
-      trigger: categorysBox,
-      scroller: '#main-container', 
-      pin: true,
-      scrub: 0.5,
-      end: () => `+=${titleWrapp.offsetWidth}`,
-    }
-  });
+  gsap.matchMedia().add(
+    "(max-width: 767px)",
 
+    () => {
+      gsap.to(titleWrapp, {
+        xPercent: -100,
+        ease: 'none',
+        scrollTrigger: {
+          start: 'top top',
+          trigger: categorysBox,
+          pin: true,
+          scrub: 0.5,
+          end: () => `+=${titleWrapp.offsetWidth}`,
+        }
+      });
+    }
+  )
+
+  gsap.matchMedia().add(
+    "(min-width: 768px)",
+
+    () => {
+      gsap.to(titleWrapp, {
+        xPercent: -100,
+        ease: 'none',
+        scrollTrigger: {
+          start: 'top top',
+          trigger: categorysBox,
+          scroller: '#main-container', 
+          pin: true,
+          scrub: 0.5,
+          end: () => `+=${titleWrapp.offsetWidth}`,
+        }
+      });
+    }
+  )
 };
 
 export const categorysAnimation = (titleWrapp, categoryHeader, categoryHeadingBox, categoryLine, imgBox, screen) => {
@@ -246,38 +391,83 @@ export const categorysAnimation = (titleWrapp, categoryHeader, categoryHeadingBo
   
 
   /* Animations category */
-  const tlHeadingCategory = gsap.timeline({
-    scrollTrigger: {
-      trigger: categoryHeader,
-      start: () => `+=${titleWrapp.offsetWidth} 80%`,
-      end: "bottom top",
-      scroller: '#main-container',
-    }
-  });
 
-  tlHeadingCategory.to(titleChars.chars, {
-    yPercent: 0,
-    opacity: 1,
-    stagger: 0.04,
-    duration: 0.4,
-    ease: 'expo'
-  })
-  .to(link, {
-    scale: 1,
-    opacity: 1,
-    duration: 0.4,
-    ease: 'power1.out',
-  },'<0.2')
-  .to(categoryLine, {
-    flexGrow: 1,
-    duration: 1,
-    ease: 'power1.out',
-  }, '<0.2')
-  .to(imgCategory, {
-    clipPath: "inset(0% 0% 0% 0%)",
-    ease: "power3",
-    duration: 1,
-  }, '<0.2') 
+  gsap.matchMedia().add(
+    "(max-width: 767px)",
+
+    () => {
+      const tlHeadingCategory = gsap.timeline({
+        scrollTrigger: {
+          trigger: categoryHeader,
+          start: () => `+=${titleWrapp.offsetWidth} 80%`,
+          end: "bottom top",
+        }
+      });
+    
+      tlHeadingCategory.to(titleChars.chars, {
+        yPercent: 0,
+        opacity: 1,
+        stagger: 0.04,
+        duration: 0.4,
+        ease: 'expo'
+      })
+      .to(link, {
+        scale: 1,
+        opacity: 1,
+        duration: 0.4,
+        ease: 'power1.out',
+      },'<0.2')
+      .to(categoryLine, {
+        flexGrow: 1,
+        duration: 1,
+        ease: 'power1.out',
+      }, '<0.2')
+      .to(imgCategory, {
+        clipPath: "inset(0% 0% 0% 0%)",
+        ease: "power3",
+        duration: 1,
+      }, '<0.2') 
+    }
+  )
+
+  gsap.matchMedia().add(
+    "(min-width: 768px)",
+
+    () => {
+      const tlHeadingCategory = gsap.timeline({
+        scrollTrigger: {
+          trigger: categoryHeader,
+          scroller: '#main-container',
+          start: () => `+=${titleWrapp.offsetWidth} 80%`,
+          end: "bottom top",
+        }
+      });
+    
+      tlHeadingCategory.to(titleChars.chars, {
+        yPercent: 0,
+        opacity: 1,
+        stagger: 0.04,
+        duration: 0.4,
+        ease: 'expo'
+      })
+      .to(link, {
+        scale: 1,
+        opacity: 1,
+        duration: 0.4,
+        ease: 'power1.out',
+      },'<0.2')
+      .to(categoryLine, {
+        flexGrow: 1,
+        duration: 1,
+        ease: 'power1.out',
+      }, '<0.2')
+      .to(imgCategory, {
+        clipPath: "inset(0% 0% 0% 0%)",
+        ease: "power3",
+        duration: 1,
+      }, '<0.2') 
+    }
+  )
 };
 
 /* Featured Product */
@@ -289,57 +479,103 @@ export const featuredProductAnimation = (featuredProduct, title, image, info) =>
     charClass: "featuredProduct__char"
   })
 
-  gsap.set(titleChars.chars, { yPercent: 50, opacity: 0 });
-  
-
-  gsap.to(titleChars.chars, {
-    yPercent: 0,
-    opacity: 1,
-    stagger: 0.04,
-    duration: 0.4,
-    ease: 'expo',
-    overwrite: true,
-    scrollTrigger: {
-      trigger: featuredProduct,
-      start: "top 80%", 
-      scroller: '#main-container',
-    }
-  });
-
-  gsap.set(image, { y: 300, opacity: 0, scale: 0 });
-
-  
-  gsap.to(image, {
-    y: 0,
-    opacity: 1,
-    scale: 1,
-    duration: 1,
-    ease: "expo",
-    scrollTrigger: {
-      trigger: image,
-      start: "top-=250 80%",
-      scroller: '#main-container',
-    }
-  })
-  
-
-  /* featured-product__info */
+   /* featured-product__info */
   const titleInfo = info.querySelector('.featured-product__info-title');
 
+  gsap.set(titleChars.chars, { yPercent: 50, opacity: 0 });
+  gsap.set(image, { y: 300, opacity: 0, scale: 0 });
   gsap.set(titleInfo, { y: "25%", opacity: 0 });
+  
 
-  gsap.to(titleInfo, {
-    y: 0,
-    opacity: 1,
-    duration: 1,
-    ease: "expo",
-    overwrite: true, 
-    scrollTrigger: {
-      trigger: titleInfo,
-      start: "top 80%",
-      scroller: '#main-container',
+  gsap.matchMedia().add(
+    "(max-width: 767px)",
+
+    () => {
+      gsap.to(titleChars.chars, {
+        yPercent: 0,
+        opacity: 1,
+        stagger: 0.04,
+        duration: 0.4,
+        ease: 'expo',
+        overwrite: true,
+        scrollTrigger: {
+          trigger: featuredProduct,
+          start: "top 80%", 
+        }
+      });
+    
+      gsap.to(image, {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: "expo",
+        scrollTrigger: {
+          trigger: image,
+          start: "top-=250 80%",
+        }
+      })
+
+      gsap.to(titleInfo, {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "expo",
+        overwrite: true, 
+        scrollTrigger: {
+          trigger: titleInfo,
+          start: "top 80%",
+        }
+      });
+
     }
-  });
+  ); 
+
+  gsap.matchMedia().add(
+    "(min-width: 768px)",
+
+    () => {
+      gsap.to(titleChars.chars, {
+        yPercent: 0,
+        opacity: 1,
+        stagger: 0.04,
+        duration: 0.4,
+        ease: 'expo',
+        overwrite: true,
+        scrollTrigger: {
+          trigger: featuredProduct,
+          start: "top 80%", 
+          scroller: '#main-container',
+        }
+      });
+    
+      gsap.to(image, {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: "expo",
+        scrollTrigger: {
+          trigger: image,
+          start: "top-=250 80%",
+          scroller: '#main-container',
+        }
+      })
+
+      gsap.to(titleInfo, {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "expo",
+        overwrite: true, 
+        scrollTrigger: {
+          trigger: titleInfo,
+          start: "top 80%",
+          scroller: '#main-container',
+        }
+      });
+    }
+  ); 
 };
 
 export const featureItemAnimation = (item, line) => {
@@ -347,26 +583,58 @@ export const featureItemAnimation = (item, line) => {
   gsap.set(item, { y: "25%", opacity: 0 });
   gsap.set(line, { width: "0" });
 
-  const tlFeatureItem = gsap.timeline({
-    scrollTrigger: {
-      trigger: item,
-      start: "top 80%", 
-      scroller: "#main-container"
-    }
-  }) 
+  gsap.matchMedia().add(
+    "(max-width: 767px)",
 
-  tlFeatureItem.to(item, {
-    y: 0,
-    opacity: 1,
-    duration: 1,
-    ease: "expo",
-    overwrite: true 
-  })
-  .to(line, {
-    width: "100%",
-    duration: 0.8,
-    ease: "power1.out",
-  }, '<0.1')
+    () => {
+      const tlFeatureItem = gsap.timeline({
+        scrollTrigger: {
+          trigger: item,
+          start: "top 80%", 
+        }
+      }) 
+    
+      tlFeatureItem.to(item, {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "expo",
+        overwrite: true 
+      })
+      .to(line, {
+        width: "100%",
+        duration: 0.8,
+        ease: "power1.out",
+      }, '<0.1')
+    }
+  );
+
+  gsap.matchMedia().add(
+    "(min-width: 768px)",
+
+    () => {
+      const tlFeatureItem = gsap.timeline({
+        scrollTrigger: {
+          trigger: item,
+          start: "top 80%", 
+          scroller: "#main-container"
+        }
+      }) 
+    
+      tlFeatureItem.to(item, {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "expo",
+        overwrite: true 
+      })
+      .to(line, {
+        width: "100%",
+        duration: 0.8,
+        ease: "power1.out",
+      }, '<0.1')
+    }
+  );
 }
 
 export const openHotspot = (btnHotspot, tooltip, prevHotspot) => {

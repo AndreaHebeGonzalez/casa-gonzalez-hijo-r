@@ -19,7 +19,8 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) =
 
   useEffect(() => {
     
-    /* if(screenPx<768) return; */
+    if(screenPx<768) return;
+    
     
     if(!start) return;
     
@@ -38,15 +39,6 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) =
           multiplier: 0.8,
           getDirection: true,
           inertia: 0.6,
-
-          mobile: {
-            breakpoint: 0,
-            smooth: false,
-            multiplier: 1,
-            lerp: 0.2,
-            getDirection: true,
-            inertia: 0.7,
-          },
 
           tablet:{
               breakpoint: 0,
