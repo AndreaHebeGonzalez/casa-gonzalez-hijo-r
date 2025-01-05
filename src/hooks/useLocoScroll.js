@@ -19,7 +19,7 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) =
 
   useEffect(() => {
     
-    if(screenPx<768) return;
+    /* if(screenPx<768) return; */
     
     
     if(!start) return;

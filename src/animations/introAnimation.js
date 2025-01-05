@@ -3,9 +3,6 @@ import gsap from "gsap";
 
 
 export const introAnimation = () => {
-  gsap.set('.nav__item .nav__link', { opacity: 0, x: -20 });
-  gsap.set('.nav__divider', { opacity: 0, x: -20 });
-  gsap.set('.header__logo', { opacity: 0, x: -20 });
 
   const subtitleHero = new SplitType('.hero__subtitle', { 
     types: 'lines, words', 
@@ -19,25 +16,17 @@ export const introAnimation = () => {
     wordClass: 'hero__titleChildren'
   });
 
+  gsap.set('.nav__item .nav__link', { opacity: 0, x: -20 });
+  gsap.set('.nav__divider', { opacity: 0, x: -20 });
+  gsap.set('.header__logo', { opacity: 0, x: -20 });
+
+  gsap.set(subtitleHero.words, { opacity: 0, y: -300 });
+  gsap.set(h1Hero.words, { opacity: 0, y: -300 });
+
   
     const tlIntro = gsap.timeline();
 
-    tlIntro.to('.first',{
-      duration: 1,
-      left:'100%',
-      ease: 'power1.inOut'
-    })
-    .to('.second', {
-      duration: 1,
-      left: '100%',
-      ease: 'power1.inOut'
-    }, '<.2')
-    .to('.third', {
-      duration: 1,
-      left: '100%',
-      ease: 'power1.inOut'
-    }, '<.2')
-    .to('.header__logo', {
+    tlIntro.to('.header__logo', {
       duration: 0.8,
       opacity: 1,
       x: 0,
@@ -75,17 +64,4 @@ export const introAnimation = () => {
       opacity: 1, 
       ease: "power2",
     }, '<0')
-  
 };
-
-/* 
-  gsap.set('.hero__box-btn-pulse', { scale: 0, opacity: 1 });
-
-  gsap.to('.hero__box-btn-pulse', {
-    delay: 1.5 + 1, 
-    duration: 1, 
-    scale: 1, 
-    ease: "back.inOut", 
-  });
-  
-*/

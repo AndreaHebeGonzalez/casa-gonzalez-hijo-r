@@ -12,6 +12,8 @@ export const barPreloader = (progress, completeBar) => {
 };
 
 export const endPreloader = (onCompleteBar) => {
+  gsap.set('.preloader', { clipPath: 'inset(0% 0% 0% 0%)' })
+  gsap.set('.overlay', { clipPath: 'inset(0% 0% 0% 0%)' })
 
   const tlEndPreloader = gsap.timeline();
 
@@ -21,12 +23,20 @@ export const endPreloader = (onCompleteBar) => {
     y: -30,
     ease: 'power1',
   }, 0.7)
+
+
   .to('.preloader', {
-    duration: 0.2,
-    opacity: 0,
-    ease: 'power1.inOut',
+    duration: 1.0,
+    clipPath: 'inset(0% 0% 100% 0%)',
+    ease: 'expo',
     onComplete: () => {
       if (onCompleteBar) onCompleteBar();
     }
   },"0.2>")
+
+  .to('.overlay', {
+    duration: 1,
+    clipPath: 'inset(100% 0% 0% 0%)',
+    ease: 'expo',
+  })
 };

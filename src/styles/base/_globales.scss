@@ -15,7 +15,7 @@ html {
 html, body  {
     width: 100%;
 
-    @include m.tablet { //768
+    @include m.tablet { 
         overflow: hidden;
     }
     

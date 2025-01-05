@@ -23,6 +23,7 @@ export const aboutImageAnimation = (element) => {
             start: "top bottom", 
             end: "bottom top", 
             scrub: true,  
+            scroller: "#main-container",  
           },
         }
       );
@@ -69,6 +70,7 @@ export const aboutItemAnimation = (item, id) => {
         scrollTrigger: {
           trigger: item,
           start: "top-=100 100%",
+          scroller: "#main-container",  
         }
       });
   });
@@ -84,6 +86,7 @@ export const aboutItemAnimation = (item, id) => {
           scrollTrigger: {
             trigger: item,
             start: "top-=300 80%",
+            scroller: "#main-container",  
           }
         });
     
@@ -161,6 +164,7 @@ export const hTLineAnimation = () => {
           scrollTrigger: {
             trigger: element,
             start: "top 80%",
+            scroller: "#main-container",  
           }
         });
       }
@@ -208,6 +212,7 @@ export const hTTextAnimation = (text) => {
           trigger: text,
           start: "top 80%",
           scrub: 1,
+          scroller: "#main-container",  
         }
       })
     }
@@ -252,6 +257,7 @@ export const hTImageAnimation = () => {
           scrollTrigger: {
             trigger: img,
             start: "top 80%",
+            scroller: "#main-container",  
           }
         });
       }
@@ -341,6 +347,7 @@ export const horizontalScrollTitle = (categorysBox, titleWrapp) => {
           pin: true,
           scrub: 0.5,
           end: () => `+=${titleWrapp.offsetWidth}`,
+          scroller: "#main-container",  
         }
       });
     }
@@ -401,6 +408,7 @@ export const categorysAnimation = (titleWrapp, categoryHeader, categoryHeadingBo
           trigger: categoryHeader,
           start: () => `+=${titleWrapp.offsetWidth} 80%`,
           end: "bottom top",
+          scroller: "#main-container",  
         }
       });
     
@@ -501,6 +509,7 @@ export const featuredProductAnimation = (featuredProduct, title, image, info) =>
         scrollTrigger: {
           trigger: featuredProduct,
           start: "top 80%", 
+          scroller: "#main-container",  
         }
       });
     
@@ -513,6 +522,7 @@ export const featuredProductAnimation = (featuredProduct, title, image, info) =>
         scrollTrigger: {
           trigger: image,
           start: "top-=250 80%",
+          scroller: "#main-container",  
         }
       })
 
@@ -525,6 +535,7 @@ export const featuredProductAnimation = (featuredProduct, title, image, info) =>
         scrollTrigger: {
           trigger: titleInfo,
           start: "top 80%",
+          scroller: "#main-container",  
         }
       });
 
@@ -591,6 +602,7 @@ export const featureItemAnimation = (item, line) => {
         scrollTrigger: {
           trigger: item,
           start: "top 80%", 
+          scroller: "#main-container",  
         }
       }) 
     

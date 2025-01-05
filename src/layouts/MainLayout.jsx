@@ -113,14 +113,7 @@ export const MainLayout = () => {
 
   return (
     <>
-      {
-      !completeBar && <Preloader /> 
-      }
-      <div className="overlay first"></div>
-    
-      <div className="overlay second"></div>
-      <div className="overlay third"></div>
-
+      <Preloader progress = { progress } /> 
       <div id="main-container" data-scroll-container>
         <header className= { `header ${ hasScrolled && !mobileVersion ? 'disappear':''}` } data-scroll-sticky data-scroll-target="#main-container">
           { location.pathname.includes('categorie') || location.pathname.includes('product') ? <Breadcrumbs /> : <Navbar hasScrolled = { hasScrolled } />}
