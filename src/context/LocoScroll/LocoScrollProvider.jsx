@@ -15,10 +15,12 @@ export const LocoScrollProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    setTimeout(() => {
-      setStartAnimation(true);
-    }, 300);
+    setStartAnimation(true);
   }, [locoScrollInstance]);
+
+  useEffect(() => {
+    console.log(startAnimation);
+  }, [startAnimation])
   
   
   return (
