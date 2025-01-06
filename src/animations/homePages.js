@@ -219,7 +219,7 @@ export const hTTextAnimation = (text) => {
   );
 
   gsap.matchMedia().add(
-    "(max-width: 767px)",
+    "(min-width: 768px)",
 
     () => {
       gsap.to(textChars.chars, {

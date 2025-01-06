@@ -10,19 +10,15 @@ export const LocoScrollProvider = ({ children }) => {
   const [startAnimation, setStartAnimation] = useState(false);
   const [startAfterHScroll, setStartAfterHScroll] = useState(false);
 
-
-
   const setInstance = (val) => {
     setLocoScrollInstance(val);
   }
 
   useEffect(() => {
-    setStartAnimation(true);
+    setTimeout(() => {
+      setStartAnimation(true);
+    }, 300);
   }, [locoScrollInstance]);
-
-  useEffect(() => {
-    console.log(startAnimation);
-  }, [startAnimation])
   
   
   return (
