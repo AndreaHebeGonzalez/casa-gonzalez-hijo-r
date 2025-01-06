@@ -1,13 +1,14 @@
 import { useContext, useEffect, useRef } from "react"
 import { Link } from "react-router-dom"
 import { categorysAnimation } from "../../../../animations";
-import { LocoScrollContext,  ScreenContext } from "../../../../context";
+import { LocoScrollContext,  PreloaderContext,  ScreenContext } from "../../../../context";
 
 export const Category = ({ id, category, image, link, titleWrapp }) => {
 
   /* Context */
   const { startAnimation } = useContext(LocoScrollContext);
-  
+  const { startAfterHScroll } = useContext(PreloaderContext);
+
   const { screenPx } = useContext(ScreenContext);
   
   
@@ -19,9 +20,9 @@ export const Category = ({ id, category, image, link, titleWrapp }) => {
 
 
   useEffect(() => {
-    if(!startAnimation) return;
+    if(!startAfterHScroll) return;
     categorysAnimation(titleWrapp, categoryHeaderRef.current, categoryHeadingRef.current, categoryLineRef.current, imgBoxRef.current,  screenPx);
-  }, [startAnimation])
+  }, [startAfterHScroll]);
   
   
   
