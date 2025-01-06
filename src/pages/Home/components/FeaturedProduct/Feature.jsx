@@ -1,13 +1,13 @@
 import { useContext, useEffect, useRef } from "react"
 import { featureItemAnimation } from "../../../../animations"
-import { LocoScrollContext, PreloaderContext } from "../../../../context";
+import { LocoScrollContext } from "../../../../context";
 
 
 
 export const Feature = ({ id, title, description }) => {
 
   /* Contexts */
-  const { startAfterHScroll } = useContext(PreloaderContext);
+  const { startAfterHScroll } = useContext(LocoScrollContext);
 
   /* Refs */
   const itemRef = useRef(null);

@@ -8,6 +8,8 @@ export const LocoScrollProvider = ({ children }) => {
 
   const [locoScrollInstance, setLocoScrollInstance] = useState(); 
   const [startAnimation, setStartAnimation] = useState(false);
+  const [startAfterHScroll, setStartAfterHScroll] = useState(false);
+
 
 
   const setInstance = (val) => {
@@ -24,7 +26,7 @@ export const LocoScrollProvider = ({ children }) => {
   
   
   return (
-    <LocoScrollContext.Provider value= {{ locoScrollInstance, setInstance, startAnimation }}>
+    <LocoScrollContext.Provider value= {{ locoScrollInstance, setInstance, startAnimation, startAfterHScroll, setStartAfterHScroll }}>
       { children }
     </LocoScrollContext.Provider>
   )

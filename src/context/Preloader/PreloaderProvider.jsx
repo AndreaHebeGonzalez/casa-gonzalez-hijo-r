@@ -7,7 +7,6 @@ export const PreloaderProvider = ({ children }) => {
 
   const [completeBar, setCompleteBar] = useState(false);
   const [start, setStart] = useState(false);
-  const [startAfterHScroll, setStartAfterHScroll] = useState(false);
 
   useEffect(() => {
     if(completeBar) {
@@ -18,7 +17,7 @@ export const PreloaderProvider = ({ children }) => {
   }, []);
 
   return (
-    <PreloaderContext.Provider value= {{ completeBar, setCompleteBar, start, startAfterHScroll, setStartAfterHScroll }}>
+    <PreloaderContext.Provider value= {{ completeBar, setCompleteBar, start }}>
       { children }
     </PreloaderContext.Provider>
 

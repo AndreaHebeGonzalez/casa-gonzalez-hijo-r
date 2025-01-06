@@ -373,7 +373,7 @@ export const horizontalScrollTitle = (categorysBox, titleWrapp) => {
   )
 };
 
-export const categorysAnimation = (titleWrapp, categoryHeader, categoryHeadingBox, categoryLine, imgBox, screen) => {
+export const categorysAnimation = (titleWrapp, categoryHeader, categoryHeadingBox, categoryLine, imgBox) => {
   
   /* Animation heading */
 

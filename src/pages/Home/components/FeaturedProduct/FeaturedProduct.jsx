@@ -2,13 +2,14 @@ import { useContext, useEffect, useRef, useState } from "react"
 import { closeHotspot, featuredProductAnimation, openHotspot } from "../../../../animations";
 import { Hotspots } from "./Hotspots";
 import { Feature } from "./Feature";
-import { PreloaderContext } from "../../../../context";
+import { LocoScrollContext } from "../../../../context";
+
 
 export const FeaturedProduct = () => {
   const [prevHotspot, setPrevHotspot] = useState(null);
 
   /* Contexts */
-  const { startAfterHScroll } = useContext(PreloaderContext);
+  const { startAfterHScroll } = useContext(LocoScrollContext);
 
   /* Refs */
   const refs = useRef({});
@@ -53,8 +54,6 @@ export const FeaturedProduct = () => {
       description: "Lorem Ipsumes simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500",
     }
   ];
-
-
 
   const setElements = (hotspot) => {
 
