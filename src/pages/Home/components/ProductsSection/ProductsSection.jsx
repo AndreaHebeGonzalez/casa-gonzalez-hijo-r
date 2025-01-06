@@ -1,7 +1,7 @@
 import { Category } from "./Category";
 import { useContext, useEffect, useRef } from "react";
 import { horizontalScrollTitle } from "../../../../animations";
-import { PreloaderContext, ScreenContext } from "../../../../context";
+import { PreloaderContext, LocoScrollContext, ScreenContext } from "../../../../context";
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
@@ -34,15 +34,14 @@ export const ProductsSection = () => {
 
   /* Context */
   
-  const { startAnimation, setStartAfterHScroll } = useContext(PreloaderContext);
-  const { screenPx } = useContext(ScreenContext)
+  const { setStartAfterHScroll } = useContext(PreloaderContext);
+  const { startAnimation } = useContext(LocoScrollContext);
 
   const categorysWrapperRef = useRef(null);
   const titleWrappRef = useRef(null);
 
   useEffect(() => {
     if(!startAnimation) return;
-    if(screenPx < 768) return;
     setTimeout(() => {
       horizontalScrollTitle(categorysWrapperRef.current, titleWrappRef.current);
       setStartAfterHScroll(true);

@@ -1,17 +1,19 @@
 import { useContext, useEffect } from "react";
 import { useRef } from "react"
 import { marqueeAnimation } from "../../animations";
-import { PreloaderContext } from "../../context";
+import { LocoScrollContext } from "../../context";
+
 
 export const Marquee = () => {
 
-  const { startAnimation } = useContext(PreloaderContext);
+  const { startAnimation } = useContext(LocoScrollContext);
 
   const textRef = useRef(null);
   const textCloneRef = useRef(null);
   const marqueeWrappRef = useRef(null);
 
   useEffect(() => {
+    if(!startAnimation) return;
     marqueeAnimation(textRef.current, textCloneRef.current, marqueeWrappRef.current);
   }, [startAnimation]);
 

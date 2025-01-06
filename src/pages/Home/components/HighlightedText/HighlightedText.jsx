@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { PreloaderContext, ScreenContext } from "../../../../context";
+import { LocoScrollContext, ScreenContext } from "../../../../context";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { BlancoDeTiro } from "./BlancoDeTiro";
@@ -9,7 +9,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 export const HighlightedText = () => {
 
-  const { startAnimation } = useContext(PreloaderContext);
+  const { startAnimation } = useContext(LocoScrollContext);
+  
   const { screenPx } = useContext(ScreenContext);
 
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
@@ -30,7 +31,7 @@ export const HighlightedText = () => {
 
 
   /* useEffect(() => {
-    if(!startAnimation) return;
+    if(!start) return;
 
     
     if(screenPx < 768) return;
@@ -62,7 +63,7 @@ export const HighlightedText = () => {
 
     return () => containerHover.removeEventListener('mousemove', handleMouseMove);
 
-  }, [startAnimation, valuesSvg]); */
+  }, [start, valuesSvg]); */
 
   return (
     <section className="highlighted-text">

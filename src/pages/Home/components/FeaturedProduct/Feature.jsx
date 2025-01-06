@@ -1,6 +1,7 @@
 import { useContext, useEffect, useRef } from "react"
 import { featureItemAnimation } from "../../../../animations"
-import { PreloaderContext } from "../../../../context";
+import { LocoScrollContext, PreloaderContext } from "../../../../context";
+
 
 
 export const Feature = ({ id, title, description }) => {

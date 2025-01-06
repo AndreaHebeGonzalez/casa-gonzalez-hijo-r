@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { PreloaderContext } from "../../../../context";
+import { LocoScrollContext } from "../../../../context";
 import { svgAnimation } from "../../../../animations";
 
 
@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export const BlancoDeTiro = ({ setValues, tilt }) => {
   const svgRef = useRef(null);
-  const { startAnimation } = useContext(PreloaderContext);
+  const { startAnimation } = useContext(LocoScrollContext);
 
   useEffect(() => {
     if(!startAnimation) return;

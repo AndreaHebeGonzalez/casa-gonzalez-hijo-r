@@ -1,13 +1,14 @@
 import { useContext, useEffect, useRef } from "react"
 import { Link } from "react-router-dom"
 import { categorysAnimation } from "../../../../animations";
-import { PreloaderContext,  ScreenContext } from "../../../../context";
+import { LocoScrollContext,  ScreenContext } from "../../../../context";
 
 export const Category = ({ id, category, image, link, titleWrapp }) => {
 
   /* Context */
-  const { startAnimation } = useContext(PreloaderContext);
+  const { startAnimation } = useContext(LocoScrollContext);
   const { screenPx } = useContext(ScreenContext);
+  
   
   /* Refs */
   const categoryHeaderRef = useRef(null);

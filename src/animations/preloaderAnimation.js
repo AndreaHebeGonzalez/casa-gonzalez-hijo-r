@@ -26,7 +26,7 @@ export const endPreloader = (onCompleteBar) => {
 
 
   .to('.preloader', {
-    duration: 1.0,
+    duration: 1,
     clipPath: 'inset(0% 0% 100% 0%)',
     ease: 'expo',
     onComplete: () => {

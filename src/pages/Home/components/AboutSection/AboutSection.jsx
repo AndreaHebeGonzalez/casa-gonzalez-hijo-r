@@ -2,7 +2,8 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { AboutInformation } from './AboutInformation';
 import { AboutItem } from './AboutItem';
 import { aboutItemAnimation } from '../../../../animations';
-import { PreloaderContext } from '../../../../context';
+import { LocoScrollContext, PreloaderContext } from '../../../../context';
+
 
 const features = [
   { 
@@ -27,7 +28,7 @@ export const AboutSection = () => {
 
   const [tabletVersion, setTabletVersion] = useState(window.innerWidth >= 665 &&  window.innerWidth < 1024);
 
-  const { start, startAnimation } = useContext(PreloaderContext);
+  const { startAnimation } = useContext(LocoScrollContext);
 
   const refs = useRef({}); 
 
@@ -61,8 +62,7 @@ export const AboutSection = () => {
   };
 
   useEffect(() => {
-    if(!start) return;
-
+  
     window.addEventListener('resize', updateViewVersion);
 
     setTimeout(() => {
@@ -82,7 +82,7 @@ export const AboutSection = () => {
     return () => {
       window.removeEventListener('resize', updateViewVersion);
     }
-  }, [start, tabletVersion]);
+  }, [tabletVersion]);
   
   useEffect(() => {
     if(!startAnimation) return;

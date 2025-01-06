@@ -10,7 +10,7 @@ import { LocoScrollContext, ScreenContext } from "../context";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) => {
+export const useLocoScroll = (setHasScrolled, setShowBtnScroll) => {
 
   const { setInstance } = useContext(LocoScrollContext);
   const { screenPx } = useContext(ScreenContext);
@@ -18,11 +18,6 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) =
 
 
   useEffect(() => {
-    
-    /* if(screenPx<768) return; */
-    
-    
-    if(!start) return;
     
     const observer = new MutationObserver(() => {
       const scrollEl = document.querySelector('#main-container');
@@ -38,14 +33,14 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) =
           lerp: 0.1,
           multiplier: 0.8,
           getDirection: true,
-          inertia: 0.6,
+          inertia: 0.7,
 
           tablet:{
               breakpoint: 0,
               smooth: true,
               multiplier: 3,
-              lerp: 0.15,
-              inertia: 0.7,
+              lerp: 0.2,
+              inertia: 0.8,
           },
 
         /*  mobile: {
@@ -103,7 +98,8 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) =
         locoScrollRef.current = null
       };
     };   
-  }, [start]);
+    
+  }, []);
 
   return locoScrollRef.current;
 };

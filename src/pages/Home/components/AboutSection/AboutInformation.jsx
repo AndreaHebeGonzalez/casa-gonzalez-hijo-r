@@ -1,17 +1,18 @@
 import { useContext, useEffect, useRef } from "react";
 import { aboutImageAnimation } from "../../../../animations";
-import { PreloaderContext } from "../../../../context";
+import { LocoScrollContext } from "../../../../context";
 
 
 export const AboutInformation = () => {
 
-  const { startAnimation } = useContext(PreloaderContext);
+  const { startAnimation } = useContext(LocoScrollContext);
+  
   const aboutImageRef = useRef(null);
 
   useEffect(() => {
     if(!startAnimation) return;
     aboutImageAnimation(aboutImageRef.current);   
-  }, [startAnimation])
+  }, [startAnimation]);
   
 
   return (

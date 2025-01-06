@@ -49,28 +49,30 @@ export const MainLayout = () => {
   const id = useRef(null);
 
   const { mobileVersion } = useContext(ScreenContext);
-  const { completeBar, setCompleteBar, start, startAnimation} = useContext(PreloaderContext);
+  const { completeBar, setCompleteBar } = useContext(PreloaderContext);
 
   const location = useLocation();
 
-  const locoScroll = useLocoScroll(setHasScrolled, setShowBtnScroll, completeBar);
+  const locoScroll = useLocoScroll(setHasScrolled, setShowBtnScroll);
 
   const onCompleteBar = () => {
     setCompleteBar(true);
   };
 
+  
+  /* Interval preloader */
   useEffect(() => {
     id.current = setInterval(() => {
       setProgress(prev => {
         const updatedProgress = prev + Math.floor(Math.random() * 50); 
         return updatedProgress >= 100  ? 100 : updatedProgress;
       });
-
     }, 500);
 
     return  () => clearInterval(id.current);
   }, []);
 
+  /* Clear Interval */
   useEffect(() => {
     barPreloader(progress, completeBar);
     if(progress === 100) {
@@ -78,6 +80,7 @@ export const MainLayout = () => {
       endPreloader(onCompleteBar);
     } 
   }, [progress]);
+
 
   useEffect(() => {
       if(!completeBar) {
@@ -90,10 +93,11 @@ export const MainLayout = () => {
   }, [completeBar]);
 
   useEffect(() => {
-    if(!start) return;
-    console.log("Ejecuto en effect aparte");
-    introAnimation();
-  }, [start])
+    if(!completeBar) return;
+    setTimeout(() => {
+      introAnimation();
+    }, 100);
+  }, [completeBar])
   
 
   /* useEffect(() => {
