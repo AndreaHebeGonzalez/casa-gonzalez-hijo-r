@@ -41,10 +41,18 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll, start = false) =
           inertia: 0.6,
 
           tablet:{
-              breakpoint: 0,
+              breakpoint: 767,
               smooth: true,
               multiplier: 1,
               lerp: 0.15,
+          },
+
+          mobile: {
+            breakpoint: 0, 
+            smooth: true,
+            multiplier: 5, 
+            lerp: 0.2, 
+            inertia: 0.8,
           },
         });
         
