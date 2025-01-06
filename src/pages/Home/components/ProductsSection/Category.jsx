@@ -7,6 +7,7 @@ export const Category = ({ id, category, image, link, titleWrapp }) => {
 
   /* Context */
   const { startAnimation } = useContext(LocoScrollContext);
+  
   const { screenPx } = useContext(ScreenContext);
   
   
