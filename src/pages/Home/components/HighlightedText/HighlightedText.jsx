@@ -23,6 +23,7 @@ export const HighlightedText = () => {
 
   useEffect(() => {
     if(!startAnimation) return;
+    console.log(startAnimation)
     hTLineAnimation();
     hTImageAnimation();
     hTTextAnimation(textRef.current);

@@ -210,7 +210,7 @@ export const hTTextAnimation = (text) => {
         stagger: 0.01,
         scrollTrigger: {
           trigger: text,
-          start: "top 80%",
+          start: "top bottom",
           scrub: 1,
           scroller: "#main-container",  
         }
