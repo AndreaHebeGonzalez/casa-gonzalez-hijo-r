@@ -28,7 +28,7 @@ export const AboutSection = () => {
 
   const [tabletVersion, setTabletVersion] = useState(window.innerWidth >= 665 &&  window.innerWidth < 1024);
 
-  const { startAnimation, setStartAfterHScroll } = useContext(LocoScrollContext);
+  const { startAnimation, startAfterHScroll } = useContext(LocoScrollContext);
 
   const refs = useRef({}); 
 
@@ -85,14 +85,14 @@ export const AboutSection = () => {
   }, [tabletVersion]);
   
   useEffect(() => {
-    if(!setStartAfterHScroll) return;
-    
+    if(!startAfterHScroll) return;
+
     console.log('inicia animacion de about items')
     Object.values(refs.current).forEach((node, index) => {
       aboutItemAnimation(node, index + 1);  
     });
     
-  }, [setStartAfterHScroll]);
+  }, [startAfterHScroll]);
 
 return (
   <section className="about-s section container">
