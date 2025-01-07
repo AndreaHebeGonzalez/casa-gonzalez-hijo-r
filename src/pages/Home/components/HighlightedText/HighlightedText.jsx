@@ -22,12 +22,13 @@ export const HighlightedText = () => {
   const textRef = useRef(null);
 
   useEffect(() => {
-    if(!startAfterHScroll) return;
-    hTLineAnimation();
-    hTImageAnimation();
-    hTTextAnimation(textRef.current);
-    /* svgParentAnimation(svgParentRef.current); */
-  }, [startAfterHScroll]);
+    if(!startAnimation) return;
+    setTimeout(() => {
+      hTLineAnimation();
+      hTImageAnimation();
+      hTTextAnimation(textRef.current);
+    }, 500);
+  }, [startAnimation]);
 
 
   /* useEffect(() => {
