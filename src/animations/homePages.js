@@ -69,7 +69,7 @@ export const aboutItemAnimation = (item, id) => {
         duration: 0.5, 
         scrollTrigger: {
           trigger: item,
-          start: "top-=100 100%",
+          start: "top-=100 70%",
           scroller: "#main-container",  
         }
       });
