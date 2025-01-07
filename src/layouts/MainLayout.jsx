@@ -82,7 +82,7 @@ export const MainLayout = () => {
   }, [progress]);
 
 
-  useEffect(() => {
+  /* useEffect(() => {
       if(!completeBar) {
         document.body.style.height = '100vh';
         document.documentElement.height = '100vh';
@@ -90,7 +90,7 @@ export const MainLayout = () => {
         document.body.style.height = 'auto';
         document.documentElement.height = 'auto';
       }
-  }, [completeBar]);
+  }, [completeBar]); */
 
   useEffect(() => {
     if(!completeBar) return;
