@@ -96,7 +96,7 @@ export const MainLayout = () => {
     if(!completeBar) return;
     setTimeout(() => {
       introAnimation();
-    }, 100);
+    }, 0);
   }, [completeBar])
   
 

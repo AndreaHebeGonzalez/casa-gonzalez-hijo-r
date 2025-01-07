@@ -6,7 +6,7 @@ import { LocoScrollContext } from "./LocoScrollContext";
 
 export const LocoScrollProvider = ({ children }) => {
 
-  const [locoScrollInstance, setLocoScrollInstance] = useState(); 
+  const [locoScrollInstance, setLocoScrollInstance] = useState(null); 
   const [startAnimation, setStartAnimation] = useState(false);
   const [startAfterHScroll, setStartAfterHScroll] = useState(false);
 
@@ -15,9 +15,10 @@ export const LocoScrollProvider = ({ children }) => {
   }
 
   useEffect(() => {
+    if(!locoScrollInstance) return;
     setTimeout(() => {
       setStartAnimation(true);
-    }, 500);
+    }, 200);
   }, [locoScrollInstance]);
   
   
