@@ -5,14 +5,14 @@ import { LocoScrollContext } from "../../../../context";
 
 export const AboutInformation = () => {
 
-  const { startAfterHScroll } = useContext(LocoScrollContext);
+  const { startAnimation } = useContext(LocoScrollContext);
   
   const aboutImageRef = useRef(null);
 
   useEffect(() => {
-    if(!startAfterHScroll) return;
+    if(!startAnimation) return;
     aboutImageAnimation(aboutImageRef.current);   
-  }, [startAfterHScroll]);
+  }, [startAnimation]);
   
 
   return (
