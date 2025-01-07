@@ -15,7 +15,6 @@ export const Feature = ({ id, title, description }) => {
 
   useEffect(() => {
     if(!startAfterHScroll) return;
-    console.log('inicia animacion de feature')
     featureItemAnimation(itemRef.current, lineRef.current);
   }, [startAfterHScroll]);
   

@@ -111,7 +111,6 @@ export const aboutItemAnimation = (item, id) => {
 
 /* About HighlightedText */
 export const hTLineAnimation = () => {
-  console.log('ejecuto la animacion de la linea');
   gsap.utils.toArray('.highlighted-text__line').forEach((element) => {
 
     gsap.set(element, { width: 0 });
