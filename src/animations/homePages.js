@@ -76,41 +76,6 @@ export const aboutItemAnimation = (item, id) => {
   });
 
   gsap.matchMedia().add(
-    "(min-width: 665px)",
-
-    () => {
-      gsap.set(item, { opacity: 0, y: "300px" });
-
-
-        const ltItems = gsap.timeline({
-          scrollTrigger: {
-            trigger: item,
-            start: "top-=300 80%",
-            scroller: "#main-container",  
-          }
-        });
-    
-        if(id % 2 !== 0) {
-          ltItems.to(item, {
-            y: "3rem",
-            opacity: 1,
-            ease: 'none',
-            duration: 0.5, 
-            delay: id * 0.1, 
-          });
-        } else {
-          ltItems.to(item, {
-            y: 0,
-            opacity: 1,
-            ease: 'none',
-            duration: 0.5, 
-            delay: id * 0.1, 
-          })
-        }
-    }
-  );
-
-  gsap.matchMedia().add(
     "(min-width: 768px)",
 
     () => {

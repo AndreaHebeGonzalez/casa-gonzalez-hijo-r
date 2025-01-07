@@ -89,6 +89,7 @@ export const AboutSection = () => {
     setTimeout(() => {
       Object.values(refs.current).forEach((node, index) => {
       aboutItemAnimation(node, index + 1);
+      console.log(node)
     });
     }, 500);
   }, [startAnimation]);
