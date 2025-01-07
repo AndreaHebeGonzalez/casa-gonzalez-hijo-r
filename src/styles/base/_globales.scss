@@ -60,6 +60,10 @@ body {
     }
 }
 
+main {
+    will-change: transform;
+}
+
 .section {
     padding: 5rem 0; 
 
