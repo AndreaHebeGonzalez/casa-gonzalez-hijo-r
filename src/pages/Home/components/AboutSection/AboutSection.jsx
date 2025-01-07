@@ -86,10 +86,10 @@ export const AboutSection = () => {
   
   useEffect(() => {
     if(!setStartAfterHScroll) return;
-      console.log('inicia animacion')
-      Object.values(refs.current).forEach((node, index) => {
-      aboutItemAnimation(node, index + 1);
-      
+    
+    console.log('inicia animacion de about items')
+    Object.values(refs.current).forEach((node, index) => {
+      aboutItemAnimation(node, index + 1);  
     });
     
   }, [setStartAfterHScroll]);
