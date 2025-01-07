@@ -38,7 +38,7 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll) => {
           tablet:{
               breakpoint: 0,
               smooth: true,
-              multiplier: 3,
+              multiplier: 10,
               lerp: 0.5,
               inertia: 0.8,
           },

@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export const HighlightedText = () => {
 
-  const { startAfterHScroll } = useContext(LocoScrollContext);
+  const { startAfterHScroll, startAnimation } = useContext(LocoScrollContext);
   
   const { screenPx } = useContext(ScreenContext);
 
@@ -22,14 +22,14 @@ export const HighlightedText = () => {
   const textRef = useRef(null);
 
   useEffect(() => {
-    if(!startAfterHScroll) return;
+    if(!startAnimation) return;
     setTimeout(() => {
       hTLineAnimation();
       hTImageAnimation();
       hTTextAnimation(textRef.current);
-    }, 500);
+    }, 300);
     /* svgParentAnimation(svgParentRef.current); */
-  }, [startAfterHScroll]);
+  }, [startAnimation]);
 
 
   /* useEffect(() => {
