@@ -59,7 +59,7 @@ export const aboutItemAnimation = (item, id) => {
     "(max-width: 767px)",
 
     () => {
-      gsap.set(item, { opacity: 0, y: "300px" });
+      gsap.set(item, { opacity: 0, y: "100px" });
 
       gsap.to(item, {
         y: 0,
@@ -68,7 +68,7 @@ export const aboutItemAnimation = (item, id) => {
         duration: 0.5, 
         scrollTrigger: {
           trigger: item,
-          start: "top-=100 70%",
+          start: "top-=100 bottom",
           scroller: "#main-container",  
         }
       });
@@ -111,7 +111,7 @@ export const aboutItemAnimation = (item, id) => {
 
 /* About HighlightedText */
 export const hTLineAnimation = () => {
-
+  console.log('ejecuto la animacion de la linea');
   gsap.utils.toArray('.highlighted-text__line').forEach((element) => {
 
     gsap.set(element, { width: 0 });

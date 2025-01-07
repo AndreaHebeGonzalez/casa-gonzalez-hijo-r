@@ -23,11 +23,10 @@ export const HighlightedText = () => {
 
   useEffect(() => {
     if(!startAnimation) return;
-    setTimeout(() => {
+    console.log('ingreso a la animacion del texto');
       hTLineAnimation();
       hTImageAnimation();
       hTTextAnimation(textRef.current);
-    }, 300);
     /* svgParentAnimation(svgParentRef.current); */
   }, [startAnimation]);
 
