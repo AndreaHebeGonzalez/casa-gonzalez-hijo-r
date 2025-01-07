@@ -123,7 +123,7 @@ export const MainLayout = () => {
           { location.pathname.includes('categorie') || location.pathname.includes('product') ? <Breadcrumbs /> : <Navbar hasScrolled = { hasScrolled } />}
         </header>
         
-        <main data-scroll-section>
+        <main className='main' data-scroll-section>
           <Outlet />
         </main>
 
