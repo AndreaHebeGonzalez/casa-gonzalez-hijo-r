@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { AboutInformation } from './AboutInformation';
 import { AboutItem } from './AboutItem';
 import { aboutItemAnimation } from '../../../../animations';
-import { LocoScrollContext, PreloaderContext } from '../../../../context';
+import { LocoScrollContext } from '../../../../context';
 
 
 const features = [
@@ -28,7 +28,7 @@ export const AboutSection = () => {
 
   const [tabletVersion, setTabletVersion] = useState(window.innerWidth >= 665 &&  window.innerWidth < 1024);
 
-  const { startAnimation } = useContext(LocoScrollContext);
+  const { startAnimation, setStartAfterHScroll } = useContext(LocoScrollContext);
 
   const refs = useRef({}); 
 
@@ -85,14 +85,14 @@ export const AboutSection = () => {
   }, [tabletVersion]);
   
   useEffect(() => {
-    if(!startAnimation) return;
+    if(!setStartAfterHScroll) return;
     setTimeout(() => {
       Object.values(refs.current).forEach((node, index) => {
       aboutItemAnimation(node, index + 1);
       console.log(node)
     });
     }, 500);
-  }, [startAnimation]);
+  }, [setStartAfterHScroll]);
 
 return (
   <section className="about-s section container">

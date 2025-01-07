@@ -56,10 +56,9 @@ export const aboutImageAnimation = (element) => {
 export const aboutItemAnimation = (item, id) => {
   
   gsap.matchMedia().add(
-    "(max-width: 664px)",
+    "(max-width: 767px)",
 
     () => {
-      console.log('se ejecuta la animacion')
       gsap.set(item, { opacity: 0, y: "100px" });
 
       gsap.to(item, {
@@ -80,7 +79,6 @@ export const aboutItemAnimation = (item, id) => {
 
     () => {
       gsap.set(item, { opacity: 0, y: "300px" });
-
 
         const ltItems = gsap.timeline({
           scrollTrigger: {
