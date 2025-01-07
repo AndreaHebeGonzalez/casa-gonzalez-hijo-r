@@ -85,13 +85,12 @@ export const AboutSection = () => {
   }, [tabletVersion]);
   
   useEffect(() => {
-    console.log(startAnimation)
     if(!startAnimation) return;
     setTimeout(() => {
       Object.values(refs.current).forEach((node, index) => {
       aboutItemAnimation(node, index + 1);
     });
-    }, 0);
+    }, 500);
   }, [startAnimation]);
 
 return (

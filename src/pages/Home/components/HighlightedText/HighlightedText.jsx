@@ -27,7 +27,7 @@ export const HighlightedText = () => {
       hTLineAnimation();
       hTImageAnimation();
       hTTextAnimation(textRef.current);
-    }, 0);
+    }, 500);
     /* svgParentAnimation(svgParentRef.current); */
   }, [startAnimation]);
 
