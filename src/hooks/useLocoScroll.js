@@ -39,7 +39,7 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll) => {
               breakpoint: 0,
               smooth: true,
               multiplier: 3,
-              lerp: 0.25,
+              lerp: 0.5,
               inertia: 0.8,
           },
 

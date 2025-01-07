@@ -59,7 +59,7 @@ export const aboutItemAnimation = (item, id) => {
     "(max-width: 767px)",
 
     () => {
-      gsap.set(item, { opacity: 0, y: "100px" });
+      gsap.set(item, { opacity: 0, y: "300px" });
 
       gsap.to(item, {
         y: 0,
