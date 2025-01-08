@@ -96,7 +96,7 @@ export const AboutSection = () => {
         resetMarginTop();
         resetHeight();
       }
-    }, 100 );
+    }, 500);
   }, [screenPx]);
   
   useEffect(() => {
