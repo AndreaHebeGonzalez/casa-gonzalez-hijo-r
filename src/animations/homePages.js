@@ -292,7 +292,7 @@ export const svgAnimation = (svg, setValues) => {
 };
 
 /* Products Categorys */
-export const horizontalScrollTitle = (categorysWrapper, titleWrapp, locoScroll) => {
+export const horizontalScrollTitle = (categorysBox, titleWrapp) => {
 
   gsap.set(titleWrapp, { xPercent: 0 }); 
 
@@ -305,15 +305,11 @@ export const horizontalScrollTitle = (categorysWrapper, titleWrapp, locoScroll) 
         ease: 'none',
         scrollTrigger: {
           start: 'top top',
-          trigger: categorysWrapper,
+          trigger: categorysBox,
           pin: true,
           scrub: 0.5,
           end: () => `+=${titleWrapp.offsetWidth}`,
           scroller: "#main-container",  
-          onStart: () => {
-            console.log('inicia la animacion')
-            locoScroll.stop();
-          },
         }
       });
     }
@@ -328,7 +324,7 @@ export const horizontalScrollTitle = (categorysWrapper, titleWrapp, locoScroll) 
         ease: 'none',
         scrollTrigger: {
           start: 'top top',
-          trigger: categorysWrapper,
+          trigger: categorysBox,
           scroller: '#main-container', 
           pin: true,
           scrub: 0.5,
@@ -372,7 +368,7 @@ export const categorysAnimation = (titleWrapp, categoryHeader, categoryHeadingBo
       const tlHeadingCategory = gsap.timeline({
         scrollTrigger: {
           trigger: categoryHeader,
-          start: () => `top 90%`,
+          start: () => `+=${titleWrapp.offsetWidth} 80%`,
           end: "bottom top",
           scroller: "#main-container",  
         }
@@ -412,7 +408,7 @@ export const categorysAnimation = (titleWrapp, categoryHeader, categoryHeadingBo
         scrollTrigger: {
           trigger: categoryHeader,
           scroller: '#main-container',
-          start: () => `top 90%`,
+          start: () => `+=${titleWrapp.offsetWidth} 80%`,
           end: "bottom top",
         }
       });
