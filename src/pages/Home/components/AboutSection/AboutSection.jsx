@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { AboutInformation } from './AboutInformation';
 import { AboutItem } from './AboutItem';
 import { aboutItemAnimation } from '../../../../animations';
-import { LocoScrollContext } from '../../../../context';
+import { LocoScrollContext, ScreenContext } from '../../../../context';
 
 
 const features = [
@@ -26,9 +26,8 @@ const features = [
 
 export const AboutSection = () => {
 
-  const [tabletVersion, setTabletVersion] = useState(window.innerWidth >= 665 &&  window.innerWidth < 1024);
-
   const { startAnimation  } = useContext(LocoScrollContext);
+  const { screenPx } = useContext(ScreenContext);
 
   const refs = useRef({}); 
 
@@ -38,51 +37,65 @@ export const AboutSection = () => {
     }
   };
 
-  const updateViewVersion = () => {
-    setTabletVersion(window.innerWidth >= 665 &&  window.innerWidth < 1024);
-  };
-
   const calculateHeightDifference = () => {
     if (!refs.current[1] || !refs.current[2]) {
       return;
     } 
-
     const heightDifference =
     refs.current[1].offsetHeight - refs.current[2].offsetHeight;
 
     if(heightDifference !== 0 && refs.current[3]) {
       refs.current[3].style.marginTop = `${-Math.abs(heightDifference)}px`; 
-      refs.current[3].style.height = `${refs.current[2].offsetHeight}px`
     }
-
-    if(refs.current[4]) {
-      refs.current[4].style.height = `${refs.current[1].offsetHeight}px`;
-    }
-    
   };
 
-  useEffect(() => {
-  
-    window.addEventListener('resize', updateViewVersion);
-
-    setTimeout(() => {
-      if(tabletVersion) {
-        calculateHeightDifference();
-      } else {
-        if(refs.current[3]) {
-          refs.current[3].style.marginTop = '0px';
-          refs.current[3].style.height = 'auto';
-        };
-        if(refs.current[4]) {
-          refs.current[4].style.height = 'auto';
-        };
-      }
-    }, 100);
-
-    return () => {
-      window.removeEventListener('resize', updateViewVersion);
+  const resetHeight = () => {
+    if(refs.current[1] && refs.current[3] && refs.current[4]) {
+      refs.current[3].style.height = 'auto';
+      refs.current[1].style.height = 'auto';
+      refs.current[4].style.height = 'auto';
     }
-  }, [tabletVersion]);
+  }
+
+  const tabletHeight = () => {
+    if(refs.current[3] && refs.current[1]) {
+      refs.current[3].style.height = `${refs.current[2].offsetHeight}px`;
+    }; 
+    if(refs.current[4]) {
+      refs.current[4].style.height = `${refs.current[1].offsetHeight}px`;
+    };
+  }
+
+  const desktopHeight = () => {
+    if(refs.current[3] && refs.current[1]) {
+      refs.current[1].style.height = `${refs.current[3].offsetHeight}px`;
+    }; 
+    if(refs.current[4]) {
+      refs.current[4].style.height = `${refs.current[2].offsetHeight}px`;
+    };
+  }
+
+  const resetMarginTop = () => {
+    if(refs.current[3]) {
+      refs.current[3].style.marginTop = '0px';
+    }
+  }
+
+  useEffect(() => {
+    setTimeout(() => {
+      if(screenPx>=665 && screenPx<1024) {
+        calculateHeightDifference();
+        tabletHeight();
+      } else if(screenPx>=1040) {
+          resetHeight();
+          resetMarginTop();
+          desktopHeight();
+      } else {
+        resetMarginTop();
+        resetHeight();
+      }
+    }, 50);
+  }, [screenPx]);
   
   useEffect(() => {
     if(!startAnimation) return;

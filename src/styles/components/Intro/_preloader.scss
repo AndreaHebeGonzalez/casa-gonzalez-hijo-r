@@ -46,14 +46,6 @@
   @include m.telefono {
     font-size: 10rem;
   }
-
-  @include m.telefono-2 {
-    font-size: 12rem;
-  }
-
-  @include m.tablet {
-    font-size: 15rem;
-  }
 }
 
 .progress-bar-box {

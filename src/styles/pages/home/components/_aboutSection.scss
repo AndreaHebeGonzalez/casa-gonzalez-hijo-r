@@ -219,11 +219,11 @@
 
         @include m.desktop {
             &:nth-child(n) {
-                min-height: 30rem;
+                min-height: 34rem;
             }
 
             &:nth-child(2n) {
-                min-height: 35rem
+                min-height: 36rem
             }
 
             &:nth-child(1),

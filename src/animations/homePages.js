@@ -75,7 +75,7 @@ export const aboutItemAnimation = (item, id) => {
   });
 
   gsap.matchMedia().add(
-    "(min-width: 768px)",
+    "(min-width: 665px)",
 
     () => {
       gsap.set(item, { opacity: 0, y: "300px" });

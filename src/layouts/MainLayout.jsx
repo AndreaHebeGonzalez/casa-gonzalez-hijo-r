@@ -53,13 +53,15 @@ export const MainLayout = () => {
 
   const location = useLocation();
 
+  /* LocomotiveScroll instance */
   const locoScroll = useLocoScroll(setHasScrolled, setShowBtnScroll);
 
+
+  /* Set CompleteBar   */
   const onCompleteBar = () => {
     setCompleteBar(true);
   };
 
-  
   /* Interval preloader */
   useEffect(() => {
     id.current = setInterval(() => {
@@ -94,9 +96,7 @@ export const MainLayout = () => {
 
   useEffect(() => {
     if(!completeBar) return;
-    setTimeout(() => {
       introAnimation();
-    }, 0);
   }, [completeBar])
   
 
