@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef } from "react"
 import { Link } from "react-router-dom"
 import { categorysAnimation } from "../../../../animations";
-import { LocoScrollContext, ScreenContext } from "../../../../context";
+import { LocoScrollContext } from "../../../../context";
 
 export const Category = ({ id, category, image, link, titleWrapp }) => {
 

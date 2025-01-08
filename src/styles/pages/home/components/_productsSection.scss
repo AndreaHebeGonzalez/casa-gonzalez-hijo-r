@@ -3,10 +3,6 @@
 
 .categorys {
 
-  &__wrapper-wrapp {
-    //border: 1px solid red;
-  }
-
   &__title-wrapp {
     @include m.flex(row, 0);
     align-items: center;
