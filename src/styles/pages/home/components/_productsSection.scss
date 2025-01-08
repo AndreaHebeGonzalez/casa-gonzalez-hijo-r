@@ -4,7 +4,7 @@
 .categorys {
 
   &__wrapper-wrapp {
-    border: 1px solid red;
+    //border: 1px solid red;
   }
 
   &__title-wrapp {
@@ -12,7 +12,7 @@
     align-items: center;
     width: max-content;
     will-change: transform;
-    padding: 10rem 0 ;
+    padding: 50% 0 ;
 
     @include m.tablet-2 {
       min-height: 95vh;
