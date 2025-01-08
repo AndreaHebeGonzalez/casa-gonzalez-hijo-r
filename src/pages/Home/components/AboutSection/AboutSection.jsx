@@ -83,7 +83,8 @@ export const AboutSection = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      console.log(screenPx)
+      console.log(window.innerWidth);
+      
       if(screenPx>=665 && screenPx<1024) {
         console.log('se ejecuto')
         calculateHeightDifference();

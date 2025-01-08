@@ -9,7 +9,7 @@ export const ScreenProvider = ({ children }) => {
   const [screenPx, setScreenPx] = useState(null);
 
   useEffect(() => {
-    console.log(window.innerWidth)
+    console.log(window.innerWidth);
     const viewVersion = () => {
       setMobileVersion(window.innerWidth < 1280);
       setScreenPx(window.innerWidth);
@@ -23,6 +23,8 @@ export const ScreenProvider = ({ children }) => {
     }
 
   }, []); 
+
+  
 
 
 
