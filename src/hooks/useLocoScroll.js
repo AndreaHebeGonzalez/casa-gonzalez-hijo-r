@@ -6,6 +6,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 
 import { LocoScrollContext } from "../context";
 
+
 gsap.registerPlugin(ScrollTrigger);
 
 export const useLocoScroll = (setHasScrolled, setShowBtnScroll) => {
@@ -34,6 +35,7 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll) => {
 
           tablet:{
               breakpoint: 665,
+              el: scrollEl,
               smooth: true,
               multiplier: 13,
               getDirection: true,
