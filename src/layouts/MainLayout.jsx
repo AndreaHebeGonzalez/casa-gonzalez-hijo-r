@@ -31,7 +31,7 @@ export const childMainLayout = [
     element: <ProductDetail />
   },
   {
-    path: '/*', // '*'
+    path: '/*', 
     element: <Navigate to= { '/' } replace />
   }
 ];
@@ -80,7 +80,7 @@ export const MainLayout = () => {
   }, [progress]);
 
 
-  useEffect(() => {
+ /*  useEffect(() => {
       if(!completeBar) {
         document.body.style.height = '100vh';
         document.documentElement.height = '100vh';
@@ -89,7 +89,7 @@ export const MainLayout = () => {
         document.documentElement.height = 'auto';
       }
   }, [completeBar]);
-
+ */
   useEffect(() => {
     if(!completeBar) return;
       introAnimation();
