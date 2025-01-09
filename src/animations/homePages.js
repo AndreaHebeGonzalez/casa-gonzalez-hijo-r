@@ -304,7 +304,7 @@ export const horizontalScrollTitle = (categorysBox, titleWrapp) => {
         xPercent: -100,
         ease: 'none',
         scrollTrigger: {
-          start: 'bottom center',
+          start: 'center center',
           trigger: categorysBox,
           pin: true,
           scrub: 1,
