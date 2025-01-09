@@ -22,7 +22,7 @@ export const aboutImageAnimation = (element) => {
             trigger: element,
             start: "top bottom", 
             end: "bottom top", 
-            scrub: true,  
+            scrub: 1,  
             scroller: "#main-container",  
           },
         }
