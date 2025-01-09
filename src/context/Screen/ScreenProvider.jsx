@@ -7,7 +7,7 @@ import { LocoScrollContext } from "../LocoScroll";
 export const ScreenProvider = ({ children }) => {
 
   const [mobileVersion, setMobileVersion] = useState(window.innerWidth < 1280);
-  const [screenPx, setScreenPx] = useState(window.innerWidth);
+  const [screenPx, setScreenPx] = useState(window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth);
   const { startAnimation } = useContext(LocoScrollContext);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export const ScreenProvider = ({ children }) => {
     
     const viewVersion = () => {
       setMobileVersion(window.innerWidth < 1280);
-      setScreenPx(window.innerWidth);
+      setScreenPx(window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth);
     };
 
     viewVersion();
