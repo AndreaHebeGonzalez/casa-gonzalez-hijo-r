@@ -29,15 +29,17 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll) => {
           smooth: true,
           lerp: 0.5,
           multiplier: 0.8,
+          getDirection: true,
           inertia: 0.7,
 
-          tablet:{
-              breakpoint: 768,
+          /* tablet:{
+              breakpoint: 665,
               smooth: true,
               multiplier: 1,
-              lerp: 0.5,
+              getDirection: true,
+              lerp: 0.1,
               inertia: 0.7,
-          },
+          }, */
         });
 
         setInstance(locoScrollRef.current);
