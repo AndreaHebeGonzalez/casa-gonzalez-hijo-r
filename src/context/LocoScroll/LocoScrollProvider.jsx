@@ -16,6 +16,7 @@ export const LocoScrollProvider = ({ children }) => {
 
   useEffect(() => {
     if(!locoScrollInstance) return;
+    console.log(locoScrollInstance);
       setStartAnimation(true);
   }, [locoScrollInstance]);
   
