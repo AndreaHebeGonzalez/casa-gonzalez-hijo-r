@@ -28,7 +28,7 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll) => {
           el: scrollEl,
           smooth: true,
           lerp: 0.5,
-          multiplier: 1,
+          multiplier: 5,
           getDirection: true,
           inertia: 0.7,
 
@@ -41,14 +41,14 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll) => {
               inertia: 0.7,
           },
 
-          mobile:{
+          mobile: {
             breakpoint: 0,
             smooth: true,
-            multiplier: 200,
+            multiplier: 5,
             getDirection: true,
             lerp: 1,
-            //inertia: 0.6,
-        }
+            inertia: 0.8,
+          }
         });
 
         setInstance(locoScrollRef.current);
