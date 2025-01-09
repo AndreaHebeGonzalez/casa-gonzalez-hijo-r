@@ -304,7 +304,7 @@ export const horizontalScrollTitle = (categorysBox, titleWrapp) => {
         xPercent: -100,
         ease: 'none',
         scrollTrigger: {
-          start: 'top top',
+          start: 'bottom bottom',
           trigger: categorysBox,
           pin: true,
           scrub: 1,
@@ -368,7 +368,7 @@ export const categorysAnimation = (titleWrapp, categoryHeader, categoryHeadingBo
       const tlHeadingCategory = gsap.timeline({
         scrollTrigger: {
           trigger: categoryHeader,
-          start: () => `+=${titleWrapp.offsetWidth} 80%`,
+          start: () => `top 80%`,
           end: "bottom top",
           scroller: "#main-container",  
         }

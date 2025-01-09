@@ -28,7 +28,7 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll) => {
         locoScrollRef.current = new LocomotiveScroll({
           el: scrollEl,
           smooth: true,
-          lerp: 0.1,
+          lerp: 0.15,
           multiplier: 0.8,
           getDirection: true,
           inertia: 0.7,
@@ -36,7 +36,7 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll) => {
           tablet:{
               breakpoint: 768,
               smooth: true,
-              multiplier: 13,
+              multiplier: 3,
               getDirection: true,
               lerp: 0.25,
               inertia: 0.7,
@@ -45,10 +45,10 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll) => {
           smartphone: {
             breakpoint: 767,
             smooth: true,
-            multiplier: 200,
+            multiplier: 3,
             getDirection: true,
             lerp: 0.25,
-            //inertia: 0.7,
+            inertia: 0.7,
         },
 
         });

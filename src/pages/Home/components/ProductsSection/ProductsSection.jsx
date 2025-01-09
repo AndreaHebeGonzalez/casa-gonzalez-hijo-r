@@ -49,10 +49,13 @@ export const ProductsSection = () => {
   
   return (
     <section className="categorys section">
-      <div className="categorys__wrapper" ref={ categorysWrapperRef }>
-        <div className="categorys__title-wrapp" ref={ titleWrappRef }>
-          <h2 className="categorys__heading">Productos</h2>
+      <div className="categorys__wrapper">
+        <div className="wrapper" ref={ categorysWrapperRef }>
+          <div className="categorys__title-wrapp" ref={ titleWrappRef }>
+            <h2 className="categorys__heading">Productos</h2>
+          </div>
         </div>
+        
 
         <div className="categorys__box container">
           {
