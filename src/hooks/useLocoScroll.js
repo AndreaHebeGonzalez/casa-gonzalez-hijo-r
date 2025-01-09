@@ -35,7 +35,6 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll) => {
 
           tablet:{
               breakpoint: 768,
-              el: scrollEl,
               smooth: true,
               multiplier: 13,
               getDirection: true,
@@ -44,13 +43,12 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll) => {
           },
 
           smartphone: {
-            breakpoint: 0,
-            el: scrollEl,
+            breakpoint: 767,
             smooth: true,
-            multiplier: 13,
+            multiplier: 200,
             getDirection: true,
             lerp: 0.25,
-            inertia: 0.7,
+            //inertia: 0.7,
         },
 
         });
