@@ -40,6 +40,15 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll) => {
               lerp: 1,
               inertia: 0.6,
           },
+
+          mobile: {
+            breakpoint: 0,
+            smooth: true,
+            multiplier: 15,
+            getDirection: true,
+            lerp: 1,
+            inertia: 0.6,
+        },
         });
 
         setInstance(locoScrollRef.current);
