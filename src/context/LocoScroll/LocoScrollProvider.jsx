@@ -8,7 +8,7 @@ export const LocoScrollProvider = ({ children }) => {
 
   const [locoScrollInstance, setLocoScrollInstance] = useState(null); 
   const [startAnimation, setStartAnimation] = useState(false);
-  const [startAfterHScroll, setStartAfterHScroll] = useState(false);
+  const [startAfterHScroll, setStartAfterHScroll] = useState(false); //Provisorio
 
   const setInstance = (val) => {
     setLocoScrollInstance(val);
@@ -16,11 +16,8 @@ export const LocoScrollProvider = ({ children }) => {
 
   useEffect(() => {
     if(!locoScrollInstance) return;
-    setTimeout(() => {
       setStartAnimation(true);
-    }, 200);
   }, [locoScrollInstance]);
-  
   
   return (
     <LocoScrollContext.Provider value= {{ locoScrollInstance, setInstance, startAnimation, startAfterHScroll, setStartAfterHScroll }}>

@@ -6,13 +6,13 @@ import { AppRouter } from './routes/AppRoutes';
 
 export const App = () => {
   return (
-    <ScreenProvider>
-      <PreloaderProvider>
-        <LocoScrollProvider>
+    <LocoScrollProvider>
+      <ScreenProvider>
+        <PreloaderProvider>
           <AppRouter />
-        </LocoScrollProvider>
-      </PreloaderProvider>
-    </ScreenProvider>
+        </PreloaderProvider>
+      </ScreenProvider>
+    </LocoScrollProvider>
   );
 };
 

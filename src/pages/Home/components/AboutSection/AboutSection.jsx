@@ -80,13 +80,11 @@ export const AboutSection = () => {
       refs.current[3].style.marginTop = '0px';
     }
   }
-
+  
   useEffect(() => {
-    setTimeout(() => {
-      console.log(window.innerWidth);
-      
+      console.log('calculo en estado global con screenPx ', screenPx)
       if(screenPx>=665 && screenPx<1024) {
-        console.log('se ejecuto')
+        console.log('se ejecuto');
         calculateHeightDifference();
         tabletHeight();
       } else if(screenPx>=1040) {
@@ -97,7 +95,6 @@ export const AboutSection = () => {
         resetMarginTop();
         resetHeight();
       }
-    }, 500);
   }, [screenPx]);
   
   useEffect(() => {

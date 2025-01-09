@@ -15,7 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export const childMainLayout = [
   {
-    path: '/home',
+    path: '/',
     element: <Home />
   },
   {
@@ -31,12 +31,8 @@ export const childMainLayout = [
     element: <ProductDetail />
   },
   {
-    path: '/', // '*'
-    element: <Navigate to= { '/home' } replace />
-  },
-  {
     path: '/*', // '*'
-    element: <Navigate to= { '/home' } replace />
+    element: <Navigate to= { '/' } replace />
   }
 ];
 
@@ -84,7 +80,7 @@ export const MainLayout = () => {
   }, [progress]);
 
 
-  /* useEffect(() => {
+  useEffect(() => {
       if(!completeBar) {
         document.body.style.height = '100vh';
         document.documentElement.height = '100vh';
@@ -92,7 +88,7 @@ export const MainLayout = () => {
         document.body.style.height = 'auto';
         document.documentElement.height = 'auto';
       }
-  }, [completeBar]); */
+  }, [completeBar]);
 
   useEffect(() => {
     if(!completeBar) return;
