@@ -42,7 +42,7 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-    @include m.flex(column, 4rem);
+    @include m.flex(column, 6rem);
 
 
     @include m.telefono {

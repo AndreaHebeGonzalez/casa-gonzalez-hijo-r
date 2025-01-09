@@ -6,7 +6,7 @@
 
     &__wrapper {
         
-        @include m.flex(column, 3rem);
+        @include m.flex(column, 4rem);
 
 
         @include m.telefono {  
@@ -63,7 +63,7 @@
     }
 
     &__title {
-        font-size: 4rem;
+        font-size: 5rem;
         font-family: v.$primaryFont;
         font-weight: 600;
         line-height: 1.3;
