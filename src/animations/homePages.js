@@ -307,7 +307,7 @@ export const horizontalScrollTitle = (categorysBox, titleWrapp) => {
           start: 'top top',
           trigger: categorysBox,
           pin: true,
-          scrub: 0.5,
+          scrub: 1,
           end: () => `+=${titleWrapp.offsetWidth}`,
           scroller: "#main-container",  
         }

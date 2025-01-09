@@ -27,10 +27,19 @@ export const useLocoScroll = (setHasScrolled, setShowBtnScroll) => {
         locoScrollRef.current = new LocomotiveScroll({
           el: scrollEl,
           smooth: true,
-          lerp: 0.5,
+          lerp: 0.1,
           multiplier: 0.8,
           getDirection: true,
           inertia: 0.7,
+
+          tablet:{
+              breakpoint: 0,
+              smooth: true,
+              multiplier: 13,
+              getDirection: true,
+              lerp: 0.25,
+              inertia: 0.7,
+          },
         });
 
         setInstance(locoScrollRef.current);
