@@ -15,7 +15,7 @@ export const ScreenProvider = ({ children }) => {
     
     const viewVersion = () => {
       setMobileVersion(window.innerWidth < 1280);
-      setScreenPx(window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth);
+      setScreenPx(document.documentElement.clientWidth);
     };
 
     viewVersion();
