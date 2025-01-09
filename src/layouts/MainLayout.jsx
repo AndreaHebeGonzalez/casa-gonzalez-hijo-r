@@ -80,16 +80,6 @@ export const MainLayout = () => {
   }, [progress]);
 
 
- /*  useEffect(() => {
-      if(!completeBar) {
-        document.body.style.height = '100vh';
-        document.documentElement.height = '100vh';
-      } else {
-        document.body.style.height = 'auto';
-        document.documentElement.height = 'auto';
-      }
-  }, [completeBar]);
- */
   useEffect(() => {
     if(!completeBar) return;
       introAnimation();
