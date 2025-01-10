@@ -18,6 +18,7 @@ export const aboutImageAnimation = (element) => {
         {
           y: "15%", 
           ease: "none",
+          delay: 1,
           scrollTrigger: {
             trigger: element,
             start: "top bottom", 
