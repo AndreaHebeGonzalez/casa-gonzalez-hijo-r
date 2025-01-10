@@ -317,7 +317,7 @@ export const animationTitle = (wrapper, titleWrapp) => {
         x: 0,
         opacity: 1,
         duration: 1,
-        ease: "expo",
+        ease: "circ",
         overwrite: true, 
         scrollTrigger: {
           trigger: title,
