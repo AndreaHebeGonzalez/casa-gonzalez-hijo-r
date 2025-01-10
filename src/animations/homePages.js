@@ -16,9 +16,9 @@ export const aboutImageAnimation = (element) => {
       gsap.to(
         element,
         {
-          y: "15%", 
+          y: "10%", 
           ease: "none",
-          delay: 1,
+          delay: 2,
           scrollTrigger: {
             trigger: element,
             start: "top bottom", 
