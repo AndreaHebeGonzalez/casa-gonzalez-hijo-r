@@ -10,9 +10,11 @@ gsap.registerPlugin(ScrollTrigger);
 /* About Image */
 export const aboutImageAnimation = (element) => {
 
+
   gsap.matchMedia().add(
     "(max-width: 767px)", 
     () => {
+
       gsap.to(
         element,
         {
@@ -21,7 +23,7 @@ export const aboutImageAnimation = (element) => {
           delay: 2,
           scrollTrigger: {
             trigger: element,
-            start: "top bottom", 
+            start: "top 50%", 
             end: "bottom top", 
             scrub: 1,  
             scroller: "#main-container",  
