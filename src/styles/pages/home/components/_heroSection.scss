@@ -80,6 +80,7 @@
 
   &__heading {
     margin-bottom: 1.5rem;
+    opacity: 0;
 
     @include m.desktop {
       margin-bottom: 2.8rem;
@@ -92,6 +93,7 @@
     font-size: 3rem;
     color: v.$secondary;
     font-style: italic;
+    opacity: 0;
     
     @include m.tablet {
         font-size: 4rem;
@@ -103,16 +105,13 @@
 
   }
 
-
   &__btn-light {
+    opacity: 0;
     
     @include m.desktop-2 { 
       font-size: 1.8rem;
     }
   }
-
-
-
 
   &__box-btn-pulse {
     position: absolute;
@@ -138,11 +137,5 @@
   &__titleParent,
   &__subtitleParent {
     overflow: hidden; 
-  }
-
-  &__titleChildren,
-  &__subtitleChildren {
-    transform: translate(0, 400px); 
-    opacity: 0;
   }
 }

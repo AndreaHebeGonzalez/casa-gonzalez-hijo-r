@@ -22,9 +22,11 @@
 
     &__divider {
         display: none;
+    
 
         @include m.desktop-2 {
             display:  block;
+            opacity: 0;
         }
     }
 

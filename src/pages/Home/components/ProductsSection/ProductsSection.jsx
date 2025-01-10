@@ -47,11 +47,6 @@ export const ProductsSection = () => {
       setStartAfterHScroll(true);
     }, 500);
   }, [startAnimation]);
-
-  useEffect(() => {
-    console.log(screenPx)
-  }, [screenPx])
-  
   
   return (
     <section className="categorys section">

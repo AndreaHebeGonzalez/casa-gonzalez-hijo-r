@@ -82,8 +82,10 @@ export const MainLayout = () => {
 
   useEffect(() => {
     if(!completeBar) return;
+    setTimeout(() => {
       introAnimation();
-  }, [completeBar])
+    }, 200);
+  }, [completeBar]);
   
 
   /* useEffect(() => {
