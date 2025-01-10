@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { categorysAnimation } from "../../../../animations";
 import { LocoScrollContext } from "../../../../context";
 
-export const Category = ({ id, category, image, link, titleWrapp }) => {
+export const Category = ({ id, category, image, link }) => {
 
   /* Context */
   const { startAfterHScroll } = useContext(LocoScrollContext);  
@@ -17,7 +17,7 @@ export const Category = ({ id, category, image, link, titleWrapp }) => {
 
   useEffect(() => {
     if(!startAfterHScroll) return;
-    categorysAnimation(titleWrapp, categoryHeaderRef.current, categoryHeadingRef.current, categoryLineRef.current, imgBoxRef.current);
+    categorysAnimation(categoryHeaderRef.current, categoryHeadingRef.current, categoryLineRef.current, imgBoxRef.current);
   }, [startAfterHScroll]);
 
   return (

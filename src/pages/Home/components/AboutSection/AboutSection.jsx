@@ -82,7 +82,6 @@ export const AboutSection = () => {
   }
   
   useEffect(() => {
-      console.log('calculo en estado global con screenPx ', screenPx)
       if(screenPx>=665 && screenPx<1024) {
         console.log('se ejecuto');
         calculateHeightDifference();

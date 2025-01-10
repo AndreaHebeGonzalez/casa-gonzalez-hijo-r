@@ -11,6 +11,7 @@ export const AboutInformation = () => {
 
   useEffect(() => {
     if(!startAnimation) return;
+    console.log('inicia animacion de imagen')
     aboutImageAnimation(aboutImageRef.current);   
   }, [startAnimation]);
   

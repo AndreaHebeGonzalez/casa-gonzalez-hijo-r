@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react"
 import { LocoScrollContext } from "./LocoScrollContext";
 
-
-
-
 export const LocoScrollProvider = ({ children }) => {
 
   const [locoScrollInstance, setLocoScrollInstance] = useState(null); 
@@ -16,7 +13,6 @@ export const LocoScrollProvider = ({ children }) => {
 
   useEffect(() => {
     if(!locoScrollInstance) return;
-    console.log(locoScrollInstance);
       setStartAnimation(true);
   }, [locoScrollInstance]);
   

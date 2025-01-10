@@ -1,7 +1,7 @@
 import { Category } from "./Category";
 import { useContext, useEffect, useRef } from "react";
-import { horizontalScrollTitle } from "../../../../animations";
-import { LocoScrollContext } from "../../../../context";
+import { animationTitle } from "../../../../animations";
+import { LocoScrollContext, ScreenContext } from "../../../../context";
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
@@ -35,32 +35,37 @@ export const ProductsSection = () => {
   /* Context */
   
   const { startAnimation, setStartAfterHScroll } = useContext(LocoScrollContext);
+  const { screenPx } = useContext(ScreenContext);
 
-  const categorysWrapperRef = useRef(null);
+  const wrapperRef = useRef(null);
   const titleWrappRef = useRef(null);
 
   useEffect(() => {
     if(!startAnimation) return;
     setTimeout(() => {
-      horizontalScrollTitle(categorysWrapperRef.current, titleWrappRef.current);
+      animationTitle(wrapperRef.current, titleWrappRef.current);
       setStartAfterHScroll(true);
     }, 500);
   }, [startAnimation]);
+
+  useEffect(() => {
+    console.log(screenPx)
+  }, [screenPx])
+  
   
   return (
     <section className="categorys section">
       <div className="categorys__wrapper">
-        <div className="wrapper" ref={ categorysWrapperRef }>
+        <div className={ `categorys__title-wrapp-wrapp ${screenPx<768 ? 'container':''}` } ref={ wrapperRef }>
           <div className="categorys__title-wrapp" ref={ titleWrappRef }>
             <h2 className="categorys__heading">Productos</h2>
           </div>
         </div>
-        
 
         <div className="categorys__box container">
           {
             categorysList.map((category) => (
-              <Category key={ `${category.category}-${category.id}` } { ...category } titleWrapp = { titleWrappRef.current } />)
+              <Category key={ `${category.category}-${category.id}` } { ...category } />)
             )
           }
         </div>

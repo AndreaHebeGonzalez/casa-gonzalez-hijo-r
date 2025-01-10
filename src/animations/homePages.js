@@ -292,39 +292,73 @@ export const svgAnimation = (svg, setValues) => {
 };
 
 /* Products Categorys */
-export const horizontalScrollTitle = (categorysBox, titleWrapp) => {
+export const animationTitle = (wrapper, titleWrapp) => {
 
-  gsap.set(titleWrapp, { xPercent: 0 }); 
-
+  
+  /* Animation title mobile */
   gsap.matchMedia().add(
-    "(max-width: 767px)",
+    "(max-width: 664px)",
 
     () => {
-      gsap.to(titleWrapp, {
-        xPercent: -100,
-        ease: 'none',
+      const title = titleWrapp.querySelector("h2");
+
+     /*  const titleChar = new SplitType(title, {
+        types: "words, char",
+        charClass: "categorys__title-char",
+        wordClass: "categorys__title-words", 
+      }); */
+
+      /* ;
+      gsap.set(titleChar.chars, { y: "115px", opacity: 0 }) */
+
+      gsap.set(title, { x: "15%", opacity: 0, clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" });
+
+      gsap.to(title, {
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "expo",
+        overwrite: true, 
         scrollTrigger: {
-          start: 'center center',
-          trigger: categorysBox,
-          pin: true,
-          scrub: 1,
-          end: () => `+=${titleWrapp.offsetWidth}`,
+          trigger: title,
+          start: "top 80%",
           scroller: "#main-container",  
         }
-      });
-    }
-  )
+      })
 
+      /* gsap.to(titleChar.chars, {
+        y: 0,
+        opacity: 1,
+        stagger: 0.05,
+        delay: 0.2,
+        duration: 0.6,  
+        ease: 'expo',   
+        scrollTrigger: {
+          trigger: titleWrapp,
+          start: "top 80%",
+          end: "bottom top",
+          scroller: '#main-container',
+          onComplete: () => {
+            console.log("Scroll completado");
+          },
+        }
+      }); */
+    }
+  );
+
+  /* Animation title tablet, desktop, scroll horizontal */
   gsap.matchMedia().add(
     "(min-width: 768px)",
 
     () => {
+      gsap.set(titleWrapp, { xPercent: 2 }); 
+
       gsap.to(titleWrapp, {
         xPercent: -100,
         ease: 'none',
         scrollTrigger: {
           start: 'top top',
-          trigger: categorysBox,
+          trigger: wrapper,
           scroller: '#main-container', 
           pin: true,
           scrub: 0.5,
@@ -332,10 +366,10 @@ export const horizontalScrollTitle = (categorysBox, titleWrapp) => {
         }
       });
     }
-  )
+  );
 };
 
-export const categorysAnimation = (titleWrapp, categoryHeader, categoryHeadingBox, categoryLine, imgBox) => {
+export const categorysAnimation = (categoryHeader, categoryHeadingBox, categoryLine, imgBox) => {
   
   /* Animation heading */
 
@@ -351,7 +385,8 @@ export const categorysAnimation = (titleWrapp, categoryHeader, categoryHeadingBo
   });
 
   /* initializations  */
-  gsap.set(titleChars.chars, { yPercent: 50, opacity: 0 });
+  gsap.set(title, {clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"});
+  gsap.set(titleChars.chars, { y: "115px", opacity: 0 });
   gsap.set(link, { scale: 0, opacity: 0 });
   gsap.set(categoryLine, { flexGrow: 0 });
 
@@ -361,83 +396,38 @@ export const categorysAnimation = (titleWrapp, categoryHeader, categoryHeadingBo
 
   /* Animations category */
 
-  gsap.matchMedia().add(
-    "(max-width: 767px)",
-
-    () => {
-      const tlHeadingCategory = gsap.timeline({
-        scrollTrigger: {
-          trigger: categoryHeader,
-          start: () => `top 80%`,
-          end: "bottom top",
-          scroller: "#main-container",  
-        }
-      });
-    
-      tlHeadingCategory.to(titleChars.chars, {
-        yPercent: 0,
-        opacity: 1,
-        stagger: 0.04,
-        duration: 0.4,
-        ease: 'expo'
-      })
-      .to(link, {
-        scale: 1,
-        opacity: 1,
-        duration: 0.4,
-        ease: 'power1.out',
-      },'<0.2')
-      .to(categoryLine, {
-        flexGrow: 1,
-        duration: 1,
-        ease: 'power1.out',
-      }, '<0.2')
-      .to(imgCategory, {
-        clipPath: "inset(0% 0% 0% 0%)",
-        ease: "power3",
-        duration: 1,
-      }, '<0.2') 
+  const tlHeadingCategory = gsap.timeline({
+    scrollTrigger: {
+      trigger: categoryHeader,
+      scroller: '#main-container',
+      start: () => `top 75%`,
+      end: "bottom top",
     }
-  )
+  });
 
-  gsap.matchMedia().add(
-    "(min-width: 768px)",
-
-    () => {
-      const tlHeadingCategory = gsap.timeline({
-        scrollTrigger: {
-          trigger: categoryHeader,
-          scroller: '#main-container',
-          start: () => `+=${titleWrapp.offsetWidth} 80%`,
-          end: "bottom top",
-        }
-      });
-    
-      tlHeadingCategory.to(titleChars.chars, {
-        yPercent: 0,
-        opacity: 1,
-        stagger: 0.04,
-        duration: 0.4,
-        ease: 'expo'
-      })
-      .to(link, {
-        scale: 1,
-        opacity: 1,
-        duration: 0.4,
-        ease: 'power1.out',
-      },'<0.2')
-      .to(categoryLine, {
-        flexGrow: 1,
-        duration: 1,
-        ease: 'power1.out',
-      }, '<0.2')
-      .to(imgCategory, {
-        clipPath: "inset(0% 0% 0% 0%)",
-        ease: "power3",
-        duration: 1,
-      }, '<0.2') 
-    }
-  )
+  tlHeadingCategory.to(titleChars.chars, {
+    y: 0,
+    opacity: 1,
+    stagger: 0.02,
+    duration: 0.6,
+    ease: 'expo'
+  })
+  .to(link, {
+    scale: 1,
+    opacity: 1,
+    duration: 0.6,
+    ease: 'power1.out',
+  },'<0.25')
+  .to(categoryLine, {
+    flexGrow: 1,
+    duration: 1,
+    ease: 'power1.out',
+  }, '<0.25')
+  .to(imgCategory, {
+    clipPath: "inset(0% 0% 0% 0%)",
+    ease: "power3",
+    duration: 1.5,
+  }, '<0.25'); 
 };
 
 /* Featured Product */

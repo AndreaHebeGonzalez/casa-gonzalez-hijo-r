@@ -8,7 +8,7 @@
   top: 0;
   left: 0;
   z-index: 48;
-  background: v.$bgBody;
+  background-color: black;
   clip-path: inset(0% 0% 0% 0%);
 }
 
@@ -20,7 +20,7 @@
   right: 0;
   width: 100vw;
   height: 100vh;
-  background-color: black;
+  background: v.$bgBody;
   pointer-events: none;
   clip-path: inset(0% 0% 0% 0%);
 
