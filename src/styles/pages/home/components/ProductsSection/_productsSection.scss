@@ -1,5 +1,5 @@
-@use '../../../base/variables' as v;
-@use '../../../utils/mixins' as m;
+@use '../../../../base/variables' as v;
+@use '../../../../utils/mixins' as m;
 
 .categories {
 
@@ -32,9 +32,7 @@
     @media (max-aspect-ratio: 1/1) and (min-width: 768px) {
       min-height: initial;
       padding: 5rem 0rem 15rem;
-      
     }
-
   }
   
   &__heading {     

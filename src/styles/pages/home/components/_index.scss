@@ -1,7 +1,6 @@
-@forward 'aboutSection';
-@forward 'featuredProduct';
-@forward 'highlightedText';
-@forward 'hotspot';
-@forward 'heroSection';
-@forward 'productCategory';
-@forward 'productsSection';
+@forward './AboutSection/index';
+@forward './FeaturedProduct/index';
+@forward './HeroSection/';
+@forward './HighlightedText/index';
+@forward './ProductsSection/';
+

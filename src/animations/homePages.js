@@ -305,7 +305,7 @@ export const animationTitle = (wrapper, titleWrapp) => {
     () => {
       const title = titleWrapp.querySelector("h2");
 
-     /*  const titleChar = new SplitType(title, {
+    /*  const titleChar = new SplitType(title, {
         types: "words, char",
         charClass: "categories__title-char",
         wordClass: "categories__title-words", 
