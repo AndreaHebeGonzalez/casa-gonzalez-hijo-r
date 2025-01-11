@@ -1,7 +1,7 @@
 @use '../../../base/variables' as v;
 @use '../../../utils/mixins' as m;
 
-.categorys {
+.categories {
 
   &__title-wrapp-wrapp {
     @media (max-aspect-ratio: 1/1) {

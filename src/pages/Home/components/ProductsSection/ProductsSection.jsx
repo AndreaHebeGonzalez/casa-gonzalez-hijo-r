@@ -9,7 +9,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 
-const categorysList = [
+const categoriesList = [
   {
     id: 1,
     category: "Fusiles",
@@ -49,17 +49,17 @@ export const ProductsSection = () => {
   }, [startAnimation]);
   
   return (
-    <section className="categorys section">
-      <div className="categorys__wrapper">
-        <div className= "categorys__title-wrapp-wrapp" ref={ wrapperRef }>
-          <div className="categorys__title-wrapp" ref={ titleWrappRef }>
-            <h2 className="categorys__heading">Productos</h2>
+    <section className="categories section">
+      <div className="categories__wrapper">
+        <div className= "categories__title-wrapp-wrapp" ref={ wrapperRef }>
+          <div className="categories__title-wrapp" ref={ titleWrappRef }>
+            <h2 className="categories__heading">Productos</h2>
           </div>
         </div>
 
-        <div className="categorys__box container">
+        <div className="categories__box container">
           {
-            categorysList.map((category) => (
+            categoriesList.map((category) => (
               <Category key={ `${category.category}-${category.id}` } { ...category } />)
             )
           }

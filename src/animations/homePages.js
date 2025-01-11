@@ -294,7 +294,7 @@ export const svgAnimation = (svg, setValues) => {
   }, '<.1');
 };
 
-/* Products Categorys */
+/* Products categories */
 export const animationTitle = (wrapper, titleWrapp) => {
 
   
@@ -307,8 +307,8 @@ export const animationTitle = (wrapper, titleWrapp) => {
 
      /*  const titleChar = new SplitType(title, {
         types: "words, char",
-        charClass: "categorys__title-char",
-        wordClass: "categorys__title-words", 
+        charClass: "categories__title-char",
+        wordClass: "categories__title-words", 
       }); */
 
       /* ;
@@ -372,7 +372,7 @@ export const animationTitle = (wrapper, titleWrapp) => {
   );
 };
 
-export const categorysAnimation = (categoryHeader, categoryHeadingBox, categoryLine, imgBox) => {
+export const categoriesAnimation = (categoryHeader, categoryHeadingBox, categoryLine, imgBox) => {
   
   /* Animation heading */
 
