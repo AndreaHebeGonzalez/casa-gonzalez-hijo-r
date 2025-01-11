@@ -91,7 +91,7 @@ export const FeaturedProduct = () => {
             <p className="featured-product__label">Nuevo</p>
             <h2 className="featured-product__title">Modelo MMM</h2>
           </div>
-          <div className="featured-product__image" ref={ imageProductRef }>
+          <div className="featured-product__image-wrapp" ref={ imageProductRef }>
             <picture className="featured-product__picture">
               <img className="featured-product__img" src="/img/fusiles/FusilMMMInicio.png" alt="Fusil MMM" />
             </picture>
