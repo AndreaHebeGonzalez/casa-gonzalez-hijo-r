@@ -3,7 +3,12 @@
 
 .categorys {
 
-  
+  &__title-wrapp-wrapp {
+    @media (max-aspect-ratio: 3/4) {
+      width: 95%;
+      margin: 0 auto;
+    }
+  }
 
   &__title-wrapp {
     @include m.flex(row, 0);
@@ -19,6 +24,13 @@
     @include m.tablet-2 {
       min-height: 95vh;
     }
+
+    @media (max-aspect-ratio: 3/4) and (min-width: 768px) {
+      min-height: initial;
+      padding: 5rem 0rem 15rem;
+      
+    }
+
   }
   
   &__heading {     
@@ -27,7 +39,6 @@
       line-height: 1.5;
       text-transform: uppercase;
       font-weight: 700;
-      
 
       @include m.telefono-2 { 
         font-size: 18rem;
@@ -35,8 +46,22 @@
       }
 
       @include m.tablet-2 { 
-          font-size: 28rem;
+        font-size: 28rem;
       }
+
+      @include m.desktop-3 { 
+          font-size: 30rem;
+      }
+
+      @include m.desktop-4 { 
+        font-size: 20vw;
+      }
+
+
+      @media (max-aspect-ratio: 3/4) and (min-width: 768px) {
+        font-size: 15rem;
+      }
+      
   }
 
   &__box {

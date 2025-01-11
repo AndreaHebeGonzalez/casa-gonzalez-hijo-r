@@ -51,7 +51,7 @@ export const ProductsSection = () => {
   return (
     <section className="categorys section">
       <div className="categorys__wrapper">
-        <div className={ `categorys__title-wrapp-wrapp ${screenPx<768 ? 'container':''}` } ref={ wrapperRef }>
+        <div className= "categorys__title-wrapp-wrapp" ref={ wrapperRef }>
           <div className="categorys__title-wrapp" ref={ titleWrappRef }>
             <h2 className="categorys__heading">Productos</h2>
           </div>

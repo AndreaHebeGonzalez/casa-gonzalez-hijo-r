@@ -52,6 +52,10 @@
   }
 
   @media (min-height: 1024px) {
+    height: 85vh;
+  }
+
+  @media (max-aspect-ratio: 3/4) {
     height: 65vh;
   }
   

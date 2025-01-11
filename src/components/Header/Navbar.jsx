@@ -24,7 +24,7 @@ export const Navbar = ({ hasScrolled }) => {
   ];
 
   return ( 
-    <div className="header__barra container-2">
+    <div className="header__barra container">
       
       <picture className= { `header__logo ${hasScrolled && mobileVersion ? 'disappear':''}` } ref={ logoHeaderRef }>
         <img className="header__logo-img" src="/img/logob.png" alt="logo de la empresa" />

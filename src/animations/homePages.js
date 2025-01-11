@@ -300,7 +300,7 @@ export const animationTitle = (wrapper, titleWrapp) => {
   
   /* Animation title mobile */
   gsap.matchMedia().add(
-    "(max-width: 664px)",
+    "(max-aspect-ratio: 3/4)",
 
     () => {
       const title = titleWrapp.querySelector("h2");
@@ -351,10 +351,10 @@ export const animationTitle = (wrapper, titleWrapp) => {
 
   /* Animation title tablet, desktop, scroll horizontal */
   gsap.matchMedia().add(
-    "(min-width: 768px)",
+    "(min-aspect-ratio: 761/1000)",
 
     () => {
-      gsap.set(titleWrapp, { xPercent: 2 }); 
+      gsap.set(titleWrapp, { xPercent: 8 }); 
 
       gsap.to(titleWrapp, {
         xPercent: -100,

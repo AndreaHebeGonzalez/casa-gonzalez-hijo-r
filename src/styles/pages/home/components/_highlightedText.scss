@@ -107,23 +107,20 @@
     }
   
     @include m.tablet {
-      //transform: translate(0, 50%);
       font-size: 3rem;
       width: 68%;
     }
 
     @include m.tablet-2 {
       transform: translate(10rem, 0);
-      //width: 65%;
-    }
-
-
-    @include m.desktop {
-      width: 55%;
     } 
   
     @include m.desktop-2 {
       width: 50%;
+    } 
+
+    @include m.desktop-4 {
+      font-size: 4rem;
     } 
   }
 

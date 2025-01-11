@@ -168,10 +168,13 @@
             @include m.grid(4, 0);
             column-gap: 2rem;
             row-gap: 3rem;
-            margin-bottom: 3rem;
+            margin: 0 auto 3rem auto ;
         }
 
-        
+        @include m.desktop-3 {
+            @include m.grid(4, 0);
+            column-gap: 4rem;
+        }
     }
 
     &__item-content { 
