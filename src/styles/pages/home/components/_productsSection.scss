@@ -4,7 +4,7 @@
 .categorys {
 
   &__title-wrapp-wrapp {
-    @media (max-aspect-ratio: 3/4) {
+    @media (max-aspect-ratio: 1/1) {
       width: 95%;
       margin: 0 auto;
     }
@@ -18,14 +18,18 @@
     padding: 0rem 0rem 8rem;
 
     @include m.telefono-2 {
-      padding: 10rem 0 ;
+      padding: 10rem 0 14rem 0;
+    }
+
+    @media (max-aspect-ratio: 1/1) and (min-width: 665px) {
+      padding: 10rem 0 14rem 0;
     }
 
     @include m.tablet-2 {
       min-height: 95vh;
     }
 
-    @media (max-aspect-ratio: 3/4) and (min-width: 768px) {
+    @media (max-aspect-ratio: 1/1) and (min-width: 768px) {
       min-height: initial;
       padding: 5rem 0rem 15rem;
       
@@ -40,8 +44,12 @@
       text-transform: uppercase;
       font-weight: 700;
 
-      @include m.telefono-2 { 
-        font-size: 18rem;
+      @media (max-aspect-ratio: 1/1) and (min-width: 665px) {
+        font-size: 10rem;
+      }
+
+      @media (min-aspect-ratio: 1/1) and (min-width: 665px){ 
+        font-size: 20rem;
         line-height: 1;
       }
 
@@ -58,8 +66,8 @@
       }
 
 
-      @media (max-aspect-ratio: 3/4) and (min-width: 768px) {
-        font-size: 15rem;
+      @media (max-aspect-ratio: 1/1) and (min-width: 768px) {
+        font-size: 14rem;
       }
       
   }
